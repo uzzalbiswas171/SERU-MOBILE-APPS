@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:seru_test_project/CustomWidget/CustomText/custom_text.dart';
 import 'package:seru_test_project/CustomWidget/CustomTextFromField/custom_text_from_fild.dart';
 import 'package:seru_test_project/View/Auth/Login/screens/login_screen.dart';
+import 'package:seru_test_project/View/HomeScreen/home_screen.dart';
 
 import '../../../CustomWidget/CustomButton/custom_button.dart';
 import '../../../custom_const.dart';
@@ -112,7 +113,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         height: 40,
                       ),
                       CustomButton(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+                          },
                           text: is_clicked_loginbutton == true
                               ? "Login Processing"
                               : "Register",

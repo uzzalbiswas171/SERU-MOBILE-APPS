@@ -142,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       SizedBox(height: 40,),
                       CustomButton(onTap: () {
-
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
                       }, text: is_clicked_loginbutton==true? "Login Processing" : "Sign In", button_text_fontSize: 22, button_height: 45)
                       ,SizedBox(
                         height: 20,
