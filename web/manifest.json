@@ -1,6 +1,6 @@
 {
-    "name": "seru_test",
-    "short_name": "seru_test",
+    "name": "seru_test_project",
+    "short_name": "seru_test_project",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
