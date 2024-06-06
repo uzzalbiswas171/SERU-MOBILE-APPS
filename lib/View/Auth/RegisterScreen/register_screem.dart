@@ -90,17 +90,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(
                         height: 15,
                       ),
-                      CustomTExtFromField(controller: _emailController, hintText: "Enter Password", text: "passwod", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), obscureText: is_show_pass, suffixIcon: IconButton(
+                      CustomTExtFromField(controller: _psswordController, hintText: "Enter Password", text: "passwod", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), obscureText: is_show_pass, suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
                             is_show_pass=!is_show_pass;
                           });
                         },
                         icon:Icon(is_show_pass==true?Icons.visibility_off:Icons.visibility,color:  main_text_blac_color.withOpacity(0.6),),color: main_text_blac_color.withOpacity(0.6),)),
+
                       SizedBox(
                         height: 15,
                       ),
-                      CustomTExtFromField(controller: _emailController, hintText: "Enter Password", text: "passwod", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), obscureText: is_show_pass, suffixIcon: IconButton(
+                      CustomTExtFromField(controller: _psswordController, hintText: "Enter Password", text: "passwod", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), obscureText: is_show_pass, suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
                             is_show_pass=!is_show_pass;

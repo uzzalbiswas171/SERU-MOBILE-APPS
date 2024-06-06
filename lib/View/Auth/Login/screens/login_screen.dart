@@ -11,6 +11,7 @@ import 'package:seru_test_project/View/Auth/RegisterScreen/register_screem.dart'
 import 'package:seru_test_project/custom_const.dart'; 
 import '../../../../CustomWidget/CustomButton/custom_button.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
+import '../../../../CustomWidget/CustomTextFromField/custom_text_from_fild.dart';
 import '../../../HomeScreen/home_screen.dart';
 import '../utils/text_utils.dart';
 class LoginScreen extends StatefulWidget {
@@ -79,44 +80,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Color(0xff000000)
                       ),),
                       SizedBox(height: 20,),
-                      TextFormField(
-                        controller: _emailController,
-                        decoration: InputDecoration(
-                            hintText: "Enter your email address",
-                            hintStyle: GoogleFonts.roboto(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15,
-                                color: Color(0xff555556)
-                            ),
-                            suffixIcon: IconButton(onPressed: () {
-                              
-                            }, icon: Icon(Icons.email,color: Colors.grey,)),
-                            contentPadding: EdgeInsets.only(left: 15),
-                            border: OutlineInputBorder(borderRadius: BorderRadius.all(
-                                Radius.circular(10)))
-                        ),
+                      CustomTExtFromField(controller: _emailController, hintText: "Enter Email", text: "Email", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), suffixIcon: Icon(Icons.email,color: main_text_blac_color.withOpacity(0.6),), obscureText: false,),
+                      SizedBox(
+                        height: 15,
                       ),
-                      SizedBox(height: 15,),
-                      TextFormField(
-                        controller: _psswordController,
-                        obscureText: is_show_pass,
-                        decoration: InputDecoration(
-                            hintText: "Type your password",
-                            hintStyle: GoogleFonts.roboto(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15,
-                                color: Color(0xff555556)
-                            ),
-                            suffixIcon: IconButton(onPressed: () {
-                              setState(() {
-                                is_show_pass=!is_show_pass;
-                              });
-                            }, icon: Icon(Icons.lock,color: Colors.grey,)),
-                            contentPadding: EdgeInsets.only(left: 15),
-                            border: OutlineInputBorder(borderRadius: BorderRadius.all(
-                                Radius.circular(10)))
-                        ),
-                      ),
+                      CustomTExtFromField(controller: _psswordController, hintText: "Enter Password", text: "passwod", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), obscureText: is_show_pass, suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            is_show_pass=!is_show_pass;
+                          });
+                        },
+                        icon:Icon(is_show_pass==true?Icons.visibility_off:Icons.visibility,color:  main_text_blac_color.withOpacity(0.6),),color: main_text_blac_color.withOpacity(0.6),)),
+
                       SizedBox(height: 20,),
                       InkWell(
                         onTap: () {
