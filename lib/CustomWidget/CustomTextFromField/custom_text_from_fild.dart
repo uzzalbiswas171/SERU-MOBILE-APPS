@@ -26,7 +26,7 @@ class CustomTExtFromField extends StatelessWidget {
       obscureText:obscureText ,
       controller: controller,
       decoration: InputDecoration(
-          hintText: "$hintText",
+          labelText: "$hintText",
           hintStyle: GoogleFonts.roboto(
         fontSize: fontSize,
         fontWeight:fontWeight,

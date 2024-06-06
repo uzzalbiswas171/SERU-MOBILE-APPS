@@ -80,7 +80,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             color: Color(0xff000000)),
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 20,
                       ), 
                       CustomTExtFromField(controller: _emailController, hintText: "Enter Name", text: "NAme", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), suffixIcon: Icon(Icons.person,color: main_text_blac_color.withOpacity(0.6),), obscureText: false,),
                       SizedBox(

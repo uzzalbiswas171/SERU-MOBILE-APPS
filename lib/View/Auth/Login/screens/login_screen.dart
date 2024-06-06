@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontSize: 15,
                           color: Color(0xff000000)
                       ),),
-                      SizedBox(height: 10,),
+                      SizedBox(height: 20,),
                       TextFormField(
                         controller: _emailController,
                         decoration: InputDecoration(
