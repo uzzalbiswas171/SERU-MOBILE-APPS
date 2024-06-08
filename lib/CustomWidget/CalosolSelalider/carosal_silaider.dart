@@ -34,14 +34,14 @@ class CalosolSelalider extends StatelessWidget {
               onTap: carousal_onTab,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-             //   margin: EdgeInsets.symmetric(horizontal: 5.0),
-             //    decoration: BoxDecoration(
-             //        color: Colors.amber,
-             //       image: DecorationImage(image: NetworkImage("${BaseUrl}/${i["image"]}"),fit: BoxFit.fill)
-             //    ),
-                child: CustomNetworkImage(
-                    height: custom_height,
-                    image: "${i["image"]}"),
+               margin: EdgeInsets.symmetric(horizontal: 5.0),
+                decoration: BoxDecoration(
+                    color: Colors.amber,
+                   image: DecorationImage(image: AssetImage("${i}"),fit: BoxFit.fill)
+                ),
+                // child: CustomNetworkImage(
+                //     height: custom_height,
+                //     image: "${i["image"]}"),
               ),
             );
           },

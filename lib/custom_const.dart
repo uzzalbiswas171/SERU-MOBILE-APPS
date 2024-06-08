@@ -1,13 +1,11 @@
 
 
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
   
 
 
 /// Custom Logo Lin
-const Seru_Test_logo = "assets/SeruTestLogo/seru_main_logo.png";
+const Seru_Test_logo = "assets/SeruTestLogo/serulogo.jpg";
 
 /// Base Url Need  for Show Image
  String BaseUrl="https://sitibd.com";

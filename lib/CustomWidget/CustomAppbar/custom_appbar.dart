@@ -37,6 +37,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
           height: 40,
           width: 45,
          decoration: BoxDecoration(
+           color: Colors.white,
            borderRadius: BorderRadius.circular(10),
            image: DecorationImage(image: AssetImage("$Seru_Test_logo"))
          ),
@@ -82,8 +83,8 @@ class _CustomAppbarState extends State<CustomAppbar> {
                         radius: 16,
                         backgroundColor: Colors.white,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 8.0,left: 5,top: 5,bottom: 5),
-                          child: Image.asset("assets/menu 2.png",height: 18,width: 18,color: Colors.grey,),
+                          padding: const EdgeInsets.all(5),
+                          child: Icon(Icons.person),
                         ),
                       ),
                     )),
