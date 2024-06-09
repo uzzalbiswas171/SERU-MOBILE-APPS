@@ -28,3 +28,4 @@ const defaultBackgroundColor = Color(0xffe5e3df);
 
 const icons_orrange_color =BootomBarColor;
 const icons_green_color = BootomBarColor;
+const Main_Theme_textColor_tir_Condition = Color(0xffACC027);

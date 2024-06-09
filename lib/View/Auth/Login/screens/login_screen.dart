@@ -12,6 +12,7 @@ import 'package:seru_test_project/custom_const.dart';
 import '../../../../CustomWidget/CustomButton/custom_button.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
 import '../../../../CustomWidget/CustomTextFromField/custom_text_from_fild.dart';
+import '../../../BootomBar/bootombar.dart';
 import '../../../HomeScreen/home_screen.dart';
 import '../utils/text_utils.dart';
 class LoginScreen extends StatefulWidget {
@@ -117,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       SizedBox(height: 40,),
                       CustomButton(onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => BttotomBarScreen(index: 0,),));
                       }, text: is_clicked_loginbutton==true? "Login Processing" : "Sign In", button_text_fontSize: 22, button_height: 45)
                       ,SizedBox(
                         height: 20,
