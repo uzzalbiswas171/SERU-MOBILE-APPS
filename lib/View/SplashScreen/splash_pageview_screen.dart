@@ -8,6 +8,7 @@ import 'package:seru_test_project/CustomWidget/CustomImageScetion/custom_image_s
 import '../../CustomWidget/CustomText/custom_text.dart';
 import '../../custom_const.dart';
 import '../Auth/Login/screens/login_screen.dart';
+import '../HomeScreen/home_screen.dart';
 
 class SplashPageViewScreen extends StatefulWidget {
   const SplashPageViewScreen({Key? key}) : super(key: key);
@@ -91,7 +92,8 @@ class _SplashPageViewScreenState extends State<SplashPageViewScreen> {
                       ),
                       position==2?Container(
                         child: CustomButton(onTap: () {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+    //  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
                         }, text: "GET STARTED", button_text_fontSize: 16, button_height: 40),
                       ) :    Align(
                         alignment: Alignment.centerRight,

@@ -11,6 +11,7 @@ import 'package:seru_test_project/CustomWidget/CustomTextFromField/custom_text_f
 import 'package:seru_test_project/CustomWidget/SelectionOptions/selection_option.dart';
 
 import '../../custom_const.dart';
+import '../Auth/Login/screens/login_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -61,38 +62,43 @@ class _HomeScreenState extends State<HomeScreen> {
                  crossAxisSpacing: 10,
                  mainAxisSpacing: 10,
                ), itemBuilder: (context, index) {
-                 return Card(
-                   color: BootomBarColor.withOpacity(0.8),
-                   child: Padding(
-                     padding: const EdgeInsets.all(8.0),
-                     child: Column(
-                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                       children: [
-                         Align(
-                           alignment: Alignment.centerRight,
-                         child:  Container(
-                           height: 30,
-                           width: 100,
-                           decoration: BoxDecoration(
-                             borderRadius: BorderRadius.circular(15),
-                             color: Colors.black
+                 return InkWell(
+                   onTap: () {
+                     Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+                   },
+                   child: Card(
+                     color: BootomBarColor.withOpacity(0.8),
+                     child: Padding(
+                       padding: const EdgeInsets.all(8.0),
+                       child: Column(
+                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                         children: [
+                           Align(
+                             alignment: Alignment.centerRight,
+                           child:  Container(
+                             height: 30,
+                             width: 100,
+                             decoration: BoxDecoration(
+                               borderRadius: BorderRadius.circular(15),
+                               color: Colors.black
+                             ),
+                             alignment: Alignment.center,
+                             child: CustomText(text: "\£ 29",text_color: main_text_white_color ,fontSize: 17, fontWeight: FontWeight.w500),
                            ),
-                           alignment: Alignment.center,
-                           child: CustomText(text: "\£ 29",text_color: main_text_white_color ,fontSize: 17, fontWeight: FontWeight.w500),
-                         ),
-                         ),
-                         SizedBox(height: 5,),
-                         CustomText(text: "✓ 20 Mocktest", fontSize: 18, fontWeight: FontWeight.w500)
-                         ,
-                         SizedBox(height: 5,),
-                         CustomText(text: "✓ 20 Mocktest", fontSize: 16, fontWeight: FontWeight.w500)
-                       ,SizedBox(height: 5,),
-                        CircleAvatar(
-                           radius: 30,
-                           backgroundImage: AssetImage("assets/Gif/buynowcircle.gif"),
-                         ),
-                        // Image.asset("assets/Gif/buynow.webp",height: 40,width: 100,fit: BoxFit.fill,)
-                       ],
+                           ),
+                           SizedBox(height: 5,),
+                           CustomText(text: "✓ 20 Mocktest", fontSize: 18, fontWeight: FontWeight.w500)
+                           ,
+                           SizedBox(height: 5,),
+                           CustomText(text: "✓ 20 Mocktest", fontSize: 16, fontWeight: FontWeight.w500)
+                         ,SizedBox(height: 5,),
+                          CircleAvatar(
+                             radius: 30,
+                             backgroundImage: AssetImage("assets/Gif/buynowcircle.gif"),
+                           ),
+                          // Image.asset("assets/Gif/buynow.webp",height: 40,width: 100,fit: BoxFit.fill,)
+                         ],
+                       ),
                      ),
                    ),
                  );
