@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:seru_test_project/View/SplashScreen/splash_pageview_screen.dart';
 
 import 'View/HomeScreen/home_screen.dart';
+import 'View/SplashScreens/main_splash_pageview_screen.dart';
 
 
 void main() {
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:HomeScreen(),
+    //  home:HomeScreen(),
+      home:MainSplashPageViewScreen(),
     );
   }
 }
