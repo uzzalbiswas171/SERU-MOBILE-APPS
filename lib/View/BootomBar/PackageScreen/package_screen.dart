@@ -20,7 +20,6 @@ class _PackageScreenState extends State<PackageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(preferredSize:Size.fromHeight(75), child: CustomAppbar()),
       body: Container(
         height: double.infinity,
         width: double.infinity,

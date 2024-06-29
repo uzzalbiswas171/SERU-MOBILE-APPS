@@ -35,7 +35,7 @@ bool  is_cliced=false;
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: PreferredSize(preferredSize:Size.fromHeight(75), child: CustomAppbar()),
+
      body: RefreshIndicator(
        onRefresh: () {
          return Future.delayed(Duration(seconds: 2),() {

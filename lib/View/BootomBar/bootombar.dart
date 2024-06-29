@@ -2,6 +2,7 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 
 import 'package:flutter/material.dart';
+import '../../CustomWidget/CustomAppbar/custom_appbar.dart';
 import '../../custom_const.dart';
 import 'HomeScreen/home_screen.dart';
 import 'PackageScreen/package_screen.dart';
@@ -57,6 +58,7 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      appBar: PreferredSize(preferredSize:Size.fromHeight(75), child: CustomAppbar()),
     key: _scaffoldkey,
     body: PageView(
     controller: _pageController,
