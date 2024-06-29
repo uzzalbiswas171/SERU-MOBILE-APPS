@@ -1,4 +1,4 @@
-package com.example.seru_test_project
+package com.example.seru_mobile_test
 
 import io.flutter.embedding.android.FlutterActivity
 
