@@ -78,7 +78,7 @@ bool  is_cliced=false;
                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
                      },
                      child: Card(
-                       color: Main_Theme_textColor_tir_Condition.withOpacity(0.8),
+                       color: Main_Theme_textColor_tir_Condition.withOpacity(0.6),
                        child: Container(
                          height: 100,
                          padding: const EdgeInsets.all(8.0),
