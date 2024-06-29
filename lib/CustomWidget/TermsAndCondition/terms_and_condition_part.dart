@@ -25,7 +25,7 @@ class CustomTermsAndConditionPart extends StatelessWidget {
               fontSize: 14,
               fontWeight: FontWeight.w400,
               text: "Terms & Conditions",
-                text_color: Main_Theme_textColor_tir_Condition,
+                text_color: Main_Theme_Color,
 
             ),
             CustomText(
@@ -37,7 +37,7 @@ class CustomTermsAndConditionPart extends StatelessWidget {
               fontSize: 14,
               fontWeight: FontWeight.w400,
               text: "Privacy Policy",
-              text_color: Main_Theme_textColor_tir_Condition,
+              text_color: Main_Theme_Color,
             ),
           ],
         ),

@@ -18,21 +18,11 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  TextEditingController _b_name_controller=TextEditingController();
-  TextEditingController _email_controller=TextEditingController();
-  TextEditingController _primary_phone_controller=TextEditingController();
-  TextEditingController _contact_number_controller=TextEditingController();
-  TextEditingController _fbpage_controller=TextEditingController();
-  TextEditingController _pickup_controller=TextEditingController();
-  TextEditingController _payment_info_controller=TextEditingController();
-  TextEditingController _password_controller=TextEditingController();
-  TextEditingController _change_password_controller=TextEditingController();
-  final _formkey=GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Main_Theme_textColor_tir_Condition.withOpacity(0.7),
+        color: Main_Theme_Color.withOpacity(0.7),
         height: double.infinity,
         width: double.infinity,
         child: SingleChildScrollView(
@@ -41,7 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Container(
                 height: 300,
                 width: double.infinity,
-                color: Main_Theme_textColor_tir_Condition.withOpacity(0.2),
+                color: Main_Theme_Color.withOpacity(0.2),
                 child: Column(
                   children: [
                     Container(
@@ -62,241 +52,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ],
                 ),
               ),
-              Container(
-                height: MediaQuery.of(context).size.height*0.95,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(44),
-                        topRight: Radius.circular(44)
-                    ),
-                    color: Colors.white
-                ),
-                padding: EdgeInsets.only(
-                    left: 20,right: 20,top: 15
-                ),
-                child: Form(
-                  key: _formkey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 38,
-                        width: double.infinity,
-                        child: Row(
-                          children: [
-                            Expanded(
-                                flex: 2,
-                                child: CustomText(text: "Business Name", fontSize: 15, fontWeight: FontWeight.w700, )),
-                            Expanded(
-                              flex: 3,
-                              child: CustomTExtFromField(controller: _b_name_controller, hintText: "hintText", text: "text", fontSize: 15, fontWeight: FontWeight.w700, text_color: Colors.red
-                                  , suffixIcon: Icon(Icons.abc), obscureText: false),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 10),
-                        height: 38,
-                        width: double.infinity,
-                        child: Row(
-                          children: [
-                            Expanded(
-                                flex: 2,
-                                child: CustomText(text: "Email", fontSize: 15, fontWeight: FontWeight.w700, )),
-                            Expanded(
-                              flex: 3,
-                              child: CustomTExtFromField(controller: _b_name_controller, hintText: "hintText", text: "text", fontSize: 15, fontWeight: FontWeight.w700, text_color: Colors.red
-                                  , suffixIcon: Icon(Icons.abc), obscureText: false),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 10),
-                        height: 38,
-                        width: double.infinity,
-                        child: Row(
-                          children: [
-                            Expanded(
-                                flex: 2,
-                                child: CustomText(text: "Primary phone", fontSize: 15, fontWeight: FontWeight.w700,  )),
-                            Expanded(
-                              flex: 3,
-                              child: CustomTExtFromField(controller: _b_name_controller, hintText: "hintText", text: "text", fontSize: 15, fontWeight: FontWeight.w700, text_color: Colors.red
-                                  , suffixIcon: Icon(Icons.abc), obscureText: false),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 10),
-                        height: 38,
-                        width: double.infinity,
-                        child: Row(
-                          children: [
-                            Expanded(
-                                flex: 2,
-                                child: CustomText(text: "Contact Number", fontSize: 15, fontWeight: FontWeight.w700, )),
-                            Expanded(
-                              flex: 3,
-                              child: CustomTExtFromField(controller: _b_name_controller, hintText: "hintText", text: "text", fontSize: 15, fontWeight: FontWeight.w700, text_color: Colors.red
-                                  , suffixIcon: Icon(Icons.abc), obscureText: false),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 10),
-                        height: 38,
-                        width: double.infinity,
-                        child: Row(
-                          children: [
-                            Expanded(
-                                flex: 2,
-                                child: CustomText(text: "FB Page/Website", fontSize: 15, fontWeight: FontWeight.w700, )),
-                            Expanded(
-                              flex: 3,
-                              child: CustomTExtFromField(controller: _b_name_controller, hintText: "hintText", text: "text", fontSize: 15, fontWeight: FontWeight.w700, text_color: Colors.red
-                                  , suffixIcon: Icon(Icons.abc), obscureText: false),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 10),
-                        height: 86,
-                        width: double.infinity,
-                        child: Stack(
-                          children: [
-                            Row(crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                    flex: 2,
-                                    child: CustomText(text: "Pick Up Address", fontSize: 15, fontWeight: FontWeight.w700, )),
-                                Expanded(
-                                  flex: 3,
-                                  child: CustomTExtFromField(controller: _b_name_controller, hintText: "hintText", text: "text", fontSize: 15, fontWeight: FontWeight.w700, text_color: Colors.red
-                                      , suffixIcon: Icon(Icons.abc), obscureText: false),
-                                )
-                              ],
-                            ),
-                            Positioned(
-                              right: 10,
-                              top: 10,
-                              child: Image(image: AssetImage("assets/edit-document 1.png"),fit: BoxFit.fill,height: 20,width: 20,),
-
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 10),
-                        height: 38,
-                        width: double.infinity,
-                        child: Stack(
-                          children: [
-                            Row(
-                              children: [
-                                Expanded(
-                                    flex: 2,
-                                    child: CustomText(text: "Payment Information", fontSize: 15, fontWeight: FontWeight.w700, )),
-                                Expanded(
-                                  flex: 3,
-                                  child: CustomTExtFromField(controller: _b_name_controller, hintText: "hintText", text: "text", fontSize: 15, fontWeight: FontWeight.w700, text_color: Colors.red
-                                      , suffixIcon: Icon(Icons.abc), obscureText: false),
-                                )
-                              ],
-                            ),
-                            Positioned(
-                              right: 10,
-                              top: 10,
-                              child: Image(image: AssetImage("assets/edit-document 1.png"),fit: BoxFit.fill,height: 20,width: 20,),
-
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 10),
-                        height: 38,
-                        width: double.infinity,
-                        child: Row(     children: [
-                          Expanded(
-                              flex: 2,
-                              child: CustomText(text: "Confirm Password", fontSize: 15, fontWeight: FontWeight.w700,  )),
-                          Expanded(
-                            flex: 3,
-                            child: CustomTExtFromField(controller: _b_name_controller, hintText: "hintText", text: "text", fontSize: 15, fontWeight: FontWeight.w700, text_color: Colors.red
-                                , suffixIcon: Icon(Icons.abc), obscureText: false),
-                          )
-                        ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 10),
-                        height: 38,
-                        width: double.infinity,
-                        child: Row(     children: [
-                          Expanded(
-                              flex: 2,
-                              child: CustomText(text: "Confirm Password", fontSize: 15, fontWeight: FontWeight.w700,  )),
-                          Expanded(
-                            flex: 3,
-                            child: CustomTExtFromField(controller: _b_name_controller, hintText: "hintText", text: "text", fontSize: 15, fontWeight: FontWeight.w700, text_color: Colors.red
-                                , suffixIcon: Icon(Icons.abc), obscureText: false),
-                          )
-                        ],
-                        ),
-                      ),
-                      SizedBox(height: 15,),
-                      is_clicked_register==true?CircularProgressIndicator(
-
-                      ):  CustomButton(onTap: () {
-
-                        if(_formkey.currentState!.validate()){
-
-                          if(_password_controller.text.length>7){
-                            if(_password_controller.text==_password_controller.text){
-                              // marchentProfileUpdate();
-                              setState(() {
-                                is_clicked_register=true;
-                              });
-                            }else{
-                              Flushbar(
-                                flushbarPosition: FlushbarPosition.TOP,
-                                title:  "Password did not matched",
-                                message:  "Try again ...",
-                                duration:  Duration(seconds: 1),
-                              )..show(context);
-                            }
-
-                          }else{
-                            Flushbar(
-                              flushbarPosition: FlushbarPosition.TOP,
-                              title:  "Password must be 8 diigit",
-                              message:  "Try again ...",
-                              duration:  Duration(seconds: 1),
-                            )..show(context);
-                          }
-
-                        }else{
-                          Flushbar(
-                            flushbarPosition: FlushbarPosition.TOP,
-                            title:  "Please fill all the field",
-                            message:  "Try again ...",
-                            duration:  Duration(seconds: 1),
-                          )..show(context);
-                        }
-
-                      }, text: "Submit", button_text_fontSize: 18, button_height: 55),
-                      Container(height: 140,)
-                    ],
+          Container(
+           height: 310,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(44)),
+                color: Colors.white
+            ),
+            padding: EdgeInsets.only(
+                left: 20,right: 20,top: 32
+            ),
+            
+            margin: EdgeInsets.all(10),
+            alignment: Alignment.center,
+            child:GridView.builder(
+              itemCount: profileaccess.length,
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              physics: NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+              ),
+              itemBuilder: (context, index) {
+                return Container(
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Main_Theme_Color.withOpacity(0.7),
                   ),
-                ),
-              )
+                  alignment: Alignment.center,
+                  child: CustomText(text: "${profileaccess[index]}", fontSize: 15, fontWeight: FontWeight.w500),
+                );
+              },) ,
+          )
             ],
           ),
         ),
@@ -304,7 +94,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
+  List profileaccess=[
+    "Subscription",
+    "Video Class",
+    "Model Test",
+    "Mock Test",
+    "Live Exam",
+    "Exam Result",
+
+  ];
 
   bool is_clicked=false;
   bool is_clicked_register=false;
 }
+
+
+
+
+
+
+
+
