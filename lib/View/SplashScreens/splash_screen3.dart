@@ -8,7 +8,6 @@ import '../../CustomWidget/CustomSplashMenue/custom_image.dart';
 import '../../CustomWidget/CustomSplashMenue/custom_splash_menue.dart';
 import '../../CustomWidget/CustomText/custom_text.dart';
 import '../../custom_const.dart';
-import '../HomeScreen/home_screen.dart'; 
 class SplashScreen3 extends StatefulWidget {
   const SplashScreen3({super.key});
 

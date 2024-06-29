@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:seru_test_project/View/BootomBar/bootombar.dart';
 
-import 'View/HomeScreen/home_screen.dart';
 import 'View/SplashScreens/main_splash_pageview_screen.dart';
 
 
@@ -20,7 +20,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+
+      /// Main Route --------------------------
       home:MainSplashPageViewScreen(),
+
+      /// Working route -----------------------
+      //  home:BttotomBarScreen(index: 0,),
+
     );
   }
 }

@@ -1,7 +1,5 @@
-import 'dart:convert';
-import 'dart:ui';
 
-import 'package:another_flushbar/flushbar.dart';
+import 'dart:ui';
  import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,7 +11,6 @@ import '../../../../CustomWidget/CustomButton/custom_button.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
 import '../../../../CustomWidget/CustomTextFromField/custom_text_from_fild.dart';
 import '../../../BootomBar/bootombar.dart';
-import '../../../HomeScreen/home_screen.dart';
 import '../utils/text_utils.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

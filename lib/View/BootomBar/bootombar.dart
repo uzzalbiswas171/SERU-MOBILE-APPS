@@ -2,11 +2,10 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:seru_test_project/View/PacageScreen/pacge_screen.dart';
-
 import '../../custom_const.dart';
-import '../HomeScreen/home_screen.dart';
+import 'HomeScreen/home_screen.dart';
+import 'PackageScreen/package_screen.dart';
+import 'ProfileScreen/prfile_screen.dart';
 
 class BttotomBarScreen extends StatefulWidget {
   BttotomBarScreen({super.key,required this.index});
@@ -46,8 +45,8 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
   final List<Widget> bottomBarPages = [
 
     HomeScreen( ),
-    PacageScreen(),
-    HomeScreen( ),
+    PackageScreen(),
+    ProfileScreen( ),
 
 
 

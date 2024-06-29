@@ -1,20 +1,18 @@
-import 'package:carousel_slider/carousel_slider.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:seru_test_project/CustomWidget/CalosolSelalider/carosal_silaider.dart';
 import 'package:seru_test_project/CustomWidget/CustomAppbar/custom_appbar.dart';
 import 'package:seru_test_project/CustomWidget/CustomApplySection/custom_apply_section.dart';
 import 'package:seru_test_project/CustomWidget/CustomCompany/costom_company_info.dart';
 import 'package:seru_test_project/CustomWidget/CustomImageScetion/custom_image_section.dart';
 import 'package:seru_test_project/CustomWidget/CustomText/custom_text.dart';
-import 'package:seru_test_project/CustomWidget/CustomTextFromField/custom_text_from_fild.dart';
 import 'package:seru_test_project/CustomWidget/SelectionOptions/selection_option.dart';
 import 'package:seru_test_project/View/RegistrationForBuyScreen/registration_for_buy_screen.dart';
-
-import '../../custom_const.dart';
-import '../Auth/Login/screens/login_screen.dart';
+import '../../../custom_const.dart';
+import '../../Auth/Login/screens/login_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -62,7 +60,8 @@ bool  is_cliced=false;
                /// Select Options
                SelectionOptionsScreen(leftText: "Select Your Package",rite_text: "View all",),
                SizedBox(height: h*0.010,),
-               Padding(
+               Container(
+                 height: 600,
                  padding: const EdgeInsets.all(10.0),
                  child: GridView.builder(
                    shrinkWrap: true,
@@ -225,23 +224,18 @@ bool  is_cliced=false;
                  },),
                ),
                /// Slide Add
-               CalosolSelalider(custom_height: 130, carousal_list: carosal, carousal_onTab: () {
+               CalosolSelalider(custom_height: 100, carousal_list: carosal, carousal_onTab: () {
                },),
                SizedBox(height: h*0.010,),
-               /// Company Payment way
-
-
-               SizedBox(height: 15,),
                /// Company Information
                CustomInfoScreen(),
-               SizedBox(height: 15,),
+               /// Company Payment way
                Container(
                  height: 50,
                  width: double.infinity,
                  padding: EdgeInsets.only(left: 10,right: 10),
                  decoration: BoxDecoration(
                    borderRadius: BorderRadius.circular(10),
-                   //  color: BootomBarColor.withOpacity(0.4),
                  ),
                  child: ListView.builder(
                    itemCount:imageList.length ,
@@ -252,7 +246,7 @@ bool  is_cliced=false;
                      );
                    },),
                ),
-               SizedBox(height: 15,),
+               SizedBox(height: 90,),
              ],
            ),
          ),

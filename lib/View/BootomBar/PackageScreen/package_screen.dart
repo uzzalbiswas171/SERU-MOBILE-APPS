@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-import '../../CustomWidget/CustomAppbar/custom_appbar.dart';
-import '../../CustomWidget/CustomImageScetion/custom_image_section.dart';
-import '../../CustomWidget/CustomText/custom_text.dart';
-import '../../custom_const.dart';
-import '../Auth/Login/screens/login_screen.dart';
-import '../RegistrationForBuyScreen/registration_for_buy_screen.dart';
+import '../../../CustomWidget/CustomAppbar/custom_appbar.dart';
+import '../../../CustomWidget/CustomImageScetion/custom_image_section.dart';
+import '../../../CustomWidget/CustomText/custom_text.dart';
+import '../../../custom_const.dart';
+import '../../Auth/Login/screens/login_screen.dart';
+import '../../RegistrationForBuyScreen/registration_for_buy_screen.dart';
 
-class PacageScreen extends StatefulWidget {
-  const PacageScreen({Key? key}) : super(key: key);
+class PackageScreen extends StatefulWidget {
+  const PackageScreen({Key? key}) : super(key: key);
 
   @override
-  State<PacageScreen> createState() => _PacageScreenState();
+  State<PackageScreen> createState() => _PackageScreenState();
 }
 
-class _PacageScreenState extends State<PacageScreen> {
+class _PackageScreenState extends State<PackageScreen> {
   bool  is_cliced=false;
   bool  is_cliced_for_own=true;
   @override
