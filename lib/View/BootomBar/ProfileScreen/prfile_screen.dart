@@ -83,7 +83,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     color: Main_Theme_Color.withOpacity(0.7),
                   ),
                   alignment: Alignment.center,
-                  child: CustomText(text: "${profileaccess[index]}", fontSize: 15, fontWeight: FontWeight.w500),
+                  child: CustomText(text: "${profileaccess[index]}",
+                      fontSize: 15, fontWeight: FontWeight.bold),
                 );
               },) ,
           )
