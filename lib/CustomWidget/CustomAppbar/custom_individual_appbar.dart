@@ -66,7 +66,7 @@ class CustomIndividualAppbar extends StatelessWidget {
           ),
         ),
       ],
-      backgroundColor: defaultBackgroundColor,
+      backgroundColor: BootomBarColor,
     );
   }
 }

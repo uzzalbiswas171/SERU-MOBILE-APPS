@@ -5,11 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:seru_test_project/CustomWidget/CustomBootomBar/SplashBootomBar/splash_bootom_bar.dart';
 import 'package:seru_test_project/CustomWidget/CustomTextFromField/custom_text_from_fild.dart';
+import 'package:seru_test_project/View/BootomBar/ProfileScreen/MockTestScreen/mock_test_screen.dart';
 import 'package:seru_test_project/View/BootomBar/ProfileScreen/SubsCriptionScreen/subscription_screen.dart';
 
 import '../../../CustomWidget/CustomButton/custom_button.dart';
 import '../../../CustomWidget/CustomText/custom_text.dart';
 import '../../../custom_const.dart';
+import 'ExamResultScreen/exam_result_screen.dart';
+import 'LiveExamScreen/live_exam_screen.dart';
+import 'ModelTestScreen/model_test_screen.dart';
+import 'VideoClassScreen/video_class_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -81,8 +86,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     if(index==0){
                       Navigator.push(context, MaterialPageRoute(builder: (context) => SubscriptionScreen(),));
                     }
-                    if(index==1){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => SubscriptionScreen(),));
+                    else if(index==1){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => VideoClassScreen(),));
+                    }
+                    else if(index==2){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ModelTestScreen(),));
+                    }
+                    else if(index==3){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => MockTestScreen(),));
+                    }
+                    else if(index==4){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => LiveExamScreen(),));
+                    }else{
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ExamResultScreen(),));
                     }
                   },
                   child: Container(
