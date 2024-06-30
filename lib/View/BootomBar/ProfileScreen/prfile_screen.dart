@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:seru_test_project/CustomWidget/CustomBootomBar/SplashBootomBar/splash_bootom_bar.dart';
 import 'package:seru_test_project/CustomWidget/CustomTextFromField/custom_text_from_fild.dart';
+import 'package:seru_test_project/View/BootomBar/ProfileScreen/SubsCriptionScreen/subscription_screen.dart';
 
 import '../../../CustomWidget/CustomButton/custom_button.dart';
 import '../../../CustomWidget/CustomText/custom_text.dart';
@@ -48,7 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     CustomText(text: "Uzzal Biswas", fontSize: 35, fontWeight: FontWeight.w600, ),
-                    CustomText(text: "ID:  112211", fontSize: 20, fontWeight: FontWeight.w400, )
+                    CustomText(text: "uzzal.biswas.cse@gmail.com", fontSize: 20, fontWeight: FontWeight.w400, )
                   ],
                 ),
               ),
@@ -75,16 +76,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 mainAxisSpacing: 10,
               ),
               itemBuilder: (context, index) {
-                return Container(
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Main_Theme_Color.withOpacity(0.7),
+                return InkWell(
+                  onTap: () {
+                    if(index==0){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SubscriptionScreen(),));
+                    }
+                    if(index==1){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SubscriptionScreen(),));
+                    }
+                  },
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Main_Theme_Color.withOpacity(0.7),
+                    ),
+                    alignment: Alignment.center,
+                    child: CustomText(text: "${profileaccess[index]}",
+                        fontSize: 15, fontWeight: FontWeight.bold),
                   ),
-                  alignment: Alignment.center,
-                  child: CustomText(text: "${profileaccess[index]}",
-                      fontSize: 15, fontWeight: FontWeight.bold),
                 );
               },) ,
           )
