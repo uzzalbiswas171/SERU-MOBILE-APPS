@@ -25,14 +25,8 @@ class MyApp extends StatelessWidget {
       //   home:MainSplashPageViewScreen(),
 
       /// Working route -----------------------
-        home:BttotomBarScreen(index: 0,),
+      home:BttotomBarScreen(index: 0,),
 
     );
   }
 }
-
-
-
-
-
-

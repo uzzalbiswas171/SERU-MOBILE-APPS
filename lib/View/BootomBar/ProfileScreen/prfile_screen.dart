@@ -87,7 +87,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => SubscriptionScreen(),));
                     }
                     else if(index==1){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => VideoClassScreen(),));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => VideoClassScreen(),));
                     }
                     else if(index==2){
                       Navigator.push(context, MaterialPageRoute(builder: (context) => ModelTestScreen(),));
