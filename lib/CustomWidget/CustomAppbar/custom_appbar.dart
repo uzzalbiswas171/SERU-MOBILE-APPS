@@ -23,7 +23,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
       padding: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
        // color: Colors.white,
-        color: bootomNavigationbarBackgrountcolor,
+        color: appbarcollor,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(15),
           bottomRight: Radius.circular(15)
@@ -31,7 +31,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
       ),
       child: AppBar(
       //  backgroundColor: Colors.white,
-        backgroundColor: bootomNavigationbarBackgrountcolor,
+        backgroundColor: appbarcollor,
         leading: Container(
           margin: EdgeInsets.only(left: 15,bottom: 8,top: 8),
           height: 40,

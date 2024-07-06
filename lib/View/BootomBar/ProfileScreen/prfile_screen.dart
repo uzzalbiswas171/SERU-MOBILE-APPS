@@ -68,7 +68,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 left: 20,right: 20,top: 32
             ),
             
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.only(left: 10,right: 10,top: 10,bottom: 100),
             alignment: Alignment.center,
             child:GridView.builder(
               itemCount: profileaccess.length,
@@ -96,7 +96,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => MockTestScreen(),));
                     }
                     else if(index==4){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => LiveExamScreen(),));
+                    showDialog(context: context, builder: (context) => AlertDialog(
+                      actions: [
+                        ActionChip(onPressed: () {
+                          Navigator.pop(context);
+                        },label: Text("No",style: TextStyle(color: Colors.black),)),
+
+                        ActionChip(onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => LiveExamScreen(),));
+
+                        },label: Text("Yes",style: TextStyle(color: Colors.black),)),
+
+                      ],
+                      title: Text("Are you ready for live exam"),),);
                     }else{
                       Navigator.push(context, MaterialPageRoute(builder: (context) => ExamResultScreen(),));
                     }
@@ -106,7 +118,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     width: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Main_Theme_Color.withOpacity(0.7),
+                      color: Main_Theme_Color,
                     ),
                     alignment: Alignment.center,
                     child: CustomText(text: "${profileaccess[index]}",
@@ -115,6 +127,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 );
               },) ,
           )
+
             ],
           ),
         ),

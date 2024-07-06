@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:seru_test_project/View/BootomBar/bootombar.dart';
-
+import 'View/BootomBar/bootombar.dart';
 import 'View/SplashScreens/main_splash_pageview_screen.dart';
 
 
@@ -22,15 +21,11 @@ class MyApp extends StatelessWidget {
       ),
 
       /// Main Route --------------------------
-      //   home:MainSplashPageViewScreen(),
+     home:MainSplashPageViewScreen(),
 
       /// Working route -----------------------
-      home:BttotomBarScreen(index: 0,),
+      //  home:BttotomBarScreen(index: 0,),
 
     );
   }
 }
-
-
-
-//

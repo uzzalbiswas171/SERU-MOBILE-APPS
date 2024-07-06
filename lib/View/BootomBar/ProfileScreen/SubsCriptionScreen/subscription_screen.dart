@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:seru_test_project/CustomWidget/CustomText/custom_text.dart';
 
+import '../../../../CustomWidget/CustomAppbar/custom_individual_appbar.dart';
 import '../../../../CustomWidget/CustomImageScetion/custom_image_section.dart';
 import '../../../../custom_const.dart';
 
@@ -17,6 +18,9 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomIndividualAppbar(onPress: () {
+        Navigator.pop(context);
+      }, title: "Your Total Subscription")),
       body: Container(
         height: double.infinity,
         width: double.infinity,
