@@ -21,10 +21,10 @@ class MyApp extends StatelessWidget {
       ),
 
       /// Main Route --------------------------
-     home:MainSplashPageViewScreen(),
+      // home:MainSplashPageViewScreen(),
 
       /// Working route -----------------------
-      //  home:BttotomBarScreen(index: 0,),
+      home:BttotomBarScreen(index: 0,),
 
     );
   }

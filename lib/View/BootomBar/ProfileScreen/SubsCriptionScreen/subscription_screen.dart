@@ -20,7 +20,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomIndividualAppbar(onPress: () {
         Navigator.pop(context);
-      }, title: "Your Total Subscription")),
+      }, title: "My Subscription")),
       body: Container(
         height: double.infinity,
         width: double.infinity,
