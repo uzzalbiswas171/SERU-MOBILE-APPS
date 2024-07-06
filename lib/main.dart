@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:seru_test_project/View/BootomBar/HomeScreen/bloc/home_bloc.dart';
 import 'package:seru_test_project/View/BootomBar/bootombar.dart';
 
-import 'View/SplashScreens/main_splash_pageview_screen.dart';
 
 
 void main() {
@@ -26,7 +27,11 @@ class MyApp extends StatelessWidget {
 
       /// Working route -----------------------
      // home:BttotomBarScreen(index: 0,),
-home:LoginScreen(),
+    home:MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => HomeBloc()),
+        ],
+        child: BttotomBarScreen(index: 0,)),
     );
   }
 }
