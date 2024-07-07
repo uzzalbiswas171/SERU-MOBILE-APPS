@@ -1,5 +1,7 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:seru_test_project/CustomWidget/CustomAppbar/custom_individual_appbar.dart';
+import 'package:seru_test_project/View/BootomBar/ProfileScreen/ExamResultScreen/IndividualResult/individual_result.dart';
 import 'package:seru_test_project/custom_const.dart';
 
 import '../../../../CustomWidget/CustomSplashMenue/custom_image.dart';
@@ -40,7 +42,10 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
     return Scaffold(
-      //   appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomDefaultAppBar(onTap: () => Navigator.pop(context), text: "Attendance Calendar ")),
+      appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomIndividualAppbar(onPress: () {
+        // Navigator.pop(context);
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("You have to finish or submit")));
+      }, title: "Exam result")),
       body:  Container(
         height: double.infinity,
         width: double.infinity,
@@ -51,7 +56,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
               height: 50,
               width: double.infinity,
               padding: EdgeInsets.only(left: 10, right: 10, top: 7, bottom: 7 ),
-              margin: EdgeInsets.only(left: 10,right: 10,bottom: 10,top: 10),
+              margin: EdgeInsets.only(left: 10,right: 10,bottom: 0,top: 10),
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(7),
                 color: Main_Theme_white,
               ),
@@ -70,10 +75,9 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                     ),
                     padding: EdgeInsets.only(left: 7,right: 7),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CustomImageSction(height: 24, width: 24, radius: 1, image: "Assets/Icons/share2.png"),
-
+                     CustomText(text: "22", fontSize: 12, fontWeight: FontWeight.w500)
                       ],
                     ),
                   ),
@@ -226,86 +230,6 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
               ),
             ),
             /// Second part Calender ----------------------
-            Container(
-              height: 180,
-              width: double.infinity,
-              decoration:BoxDecoration(
-                  borderRadius: BorderRadius.circular(11),
-                  color: Colors.white
-              ),
-              margin: EdgeInsets.symmetric(horizontal: 11),
-              child: Column(
-                children: [
-                  ///----------- Bar chat Header Part -------///
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: ColorCustomText(fontSize: font12header, fontWeight: FontWeight.w500, text: "Salary Comparison Chart  Jan-2023", letterSpacing: 0.3, textColor: Main_Theme_textColor.withOpacity(0.9),),
-                  ),
-                  Expanded(
-                      child: Container(
-                        child: Row(
-                          children: [
-                            HomeThirdPartBodyLeftSide(
-                              top1:total_Amount>10000? "1000M": "1000K",
-                              top2: total_Amount>10000? "120M": "120K",
-                              top3: total_Amount>10000? "60M": "600K",
-                              top4: total_Amount>10000? "0M": "0K",
-                              color:Main_Theme_textColor.withOpacity(0.6),
-                            ),
-
-                            Expanded(
-                                child: Container(
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                  color: Colors.greenAccent.shade100.withOpacity(0.1),
-                                  child:  Container(
-                                      height: 90,
-                                      width: 500,
-                                      child:Scrollbar(
-                                        child: ListView.builder(
-                                          itemCount: 12,
-                                          scrollDirection: Axis.horizontal,
-                                          itemBuilder: (context, index) {
-                                            return  Container(
-                                                height: 90,
-                                                margin: EdgeInsets.only(right: 7),
-                                                child: Column(
-                                                  children: [
-                                                    Expanded(
-                                                        child: ThirdPartProgressBar( absenttheight:1, presentheight:index.isOdd? 50+double.parse("$index")+20  : 50+double.parse("$index")-20 , present_width: 15, Absent_width: 0.001, total_width: 21,)),
-                                                    SizedBox(height: 5,),
-                                                    Container(
-                                                      height: 27,
-                                                      width: 22,
-                                                      padding: EdgeInsets.only(right: 5),
-                                                      alignment: Alignment.center,
-                                                      child:RotatedBox(
-                                                          quarterTurns: 1,
-                                                          child: ColorCustomText(fontSize: font11, fontWeight: FontWeight.w400, text: "${monthList[index]}", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.6),)
-                                                      ),
-                                                    ),
-                                                    SizedBox(height: 10,),
-                                                  ],
-                                                ));
-                                          },),
-                                      )
-                                  ),
-                                )),
-                            // Padding(
-                            //   padding: const EdgeInsets.only(top: 8.0),
-                            //   child: HomeThirdPartBodyLeftSide(top1: "180K", top2: "165K", top3: "80K", top4: "60K", color: absent_color,
-                            //   ),
-                            // ),
-                          ],
-                        ),
-                      )
-                  ),
-                ],
-              ),
-            ),
-
-            /// Third part-----------------------
-
             Expanded(
                 child: Container(
 
@@ -316,68 +240,73 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                   width: double.infinity,
                   child: ListView.builder(
                     scrollDirection: Axis.vertical,
-                    itemBuilder: (context, index) => Container(
-                      height: 74,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Main_Theme_WhiteCollor,
-                          border: Border(
-                              bottom: BorderSide(
-                                color: presentsent_color,
-                                width: 1.5,
-                              )
-                          )
-                      ),
-                      margin: EdgeInsets.only(bottom: 4),
-                      padding: EdgeInsets.only(right: 10),
-                      child: Row(
-                        children: [
-                          Container(
-                            height: 54,
-                            width: 53,
-                            margin: EdgeInsets.all(10),
-                            padding: EdgeInsets.all(4),
-                            decoration: BoxDecoration(
-                              color: presentsent_color.withOpacity(0.08),
-                              borderRadius: BorderRadius.circular(7),
+                    itemBuilder: (context, index) => InkWell(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => IndividualResultScreen(),)),
+                      child: Container(
+                        height: 74,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Main_Theme_white,
+                            border: Border(
+                                bottom: BorderSide(
+                                  color: appbarcollor,
+                                  width: 1.5,
+                                )
+                            )
+                        ),
+                        margin: EdgeInsets.only(bottom: 4),
+                        padding: EdgeInsets.only(right: 10),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 54,
+                              width: 53,
+                              margin: EdgeInsets.all(10),
+                              padding: EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                color: appbarcollor.withOpacity(0.08),
+                                borderRadius: BorderRadius.circular(7),
+                              ),
+                              child: Column(
+                                children: [
+                                  CustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Jan",  text_color: appbarcollor),
+                                   CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "01-31", text_color: Main_Theme_textColor),
+                                ],
+                              ),
                             ),
-                            child: Column(
+                            Spacer(),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "Jan", letterSpacing: 0.2, textColor: presentsent_color),
-                                ColorCustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "01-31", letterSpacing: 0.2, textColor: Main_Theme_textColor),
+                                 CustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "168",   text_color: Main_Theme_textColor),
+                                CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "Total Correct",   text_color: Main_Theme_textColor.withOpacity(0.5)),
                               ],
                             ),
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ColorCustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "168", letterSpacing: 0.2, textColor: Main_Theme_textColor),
-                              ColorCustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "Total Employee", letterSpacing: 0.2, textColor: Main_Theme_textColor.withOpacity(0.5)),
-                            ],
-                          ),
-                          Spacer(),
-                          Container(
-                            height: 35,
-                            width: 2,
-                            margin:EdgeInsets.symmetric(horizontal: 10),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Main_Theme_textColor.withOpacity(0.1)
+                            Spacer(),
+                            Container(
+                              height: 35,
+                              width: 2,
+                              margin:EdgeInsets.symmetric(horizontal: 10),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Main_Theme_textColor.withOpacity(0.1)
+                              ),
                             ),
-                          ),
-                          Spacer(),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              CustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "168",  text_color: Main_Theme_textColor),
-                              CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "Net Payable Amount",  text_color: Main_Theme_textColor.withOpacity(0.5)),
-                            ],
-                          ),
-                          SizedBox(width: 15,),
-                          Icon(Icons.arrow_forward_ios_rounded,size: 22,color: Main_Theme_Color,)
-                        ],
+                            Spacer(),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                CustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "168",  text_color: Main_Theme_textColor),
+                                CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "Total Incorrect",  text_color: Main_Theme_textColor.withOpacity(0.5)),
+                              ],
+                            ),
+                            Spacer(),
+                            SizedBox(width: 15,),
+                            Icon(Icons.arrow_forward_ios_rounded,size: 22,color: Main_Theme_Color,)
+                          ],
+                        ),
                       ),
                     ),),
                 ))
