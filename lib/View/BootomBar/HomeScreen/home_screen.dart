@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: h * 0.010,
                 ),
                 BlocBuilder<HomeBloc, HomeState>(
-                    builder: (BuildContext context, state) {
+                    builder: ( context, state) {
                   if (state is HomeLoad) {
                     seruLogPrint("----->>>a>>>${state.packageAllModel.data![0].price}");
                     seruLogPrint(state.packageAllModel.data![1].price);

@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:seru_test_project/View/Auth/Login/bloc/login_bloc.dart';
 import 'package:seru_test_project/View/BootomBar/HomeScreen/bloc/home_bloc.dart';
 import 'package:seru_test_project/View/BootomBar/bootombar.dart';
 
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
     home:MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => HomeBloc()),
+          BlocProvider(create: (context) => LoginBloc()),
         ],
         child: BttotomBarScreen(index: 0,)),
     );

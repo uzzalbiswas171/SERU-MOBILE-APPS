@@ -33,22 +33,23 @@ class Data {
   int? addedBy;
   String? addedDate;
 
-  Data(
-      {this.packageId,
-        this.title,
-        this.price,
-        this.id,
-        this.description,
-        this.discount,
-        this.viewOrder,
-        this.activeStstus,
-        this.addedBy,
-        this.addedDate});
+  Data({
+    this.packageId,
+    this.title,
+    this.price,
+    this.id,
+    this.description,
+    this.discount,
+    this.viewOrder,
+    this.activeStstus,
+    this.addedBy,
+    this.addedDate,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     packageId = json['package_id'];
     title = json['title'];
-    price = json['price'];
+    price = json['price'] is int ? (json['price'] as int).toDouble() : json['price'];
     id = json['id'];
     description = json['description'];
     discount = json['discount'];
