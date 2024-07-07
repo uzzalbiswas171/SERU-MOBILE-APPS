@@ -52,9 +52,7 @@ class _ModelTestScreenState extends State<ModelTestScreen> {
 
                             },) ,
                             QuestionPartA(text_question: "B for Ball", is_check: index%3 ==0?true:false, onTap: () {
-
                             },)
-
                           ],
                         ),
                         SizedBox(height: 7,),
@@ -66,7 +64,6 @@ class _ModelTestScreenState extends State<ModelTestScreen> {
                             QuestionPartA(text_question: "D for Ball", is_check: index%5 ==0?true:false, onTap: () {
 
                             },)
-
                           ],
                         ),
                       ],

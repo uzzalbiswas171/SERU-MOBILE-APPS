@@ -108,10 +108,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         },
                         icon:Icon(is_show_pass==true?Icons.visibility_off:Icons.visibility,color:  main_text_blac_color.withOpacity(0.6),),color: main_text_blac_color.withOpacity(0.6),)),
 
-
                       SizedBox(
                         height: 40,
                       ),
+
                       CustomButton(
                           onTap: () {
                             Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
@@ -145,9 +145,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   child: CustomText(
                                     text: " Login in here",
                                     fontSize: 15,
-                                    text_color: Colors.deepOrange,
+                                    text_color: redColor,
                                     fontWeight: FontWeight.w500,
-                                  ))
+                                  ),
+                              ),
                             ],
                           ),
                         ),

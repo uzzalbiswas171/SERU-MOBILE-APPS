@@ -103,7 +103,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         },label: Text("No",style: TextStyle(color: Colors.black),)),
 
                         ActionChip(onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => LiveExamScreen(),));
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LiveExamScreen(),));
 
                         },label: Text("Yes",style: TextStyle(color: Colors.black),)),
 
