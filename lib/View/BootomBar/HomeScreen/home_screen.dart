@@ -147,8 +147,10 @@ bool  is_cliced=false;
                                               ),
                                             ),
 
-                                            is_cliced==false?Container():   SizedBox(height: 20,),
-                                            is_cliced==false?Container(): GestureDetector(
+                                            is_cliced==false?Container():
+                                            SizedBox(height: 20,),
+                                           is_cliced==false?Container():
+                                            GestureDetector(
                                               onTap: () {
                                                 Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
                                               },
