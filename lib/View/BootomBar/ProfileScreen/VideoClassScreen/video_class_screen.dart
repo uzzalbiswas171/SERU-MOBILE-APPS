@@ -117,7 +117,7 @@ class _VideoClassScreenState extends State<VideoClassScreen> {
   bool _isPlayerReady = false;
 
   final List<String> _ids = [
-    'gQDByCdjUXw',
+    '7Gcep2SUHew',
     'iLnmTe5Q2Qw',
     '_WoCV4c6XOE',
     'KmzdUe0RSJo',

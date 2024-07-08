@@ -79,7 +79,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
                         child: CustomSplashMenue(
                             image1: "assets/circle_count1.png",
                             text1: "Employee Profile",
-                            image2: "assets/circle_count1.png",
+                            image2: "assets/circle_count2.png",
                             text2: "Notice & Notifications")),
                   ),
                 ],

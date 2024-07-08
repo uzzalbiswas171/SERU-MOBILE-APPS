@@ -47,7 +47,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
               CustomText(
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
-                  text: "Auto Attendance Process",
+                  text: "Auto Certified",
                 ),
               SizedBox(
                 height: c_h * 0.025,
@@ -99,9 +99,9 @@ class _SplashScreen3State extends State<SplashScreen3> {
                   alignment: Alignment.center,
                   child: CustomSplashMenue(
                       image1: "assets/circle_count1.png",
-                      text1: "Location Tracking",
+                      text1: "learn Location Tracking",
                       image2: "assets/circle_count2.png",
-                      text2: "Tracking Notification")),
+                      text2: "alert Tracking Notification")),
               SizedBox(
                 height: 13,
               ),
@@ -110,7 +110,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
                   alignment: Alignment.center,
                   child: CustomSplashMenue(
                       image1: "assets/circle_count3.png",
-                      text1: "GEO Fence",
+                      text1: "Way Fence",
                       image2: "assets/circle_count4.png",
                       text2: "Conveyance Tracking")),
 

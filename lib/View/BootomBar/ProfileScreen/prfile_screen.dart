@@ -14,6 +14,7 @@ import '../../../custom_const.dart';
 import 'ExamResultScreen/exam_result_screen.dart';
 import 'LiveExamScreen/live_exam_screen.dart';
 import 'ModelTestScreen/model_test_screen.dart';
+import 'VideoClassScreen/VideoListScreen/video_list_screen.dart';
 import 'VideoClassScreen/video_class_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -87,7 +88,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => SubscriptionScreen(),));
                     }
                     else if(index==1){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => VideoClassScreen(),));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => VideoListScreen(),));
                     }
                     else if(index==2){
                       Navigator.push(context, MaterialPageRoute(builder: (context) => ModelTestScreen(),));
