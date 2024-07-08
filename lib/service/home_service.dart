@@ -40,7 +40,7 @@ class HomeService {
 
       seruLogPrint(response);
 
-      // Ensure response is decoded if it's a JSON string
+
       var jsonResponse = json.decode(response);
       PackageAllModel packageAllResponse = PackageAllModel.fromJson(jsonResponse);
 
