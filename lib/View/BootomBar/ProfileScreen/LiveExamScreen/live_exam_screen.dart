@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:elegant_notification/elegant_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:seru_test_project/CustomWidget/CustomAppbar/custom_individual_appbar.dart';
 import 'package:seru_test_project/CustomWidget/CustomButton/custom_button.dart';
@@ -15,18 +16,54 @@ class LiveExamScreen extends StatefulWidget {
 }
 
 class _LiveExamScreenState extends State<LiveExamScreen> {
-int count=180;
-@override
-  void didChangeDependencies() async{
-  await Timer.periodic(Duration(seconds: 1), (timer) {
-     setState(() {
-       print("${timer.tick}");
-       count--;
-     });
+int count=10;
+void itmer(){
+  Timer.periodic(const Duration(seconds: 1), (timer) {
+    print("timeeeee  eee   e eee ${timer.tick}");
+    if(timer.tick==10) {
+      ElegantNotification(
+        borderRadius: BorderRadius.circular(11),
+        width: 380,
+        iconSize: 25,
+        background: Colors.green,
+        progressIndicatorBackground: Colors.green,
+        progressIndicatorColor: Colors.red,
+        // position: Alignment.center,
+        title: CustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Answer submitted successfully",  text_color: Colors.white),
+        description: CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Please wait for result" , text_color: Colors.white),
+        onDismiss: () {
+          print('Message when the notification is dismissed');
+        }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+      ).show(context);
+      timer.cancel();
+      Navigator.pop(context);
+      ElegantNotification(
+        borderRadius: BorderRadius.circular(11),
+        width: 380,
+        iconSize: 25,
+        background: Colors.green,
+        progressIndicatorBackground: Colors.green,
+        progressIndicatorColor: Colors.red,
+        // position: Alignment.center,
+        title: CustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Answer submitted successfully",  text_color: Colors.white),
+        description: CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Please wait for result" , text_color: Colors.white),
+        onDismiss: () {
+          print('Message when the notification is dismissed');
+        }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+      ).show(context);
+    }else{
+      setState(() {
+        count--;
+      });
+    }
   });
-    // TODO: implement didChangeDependencies
-    super.didChangeDependencies();
-  }
+}
+@override
+void initState() {
+  itmer();
+  // TODO: implement initState
+  super.initState();
+}
 
 
 @override

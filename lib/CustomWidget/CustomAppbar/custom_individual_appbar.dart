@@ -33,39 +33,39 @@ class CustomIndividualAppbar extends StatelessWidget {
         ),
       ),
       centerTitle: true,
-      actions: [
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 10),
-          child: GestureDetector(
-            onTap: () {
-           },
-            child: Stack(
-              children: [
-                CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 20,
-                    child:  Icon(
-                      Icons.shopping_cart,
-                      color: Colors.black87,
-                      size: 22,
-                    )
-                ),
-                Positioned(
-                    right: 0,
-                    left:0,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.red,
-                  radius: 6,
-                  child: Text("z",style: TextStyle(
-                    fontSize: 7,
-                    color: Colors.white
-                  ),),
-                ))
-              ],
-            ),
-          ),
-        ),
-      ],
+      // actions: [
+      //   Container(
+      //     margin: const EdgeInsets.symmetric(horizontal: 10),
+      //     child: GestureDetector(
+      //       onTap: () {
+      //      },
+      //       child: Stack(
+      //         children: [
+      //           CircleAvatar(
+      //               backgroundColor: Colors.white,
+      //               radius: 20,
+      //               child:  Icon(
+      //                 Icons.shopping_cart,
+      //                 color: Colors.black87,
+      //                 size: 22,
+      //               )
+      //           ),
+      //           Positioned(
+      //               right: 0,
+      //               left:0,
+      //               child: CircleAvatar(
+      //                 backgroundColor: Colors.red,
+      //             radius: 6,
+      //             child: Text("z",style: TextStyle(
+      //               fontSize: 7,
+      //               color: Colors.white
+      //             ),),
+      //           ))
+      //         ],
+      //       ),
+      //     ),
+      //   ),
+      // ],
       backgroundColor: BootomBarColor,
     );
   }

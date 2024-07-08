@@ -60,11 +60,14 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
     return  Scaffold(
       appBar: PreferredSize(preferredSize:Size.fromHeight(75), child: CustomAppbar()),
     key: _scaffoldkey,
-    body: PageView(
-    controller: _pageController,
-    physics: const NeverScrollableScrollPhysics(),
-    children: List.generate(
-    bottomBarPages.length, (index) => bottomBarPages[index]),
+    body: WillPopScope(
+      onWillPop: () => Future(() => false),
+      child: PageView(
+      controller: _pageController,
+      physics: const NeverScrollableScrollPhysics(),
+      children: List.generate(
+      bottomBarPages.length, (index) => bottomBarPages[index]),
+      ),
     ),
     extendBody: true,
     bottomNavigationBar: (bottomBarPages.length <= maxCount)

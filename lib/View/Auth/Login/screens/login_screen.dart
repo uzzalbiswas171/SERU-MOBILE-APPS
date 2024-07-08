@@ -133,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   onTap: () {
 Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen(),));
                                   },
-                                  child: CustomText(text: "Sign up here", fontSize: 15, fontWeight:FontWeight.w400,))
+                                  child: CustomText(text: "  Sign up here",text_color: redColor ,fontSize: 15, fontWeight:FontWeight.w400,))
                             ],
                           ),
                         ),
