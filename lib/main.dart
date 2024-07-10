@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:seru_test_project/View/Auth/Login/bloc/login_bloc.dart';
+import 'package:seru_test_project/View/Auth/RegisterScreen/bloc/registration_bloc.dart';
+import 'package:seru_test_project/View/Auth/RegisterScreen/register_screem.dart';
 import 'package:seru_test_project/View/BootomBar/HomeScreen/bloc/home_bloc.dart';
 import 'package:seru_test_project/View/BootomBar/bootombar.dart';
 
@@ -32,8 +34,11 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (context) => HomeBloc()),
           BlocProvider(create: (context) => LoginBloc()),
+          BlocProvider(create: (context) => RegistrationBloc()),
         ],
-        child: BttotomBarScreen(index: 0,)),
+        child:
+        //RegisterScreen())
+        BttotomBarScreen(index: 0,)),
     );
   }
 }

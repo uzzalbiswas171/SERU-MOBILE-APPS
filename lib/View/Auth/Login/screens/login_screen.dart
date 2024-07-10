@@ -227,23 +227,26 @@ class _LoginScreenState extends State<LoginScreen> {
   bool is_clicked_login_button = false;
 
   onLogin() async {
+
     String email = _emailController.text.toString();
     String password = _psswordController.text.toString();
-
-    if (email.isNotEmpty && password.isNotEmpty) {
-      BlocProvider.of<LoginBloc>(context).add(
-          LoginAuthenticationEvent(email: email, password: password));
-    } else {
-      if (email.isEmpty) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Enter Email')));
-      } else {
-        if (password.isEmpty) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text('Enter Password')));
-        }
-      }
-    }
+    BlocProvider.of<LoginBloc>(context).add(
+        LoginSubmitEvent(email: email, password: password));
+    //
+    // if (email.isNotEmpty && password.isNotEmpty) {
+    //   BlocProvider.of<LoginBloc>(context).add(
+    //       LoginSubmitEvent(email: email, password: password));
+    // } else {
+    //   if (email.isEmpty) {
+    //     ScaffoldMessenger.of(context)
+    //         .showSnackBar(SnackBar(content: Text('Enter Email')));
+    //   } else {
+    //     if (password.isEmpty) {
+    //       ScaffoldMessenger.of(context)
+    //           .showSnackBar(SnackBar(content: Text('Enter Password')));
+    //     }
+    //   }
+    // }
   }
 
 }

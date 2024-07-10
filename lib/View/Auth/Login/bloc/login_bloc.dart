@@ -10,7 +10,7 @@ import 'package:seru_test_project/utils/user_secret.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(LoginInitial()) {
-    on<LoginAuthenticationEvent>((event, emit) async {
+    on<LoginSubmitEvent>((event, emit) async {
       emit(LoginLoading());
       try {
         UserSecret.token = null;

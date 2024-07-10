@@ -5,6 +5,7 @@ class ServiceEndPoint {
 
   static const String packageAll = "/packages";
   static const String LOGIN_ENDPOINT = "/login";
+  static const String REGISTRATION_ENDPOINT = "/register";
 
 
 

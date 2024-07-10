@@ -47,7 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
-    return Scaffold(
+    return BlocProvider(
+  create: (context) => HomeBloc(),
+  child: Scaffold(
       body: RefreshIndicator(
         onRefresh: () {
           return Future.delayed(
@@ -470,7 +472,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-    );
+    ),
+);
   }
 
   List imageList = [
