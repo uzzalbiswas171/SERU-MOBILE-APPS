@@ -6,11 +6,12 @@ import 'package:seru_test_project/CustomWidget/seru_alert_dialogue.dart';
 import 'package:seru_test_project/constraints/build_context.dart';
 import 'package:seru_test_project/constraints/service_endpoint.dart';
 import 'package:seru_test_project/utils/seru_log_print.dart';
+import 'package:seru_test_project/utils/user_secret.dart';
 
 class ApiRequest{
-
+String accessToken =UserSecret.token!;
   //------------------------- Get ----------------------------------//
-  static Future get(url) async {
+  static Future get(url,{accessToken}) async {
     String? baseUrl;
     baseUrl = ServiceEndPoint.BASE_PATH;
     Map<String, String> headers = {};

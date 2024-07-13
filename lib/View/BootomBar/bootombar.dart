@@ -2,7 +2,9 @@ import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_not
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:seru_test_project/View/Auth/Login/bloc/login_bloc.dart';
 import 'package:seru_test_project/View/BootomBar/HomeScreen/bloc/home_event.dart';
+import 'package:seru_test_project/View/BootomBar/ProfileScreen/bloc/profile_bloc.dart';
 import '../../CustomWidget/CustomAppbar/custom_appbar.dart';
 import '../../custom_const.dart';
 import 'HomeScreen/bloc/home_bloc.dart';
@@ -44,7 +46,7 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
     /// Controller to handle bottom nav bar and also handles initial page
     _controller = NotchBottomBarController(index: int.parse("${widget.index}"));
     // TODO: implement initState
-    BlocProvider.of<HomeBloc>(context).add(FetchPackage());
+    //BlocProvider.of<HomeBloc>(context).add(FetchPackage());
     super.initState();
   }
 
@@ -60,14 +62,36 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomeBloc(),
+    // BlocProvider.of<HomeBloc>(context).add(FetchPackage());
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => HomeBloc(),
+        ),
+        BlocProvider(
+          create: (context) => LoginBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ProfileBloc(),
+        ),
+
+      ],
       child: Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(75), child: CustomAppbar()),
         key: _scaffoldkey,
-        body: BlocProvider(
-          create: (context) => HomeBloc(),
+        body: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => HomeBloc(),
+            ),
+            BlocProvider(
+              create: (context) => LoginBloc(),
+            ),
+            BlocProvider(
+              create: (context) => ProfileBloc(),
+            ),
+          ],
           child: PageView(
             controller: _pageController,
             physics: const NeverScrollableScrollPhysics(),

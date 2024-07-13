@@ -22,7 +22,7 @@ FutureOr<void> _onFetchPackage(
   try {
     PackageAllModel packageAllModel =
     await HomeService().getPackageAllData();
-    emit(HomeLoad(packageAllModel: packageAllModel));
+    emit(HomeLoadSuccess(packageAllModel: packageAllModel));
   } catch (e) {
     emit(HomeLoadFailed(message: ''));
   }

@@ -49,7 +49,7 @@ class UserSecret {
   static bool isNid = true;
   static bool isEmail = true;
 
-  static LoginModel? token;
+  static String? token;
 
   static List<String>? banners;
   static LoginModel? masterToken;
@@ -96,6 +96,10 @@ class UserSecret {
   static setToken(val) {
     token = val;
     seruLogPrint(token);
+  }
+
+  static String? getToken() {
+    return token;
   }
 
   static setMasterToken(val) {

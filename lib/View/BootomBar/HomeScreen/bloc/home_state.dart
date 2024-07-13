@@ -12,10 +12,10 @@ class HomeInitial extends HomeState {}
 
 final class HomeLoading extends HomeState {}
 
-final class HomeLoad extends HomeState {
+final class HomeLoadSuccess extends HomeState {
   final PackageAllModel packageAllModel;
 
-  const HomeLoad({required this.packageAllModel});
+  const HomeLoadSuccess({required this.packageAllModel});
 
   @override
   List<Object> get props => [packageAllModel];

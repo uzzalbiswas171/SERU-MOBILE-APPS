@@ -1,12 +1,12 @@
-
+import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:seru_test_project/View/Auth/Login/bloc/login_event.dart';
 import 'package:seru_test_project/View/Auth/Login/bloc/login_state.dart';
+import 'package:seru_test_project/model/login_model.dart';
 import 'package:seru_test_project/service/login_service.dart';
 import 'package:seru_test_project/utils/seru_log_print.dart';
 import 'package:seru_test_project/utils/user_secret.dart';
-
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(LoginInitial()) {
@@ -14,19 +14,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(LoginLoading());
       try {
         UserSecret.token = null;
-        bool isOk = true;
 
-        if (isOk) {
-          var res = await Authentication().auth(event.email, event.password);
+        var res = await Authentication().auth(event.email, event.password);
 
-          if (res == 401) {
-
-            emit((LoginFailure(error: "Wrong user credential!!!")));
-          } else if (res != null) {
-            if (res.accessToken != null) {
-              emit((UserAuthenticated(loginData: res)));
-            }
-          }
+        if (res == 401) {
+          emit((LoginFailure(error: "Wrong user credential!!!")));
+        } else if (res != null) {
+          seruLogPrint('lllll----->>>>$res');
+          emit((UserAuthenticated(loginData: res)));
         }
       } catch (error) {
         seruLogPrint("Error: $error");
@@ -52,6 +47,5 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     //   }
     // }
     // );
-
   }
 }

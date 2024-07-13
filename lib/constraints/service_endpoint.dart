@@ -1,3 +1,5 @@
+import 'package:seru_test_project/utils/user_secret.dart';
+
 class ServiceEndPoint {
 
 
@@ -6,7 +8,10 @@ class ServiceEndPoint {
   static const String packageAll = "/packages";
   static const String LOGIN_ENDPOINT = "/login";
   static const String REGISTRATION_ENDPOINT = "/register";
-
+  //static const String Profile_ENDPOINT = "/profile?api_token=${UserSecret.getToken()}";
+  static String get Profile_ENDPOINT {
+   return "/protected/profile?api_token=${UserSecret.getToken()}";
+  }
 
 
 }
