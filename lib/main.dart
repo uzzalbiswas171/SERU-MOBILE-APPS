@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:seru_test_project/View/Auth/Login/bloc/login_bloc.dart';
 import 'package:seru_test_project/View/Auth/RegisterScreen/bloc/registration_bloc.dart';
+import 'package:seru_test_project/View/BootomBar/HomeScreen/bloc/banner_bloc/banner_bloc.dart';
 import 'package:seru_test_project/View/BootomBar/HomeScreen/bloc/home_bloc.dart';
 import 'package:seru_test_project/View/BootomBar/ProfileScreen/bloc/profile_bloc.dart';
 import 'package:seru_test_project/View/BootomBar/ProfileScreen/prfile_screen.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => RegistrationBloc()),
           BlocProvider(create: (context) => LoginBloc()),
           BlocProvider(create: (context) => ProfileBloc()),
+          BlocProvider(create: (context) => BannerBloc()),
 
         ],
         child:

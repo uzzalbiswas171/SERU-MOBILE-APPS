@@ -15,6 +15,8 @@ import 'package:seru_test_project/CustomWidget/SelectionOptions/selection_option
 import 'package:seru_test_project/View/Auth/Login/bloc/login_bloc.dart';
 import 'package:seru_test_project/View/Auth/Login/bloc/login_event.dart';
 import 'package:seru_test_project/View/Auth/Login/screens/login_screen_builder.dart';
+import 'package:seru_test_project/View/BootomBar/HomeScreen/bloc/banner_bloc/banner_bloc.dart';
+import 'package:seru_test_project/View/BootomBar/HomeScreen/bloc/banner_bloc/banner_event.dart';
 import 'package:seru_test_project/View/BootomBar/HomeScreen/bloc/home_bloc.dart';
 import 'package:seru_test_project/View/BootomBar/HomeScreen/bloc/home_event.dart';
 import 'package:seru_test_project/View/BootomBar/HomeScreen/bloc/home_state.dart';
@@ -47,6 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // BlocProvider.of<LoginBloc>(context)
     //     .add(LoginSubmitEvent(email: 'mahbubu@gmail.com', password: '123456'));
     BlocProvider.of<HomeBloc>(context).add(FetchPackage());
+    BlocProvider.of<BannerBloc>(context).add(FetchBanner());
     super.initState();
   }
 
@@ -73,14 +76,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: h * 0.025,
                       ),
 
-                      /// Apply Sections
+
                       CustomApplyVaucherSection(
                           applyCuponController: _applyCuponController),
                       SizedBox(
                         height: h * 0.025,
                       ),
 
-                      /// Slide Company Banner
+
                       CalosolSelalider(
                         custom_height: 130,
                         carousal_list: carosal,
