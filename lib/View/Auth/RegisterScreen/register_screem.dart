@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:seru_test_project/CustomWidget/CustomText/custom_text.dart';
 import 'package:seru_test_project/CustomWidget/CustomTextFromField/custom_text_from_fild.dart';
 import 'package:seru_test_project/View/Auth/Login/screens/login_screen.dart';
+import 'package:seru_test_project/View/Auth/RegisterScreen/bloc/registration_bloc.dart';
+import 'package:seru_test_project/View/Auth/RegisterScreen/bloc/registration_event.dart';
+import 'package:seru_test_project/View/Auth/RegisterScreen/bloc/registration_state.dart';
+import 'package:seru_test_project/utils/seru_log_print.dart';
 
 import '../../../CustomWidget/CustomButton/custom_button.dart';
 import '../../../custom_const.dart';
@@ -16,7 +21,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final _emailController = TextEditingController();
-  final _psswordController = TextEditingController();
+  final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -108,13 +113,43 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         },
                         icon:Icon(is_show_pass==true?Icons.visibility_off:Icons.visibility,color:  main_text_blac_color.withOpacity(0.6),),color: main_text_blac_color.withOpacity(0.6),)),
 
+                      CustomTExtFromField(
+                          controller: _passwordController,
+                          hintText: "Enter Password",
+                          text: "passwod",
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          text_color: main_text_blac_color.withOpacity(0.8),
+                          obscureText: is_show_pass,
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                is_show_pass = !is_show_pass;
+                              });
+                            },
+                            icon: Icon(
+                              is_show_pass == true
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: main_text_blac_color.withOpacity(0.6),
+                            ),
+                            color: main_text_blac_color.withOpacity(0.6),
+                          )),
                       SizedBox(
                         height: 40,
                       ),
-
                       CustomButton(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //       builder: (context) => LoginScreen(),
+                            //     ));
+                            seruLogPrint('dddddddddddddddd---->>>>>>>>>>>>');
+                            BlocProvider.of<RegistrationBloc>(context).add(
+                                RegistrationSubmitEvent(
+                                    email: _emailController.text,
+                                    password: _passwordController.text));
                           },
                           text: is_clicked_loginbutton == true
                               ? "Login Processing"

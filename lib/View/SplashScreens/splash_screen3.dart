@@ -61,6 +61,46 @@ class _SplashScreen3State extends State<SplashScreen3> {
                     child: Container(
                         height: 400,
                         width: 500,
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          //  color: Main_3Theme_SplashScreenColor,
+          color: main_text_white_color,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // SizedBox(height: 69,),
+                SizedBox(
+                  height: c_h * 0.084,
+                ),
+                CustomImageSction(
+                    height: 98,
+                    width: 100,
+                    radius: 11,
+                    image: "$Seru_Test_logo"),
+                SizedBox(
+                  height: c_h * 0.025,
+                ),
+                // SizedBox(height: 20,),
+                CustomText(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    text: "Auto Attendance Process",
+                  ),
+                SizedBox(
+                  height: c_h * 0.025,
+                ),
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      height: 340,
+                      width: 500,
+                      child: Container(
+                          height: 400,
+                          width: 500,
 
                         padding: EdgeInsets.all(60),
                         child: Container(
@@ -113,55 +153,77 @@ class _SplashScreen3State extends State<SplashScreen3> {
                       text1: "Way Fence",
                       image2: "assets/circle_count4.png",
                       text2: "Conveyance Tracking")),
+                SizedBox(
+                  height: 13,
+                ),
+                Container(
+                    padding: const EdgeInsets.only(left: 20.0, right: 20),
+                    alignment: Alignment.center,
+                    child: CustomSplashMenue(
+                        image1: "assets/circle_count1.png",
+                        text1: "Location Tracking",
+                        image2: "assets/circle_count2.png",
+                        text2: "Tracking Notification")),
+                SizedBox(
+                  height: 13,
+                ),
+                Container(
+                    padding: const EdgeInsets.only(left: 20.0, right: 20),
+                    alignment: Alignment.center,
+                    child: CustomSplashMenue(
+                        image1: "assets/circle_count3.png",
+                        text1: "GEO Fence",
+                        image2: "assets/circle_count4.png",
+                        text2: "Conveyance Tracking")),
 
-              SizedBox(
-                height: c_h * 0.075,
-              ),
-              Container(
-                height: 32,
-                width: double.infinity,
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                  Align(
+                SizedBox(
+                  height: c_h * 0.075,
+                ),
+                Container(
+                  height: 32,
+                  width: double.infinity,
                   alignment: Alignment.center,
-                  child:    Container(height: 20,width: 25,child: Image.asset("assets/SeruTestBanner/480px-Orange_animated_left_arrow.gif",fit: BoxFit.fill,),),
-                ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Container(
-                      height: 100,
-                      width: 110,
-                      child: CustomButton(
-                          onTap: () {
-                       Navigator.push(context, MaterialPageRoute(builder: (context) => BttotomBarScreen(index: 0,),));
-                          },
-                          text: "Get Started",
-                          button_text_fontSize: 13, 
-                          button_height: 55,  
-                        
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    Align(
+                    alignment: Alignment.center,
+                    child:    Container(height: 20,width: 25,child: Image.asset("assets/SeruTestBanner/480px-Orange_animated_left_arrow.gif",fit: BoxFit.fill,),),
+                  ),
+                      SizedBox(
+                        width: 20,
                       ),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: c_h * 0.035,
-              ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Container(
+                        height: 100,
+                        width: 110,
+                        child: CustomButton(
+                            onTap: () {
+                         Navigator.push(context, MaterialPageRoute(builder: (context) => BttotomBarScreen(index: 0,),));
+                            },
+                            text: "Get Started",
+                            button_text_fontSize: 13,
+                            button_height: 55,
 
-              CustomTermsAndConditionPart(),
-              SizedBox(
-                height: c_h * 0.035,
-              ),
-            ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: c_h * 0.035,
+                ),
+
+                CustomTermsAndConditionPart(),
+                SizedBox(
+                  height: c_h * 0.035,
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
