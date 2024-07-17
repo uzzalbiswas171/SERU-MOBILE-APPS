@@ -1,9 +1,13 @@
-
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:seru_test_project/View/Auth/Login/bloc/login_bloc.dart';
+import 'package:seru_test_project/View/BootomBar/HomeScreen/bloc/home_event.dart';
+import 'package:seru_test_project/View/BootomBar/ProfileScreen/bloc/profile_bloc.dart';
 import '../../CustomWidget/CustomAppbar/custom_appbar.dart';
 import '../../custom_const.dart';
+import 'HomeScreen/bloc/home_bloc.dart';
 import 'HomeScreen/home_screen.dart';
 import 'PackageScreen/package_screen.dart';
 import 'ProfileScreen/prfile_screen.dart';
@@ -42,6 +46,7 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
     /// Controller to handle bottom nav bar and also handles initial page
     _controller = NotchBottomBarController(index: int.parse("${widget.index}"));
     // TODO: implement initState
+    //BlocProvider.of<HomeBloc>(context).add(FetchPackage());
     super.initState();
   }
 
@@ -57,90 +62,6 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: PreferredSize(preferredSize:Size.fromHeight(75), child: CustomAppbar()),
-    key: _scaffoldkey,
-    body: WillPopScope(
-      onWillPop: () => Future(() => false),
-      child: PageView(
-      controller: _pageController,
-      physics: const NeverScrollableScrollPhysics(),
-      children: List.generate(
-      bottomBarPages.length, (index) => bottomBarPages[index]),
-      ),
-    ),
-    extendBody: true,
-    bottomNavigationBar: (bottomBarPages.length <= maxCount)
-    ? AnimatedNotchBottomBar(
-    /// Provide NotchBottomBarController
-    notchBottomBarController: _controller,
-    color: BootomBarColor,
-    //    color: Color(0xFFCBCBCB),
-    showLabel: false,
-    shadowElevation:9,
-    kBottomRadius: 28.0,
-    notchColor: BootomBarColor,
-    /// restart app if you change removeMargins
-    removeMargins: false,
-    bottomBarWidth: 500,
-    showShadow: false,
-    durationInMilliSeconds: 300,
-    elevation: 1,
-    bottomBarItems: const [
-    BottomBarItem(
-    inActiveItem: Icon(
-    Icons.home,
-    color: Colors.white,
-    size: 25,
-    ),
-    activeItem: Icon(
-    Icons.home,
-    color: main_text_white_color,
-    size: 25,
-    ),
-    itemLabel: 'Page 1',
-    ),
-    BottomBarItem(
-    inActiveItem: Icon(
-    Icons.production_quantity_limits,
-    color: Colors.white,
-    size: 25,
-    ),
-    activeItem: Icon(
-    Icons.production_quantity_limits,
-    color: main_text_white_color,
-    size: 25,
-    ),
-    itemLabel: 'Page 1',
-    ),
-    BottomBarItem(
-    inActiveItem: Icon(
-    Icons.person,
-    color: main_text_white_color,
-    size: 25,
-    ),
-    activeItem: Icon(
-    Icons.person,
-    color: main_text_white_color,
-    size: 25,
-    ),
-    itemLabel: 'Page 5',
-    ),
-
-    ],
-    onTap: (index) {
-    if(index==0){
-    _pageController.jumpToPage(0);
-    }
-    else if(index==1){
-    _pageController.jumpToPage(1);
-    }else{
-    _pageController.jumpToPage(2);
-    }
-    },
-    kIconSize: 24.0,
-    )
-        : null,
     // BlocProvider.of<HomeBloc>(context).add(FetchPackage());
     return MultiBlocProvider(
       providers: [

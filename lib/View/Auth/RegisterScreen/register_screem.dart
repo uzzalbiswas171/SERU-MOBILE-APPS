@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:seru_test_project/CustomWidget/CustomText/custom_text.dart';
@@ -94,7 +95,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(
                         height: 15,
                       ),
-                      CustomTExtFromField(controller: _psswordController, hintText: "Enter Password", text: "passwod", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), obscureText: is_show_pass, suffixIcon: IconButton(
+                      CustomTExtFromField(controller: _passwordController, hintText: "Enter Password", text: "passwod", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), obscureText: is_show_pass, suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
                             is_show_pass=!is_show_pass;
@@ -105,7 +106,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(
                         height: 15,
                       ),
-                      CustomTExtFromField(controller: _psswordController, hintText: "Enter Password", text: "passwod", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), obscureText: is_show_pass, suffixIcon: IconButton(
+                      CustomTExtFromField(controller: _passwordController, hintText: "Enter Password", text: "passwod", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), obscureText: is_show_pass, suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
                             is_show_pass=!is_show_pass;

@@ -68,8 +68,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         backgroundImage: NetworkImage("https://media.licdn.com/dms/image/D4E03AQE75diCZ3zYhA/profile-displayphoto-shrink_800_800/0/1715787558634?e=1724889600&v=beta&t=FRpgbPUzUtC2G5_vOF4e2SFUxhmHVTHrhPUSpKysS4w"),
                       ),
                     ),
-                    CustomText(text: "Uzzal Biswas", fontSize: 35, fontWeight: FontWeight.w600, ),
-                    CustomText(text: "uzzal.biswas.cse@gmail.com", fontSize: 20, fontWeight: FontWeight.w400, )
+                    CustomText(text: "${profileModel!.name.toString()}", fontSize: 35, fontWeight: FontWeight.w600, ),
+                    CustomText(text: "${profileModel.email.toString()}", fontSize: 20, fontWeight: FontWeight.w400, )
                   ],
                 ),
               ),
@@ -141,7 +141,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 );
               },) ,
-          )
+          ),
 
               Container(
                 height: 310,
