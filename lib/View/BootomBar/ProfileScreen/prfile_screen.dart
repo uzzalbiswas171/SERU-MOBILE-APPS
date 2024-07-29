@@ -1,13 +1,16 @@
 import 'dart:convert';
 
 import 'package:another_flushbar/flushbar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:provider/provider.dart';
 import 'package:seru_test_project/CustomWidget/CustomBootomBar/SplashBootomBar/splash_bootom_bar.dart';
 import 'package:seru_test_project/CustomWidget/CustomTextFromField/custom_text_from_fild.dart';
 import 'package:seru_test_project/View/BootomBar/ProfileScreen/MockTestScreen/mock_test_screen.dart';
 import 'package:seru_test_project/View/BootomBar/ProfileScreen/SubsCriptionScreen/subscription_screen.dart';
 
+import '../../../Controller/profile_controller.dart';
 import '../../../CustomWidget/CustomButton/custom_button.dart';
 import '../../../CustomWidget/CustomText/custom_text.dart';
 import '../../../custom_const.dart';
@@ -26,7 +29,15 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
+  void initState() {
+    Provider.of<ProfileController>(context,listen: false).getProfileProvider(context) ;
+    // TODO: implement initState
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
+    final getProfile=Provider.of<ProfileController>(context).getProfile;
+    print("prrrrrrrrrrrrrrrrrrrrrrr $getProfile}");
     return Scaffold(
       body: Container(
         color: Main_Theme_Color.withOpacity(0.7),
@@ -54,8 +65,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         backgroundImage: NetworkImage("https://media.licdn.com/dms/image/D4E03AQE75diCZ3zYhA/profile-displayphoto-shrink_800_800/0/1715787558634?e=1724889600&v=beta&t=FRpgbPUzUtC2G5_vOF4e2SFUxhmHVTHrhPUSpKysS4w"),
                       ),
                     ),
-                    CustomText(text: "Uzzal Biswas", fontSize: 35, fontWeight: FontWeight.w600, ),
-                    CustomText(text: "uzzal.biswas.cse@gmail.com", fontSize: 20, fontWeight: FontWeight.w400, )
+                    CustomText(text:getProfile==null?"Name : ":getProfile["name"] ==""?"Name : ":"${getProfile["name"]}", fontSize: 35, fontWeight: FontWeight.w600, ),
+                    CustomText(text: getProfile==null?"Email : ":getProfile["email"] ==""?"Email : ":"${getProfile["email"]}", fontSize: 20, fontWeight: FontWeight.w400, )
                   ],
                 ),
               ),
@@ -85,16 +96,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 return InkWell(
                   onTap: () {
                     if(index==0){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => SubscriptionScreen(),));
+                      Provider.of<ProfileController>(context,listen: false).getMySubscriptionProvider(context) ;
+                      Navigator.push(context, CupertinoPageRoute(builder: (context) => SubscriptionScreen(),));
                     }
                     else if(index==1){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => VideoListScreen(),));
+                    Navigator.push(context, CupertinoPageRoute(builder: (context) => VideoListScreen(),));
                     }
                     else if(index==2){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ModelTestScreen(),));
+                      Navigator.push(context, CupertinoPageRoute(builder: (context) => ModelTestScreen(),));
                     }
                     else if(index==3){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => MockTestScreen(),));
+                      Provider.of<ProfileController>(context,listen: false).getMockTestProvider(context) ;
+                      Navigator.push(context, CupertinoPageRoute(builder: (context) => MockTestScreen(),));
                     }
                     else if(index==4){
                     showDialog(context: context, builder: (context) => AlertDialog(
@@ -104,14 +117,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         },label: Text("No",style: TextStyle(color: Colors.black),)),
 
                         ActionChip(onPressed: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LiveExamScreen(),));
+                          Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => LiveExamScreen(),));
 
                         },label: Text("Yes",style: TextStyle(color: Colors.black),)),
 
                       ],
                       title: Text("Are you ready for live exam"),),);
                     }else{
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ExamResultScreen(),));
+                      Navigator.push(context, CupertinoPageRoute(builder: (context) => ExamResultScreen(),));
                     }
                   },
                   child: Container(

@@ -53,6 +53,7 @@ dependencies:
   chewie: ^1.8.1
   dropdown_button2: ^2.3.9
   elegant_notification: ^2.2.1
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:
