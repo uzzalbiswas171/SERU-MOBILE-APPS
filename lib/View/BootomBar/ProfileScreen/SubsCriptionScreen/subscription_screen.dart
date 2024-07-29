@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:seru_test_project/Controller/profile_controller.dart';
 import 'package:seru_test_project/CustomWidget/CustomText/custom_text.dart';
 
 import '../../../../CustomWidget/CustomAppbar/custom_individual_appbar.dart';
@@ -21,71 +23,75 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
       appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomIndividualAppbar(onPress: () {
         Navigator.pop(context);
       }, title: "My Subscription")),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        child:  Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: SingleChildScrollView(
-            child: GridView.builder(
-              shrinkWrap: true,
-              itemCount: 3,
-              physics: NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  mainAxisExtent: 190
-              ), itemBuilder: (context, index) {
-              return InkWell(
-                onTap: () {
+      body: Consumer<ProfileController>(
+        builder: (context, value, child) {
+          return "${value.MySubscription}"=="null"?Center(child: CircularProgressIndicator(),):  Container(
+            height: double.infinity,
+            width: double.infinity,
+            child:  Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SingleChildScrollView(
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  itemCount: value.MySubscription.length,
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      mainAxisExtent: 190
+                  ), itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {
 
-                },
-                child: Container(
-                  height: 100,
-                  padding: const EdgeInsets.all(8.0),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)
-                    ,color: Main_Theme_Color,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child:  Container(
-                          height: 30,
-                          width: 100,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Colors.black
+                    },
+                    child: Container(
+                      height: 100,
+                      padding: const EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)
+                        ,color: Main_Theme_Color,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child:  Container(
+                              height: 30,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.black
+                              ),
+                              alignment: Alignment.center,
+                              child: CustomText(text: "\£ ${value.MySubscription[index]["amount"]}",text_color: main_text_white_color ,fontSize: 17, fontWeight: FontWeight.w500),
+                            ),
                           ),
-                          alignment: Alignment.center,
-                          child: CustomText(text: "\£ 29",text_color: main_text_white_color ,fontSize: 17, fontWeight: FontWeight.w500),
-                        ),
+                          SizedBox(height: 5,),
+                          CustomText(text: "${value.MySubscription[index]["title"]}", fontSize: 13, fontWeight: FontWeight.w500)
+                          ,
+                          SizedBox(height: 5,),
+                          CustomText(text: "${value.MySubscription[index]["description"]}", fontSize: 16, fontWeight: FontWeight.w500)
+                          ,SizedBox(height: 5,),
+                          GestureDetector(
+                            onTap: () {
+                            },
+                            child: CircleAvatar(
+                              radius: 30,
+                              backgroundImage: AssetImage("assets/Gif/buynowcircle.gif"),
+                            ),
+                          ),
+                          // Image.asset("assets/Gif/buynow.webp",height: 40,width: 100,fit: BoxFit.fill,)
+                        ],
                       ),
-                      SizedBox(height: 5,),
-                      CustomText(text: "✓ 20 Mocktest", fontSize: 18, fontWeight: FontWeight.w500)
-                      ,
-                      SizedBox(height: 5,),
-                      CustomText(text: "✓ 20 Mocktest", fontSize: 16, fontWeight: FontWeight.w500)
-                      ,SizedBox(height: 5,),
-                      GestureDetector(
-                        onTap: () {
+                    ),
+                  );
+                },),
+              ),
+            ),
+          );
+        },
 
-                        },
-                        child: CircleAvatar(
-                          radius: 30,
-                          backgroundImage: AssetImage("assets/Gif/buynowcircle.gif"),
-                        ),
-                      ),
-                      // Image.asset("assets/Gif/buynow.webp",height: 40,width: 100,fit: BoxFit.fill,)
-                    ],
-                  ),
-                ),
-              );
-            },),
-          ),
-        ),
       ),
     );
   }

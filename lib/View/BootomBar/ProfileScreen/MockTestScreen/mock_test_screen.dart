@@ -1,5 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:seru_test_project/Controller/profile_controller.dart';
 import 'package:seru_test_project/CustomWidget/CustomAppbar/custom_individual_appbar.dart';
+import 'package:seru_test_project/View/BootomBar/ProfileScreen/MockTestScreen/MockTestQuestionScreen/mock_test_question_screen.dart';
 
 import '../../../../CustomWidget/CustomButton/custom_button.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
@@ -13,154 +17,61 @@ class MockTestScreen extends StatefulWidget {
 }
 
 class _MockTestScreenState extends State<MockTestScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomIndividualAppbar(onPress: () {
+      appBar: PreferredSize(preferredSize: Size.fromHeight(60), child: CustomIndividualAppbar(onPress: () {
         Navigator.pop(context);
       }, title: "Mock Test")),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        padding: EdgeInsets.all(10),
-        child: ListView.builder(
-          scrollDirection: Axis.vertical,
-          itemBuilder: (context, index) =>
-              Container(
-                margin: EdgeInsets.only(bottom: 7),
-                padding: EdgeInsets.all(10),
-                height: 100,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius:BorderRadius.circular(10),
-                    color: question_color
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomText(text: "i am uzzal Biswas .From Sadhuhali Lorem Ipsam", fontSize: 15, fontWeight: FontWeight.w500),
-                    SizedBox(height: 7,),
-                    Column(
-                      children: [
-                        Row(
+      body: Consumer<ProfileController>(
+        builder: (context, value, child) {
+          print("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmm ${value.MockTest}");
+        return "${value.MockTest}"=="null"?Center(child: CircularProgressIndicator(),): Container(
+            height: double.infinity,
+            width: double.infinity,
+            child:  Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SingleChildScrollView(
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  itemCount:value.MockTest==null?0: value.MockTest.length,
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    // mainAxisExtent: 190
+                  ),
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) => MockTestQuestionScreen(),));
+                      },
+                      child: Container(
+                        height: 100,
+                        padding: const EdgeInsets.all(8.0),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)
+                          ,color: Main_Theme_Color,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Expanded(
-                              child: InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    is_check=!is_check;
-                                  });
-                                },
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      height: 16,
-                                      width: 16,
-
-                                      decoration: BoxDecoration(
-                                        //   color: Main_Theme_blac,
-                                          border: Border.all(color:Main_Theme_blac.withOpacity(0.4) ),
-                                          image: DecorationImage(image: AssetImage(is_check?"assets/Icons/check 1.png":""),fit: BoxFit.fill)
-                                      ),
-                                    ),
-                                    const  SizedBox(width: 10,),
-                                    Expanded(child: CustomText(text: "A for apple",fontSize:15 ,fontWeight: FontWeight.w400,))
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    is_check=!is_check;
-                                  });
-                                },
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      height: 16,
-                                      width: 16,
-
-                                      decoration: BoxDecoration(
-                                          border: Border.all(color:Main_Theme_blac.withOpacity(0.4) ),
-
-                                          image: DecorationImage(image: AssetImage(is_check?"assets/Icons/check 1.png":""),fit: BoxFit.fill)
-                                      ),
-                                    ),
-                                    const  SizedBox(width: 10,),
-                                    Expanded(child: CustomText(text: "B for Ball",fontSize:15 ,fontWeight: FontWeight.w400,))
-                                  ],
-                                ),
-                              ),
-                            ),
-
+                            CustomText(text: "Mocktest\n✓${value.MockTest[index]["mocktest_id"]}", fontSize: 14, fontWeight: FontWeight.w500,textAlign: TextAlign.center,)
+                            ,
+                            SizedBox(height: 5,),
+                            CustomText(text: "${value.MockTest[index]["description"]}",fontSize: 11, fontWeight: FontWeight.w400,textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,maxLines: 3,)
+                            ,SizedBox(height: 5,),
                           ],
                         ),
-                        SizedBox(height: 7,),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    is_check=!is_check;
-                                  });
-                                },
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      height: 16,
-                                      width: 16,
-
-                                      decoration: BoxDecoration(
-                                          border: Border.all(color:Main_Theme_blac.withOpacity(0.4) ),
-
-                                          image: DecorationImage(image: AssetImage(is_check?"assets/Icons/check 1.png":""),fit: BoxFit.fill)
-                                      ),
-                                    ),
-                                    const  SizedBox(width: 10,),
-                                    Expanded(child: CustomText(text: "C for cat",fontSize:15 ,fontWeight: FontWeight.w400,))
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    is_check=!is_check;
-                                  });
-                                },
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      height: 16,
-                                      width: 16,
-
-                                      decoration: BoxDecoration(
-                                          border: Border.all(color:Main_Theme_blac.withOpacity(0.4) ),
-                                          image: DecorationImage(image: AssetImage(is_check?"assets/Icons/check 1.png":""),fit: BoxFit.fill)
-                                      ),
-                                    ),
-                                    const  SizedBox(width: 10,),
-                                    Expanded(child: CustomText(text: "D for dog",fontSize:15 ,fontWeight: FontWeight.w400,))
-                                  ],
-                                ),
-                              ),
-                            ),
-
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),),
+                      ),
+                    );
+                  },),
+              ),
+            ),
+          );
+        }
       ),
-      bottomNavigationBar: CustomButton(onTap: () {
-
-      }, text: "Submit Answer", button_text_fontSize: 16, button_height: 60),
 
     );
   }
