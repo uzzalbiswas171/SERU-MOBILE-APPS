@@ -73,14 +73,6 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                           SizedBox(height: 5,),
                           CustomText(text: "${value.MySubscription[index]["description"]}", fontSize: 16, fontWeight: FontWeight.w500)
                           ,SizedBox(height: 5,),
-                          GestureDetector(
-                            onTap: () {
-                            },
-                            child: CircleAvatar(
-                              radius: 30,
-                              backgroundImage: AssetImage("assets/Gif/buynowcircle.gif"),
-                            ),
-                          ),
                           // Image.asset("assets/Gif/buynow.webp",height: 40,width: 100,fit: BoxFit.fill,)
                         ],
                       ),
