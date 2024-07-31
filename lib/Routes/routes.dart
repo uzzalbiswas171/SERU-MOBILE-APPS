@@ -41,6 +41,10 @@ String MOCKTEST ="api/protected/mocktest";
 String MYSUBSCRIPTION ="api/subscriptions";
 
 
+/// Subscription
+String MOCID_WISE_QUESTION_LIST_GET ="api/protected/questions/";
+
+
 
 
 

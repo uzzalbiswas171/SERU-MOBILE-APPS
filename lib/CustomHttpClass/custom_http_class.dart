@@ -88,4 +88,19 @@ class CustomHttp{
     return getAllMySubscriptionList;
   }
 
+  ///   Mock id wise moc test question list get-------------------------------
+  List getAllMyMOCID_WISE_QUESTION_LIST_GET=[];
+  getAllMyMOCID_WISE_QUESTION_LIST_GETFunction(BuildContext context, String id)async{
+    String url="${BASEURL}${MOCID_WISE_QUESTION_LIST_GET}$id?api_token=${GetStorage().read("Api_token")}";
+    try{
+      Response response=await http.get(Uri.parse(url), );
+      final data=jsonDecode(response.body);
+      getAllMyMOCID_WISE_QUESTION_LIST_GET=data["data"];
+
+    }catch(e){
+      print("getAllMyMOCID_WISE_QUESTION_LIST_GET catch error > $e");
+    }
+    return getAllMyMOCID_WISE_QUESTION_LIST_GET;
+  }
+
 }

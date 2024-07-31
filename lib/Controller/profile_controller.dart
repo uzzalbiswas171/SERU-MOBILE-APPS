@@ -33,6 +33,14 @@ class ProfileController with ChangeNotifier{
     MySubscription= await CustomHttp().getAllMySubscriptionFunction(context);
     notifyListeners();
   }
+  ///   Mock id wise moc test question list get ///
+  dynamic MOCID_WISE_QUESTION_LIST_GET;
+  getMyMOCID_WISE_QUESTION_LIST_GETProvider(
+      BuildContext context,String id
+      )async{
+    MOCID_WISE_QUESTION_LIST_GET= await CustomHttp().getAllMyMOCID_WISE_QUESTION_LIST_GETFunction(context,id);
+    notifyListeners();
+  }
 
 
 
