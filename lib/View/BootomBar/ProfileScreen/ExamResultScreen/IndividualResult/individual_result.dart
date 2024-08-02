@@ -31,10 +31,10 @@ class _IndividualResultScreenState extends State<IndividualResultScreen> {
         },);
       },
       child:
-      // "${data}"=="null"?
-      // Center(child:  CircularProgressIndicator(),):"${data}"=="[]"?
-      // Center(child: CustomText(text: "Data not found..",fontSize: 18,fontWeight: FontWeight.w500,)):
-      //
+      "${data}"=="null"?
+      Center(child:  CircularProgressIndicator(),):"${data}"=="[]"?
+      Center(child: CustomText(text: "Data not found..",fontSize: 18,fontWeight: FontWeight.w500,)):
+
       Container(
         height: double.infinity,
         width: double.infinity,
@@ -59,15 +59,25 @@ class _IndividualResultScreenState extends State<IndividualResultScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText(text: "Q1 . I am from sadhhali sn Lorem text is so damy datta from here", fontSize: 13, fontWeight: FontWeight.w400),
-                 Divider(height: 5,),
-                  CustomText(text: "A . asvasvdjasv js as jajs djasdjagsdj", fontSize: 13, fontWeight: FontWeight.w400,text_color: Colors.green,),
+                 //  CustomText(text: "Q1 . I am from sadhhali sn Lorem text is so damy datta from here", fontSize: 13, fontWeight: FontWeight.w400),
+                 // Divider(height: 5,),
+                 //  CustomText(text: "A . asvasvdjasv js as jajs djasdjagsdj", fontSize: 13, fontWeight: FontWeight.w400,text_color: Colors.green,),
+                 //  SizedBox(height: 7,),
+                 //  CustomText(text: "B . I am ,shdvucsd cusd cuadugscuagsudgasugduasgdu as du asud uasgfrom sadhhali   ", fontSize: 13, fontWeight: FontWeight.w400),
+                 //  SizedBox(height: 7,),
+                 //   CustomText(text: "C . I am from sadhhali   ", fontSize: 13, fontWeight: FontWeight.w400),
+                 //  SizedBox(height: 7,),
+                 //  CustomText(text: "D . I am from sadhhali  ", fontSize:13,text_color:index==3? Colors.red : Colors.black, fontWeight: FontWeight.w400),
+
+                  CustomText(text: "Q1 . ${data[index]["question_description"]??""}", fontSize: 13, fontWeight: FontWeight.w400),
+                  Divider(height: 5,),
+                  CustomText(text:"A . ${data[index]["option_1"]??""}", fontSize: 13, fontWeight: FontWeight.w400 ,  text_color: "${data[index]["answer_list"]??""}"=="1"  ? Colors.green:"${data[index]["answer_list"]??""}"=="1" && "${data[index]["answer_selected"]??""}"==1?Colors.green:"${data[index]["answer_selected"]??""}"=="1"?Colors.red: Colors.black,),
                   SizedBox(height: 7,),
-                  CustomText(text: "B . I am ,shdvucsd cusd cuadugscuagsudgasugduasgdu as du asud uasgfrom sadhhali   ", fontSize: 13, fontWeight: FontWeight.w400),
+                  CustomText(text: "B . ${data[index]["option_2"]??""}", fontSize: 13, fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="2" ? Colors.green:"${data[index]["answer_list"]??""}"=="2" && "${data[index]["answer_selected"]??""}"==2?Colors.green:"${data[index]["answer_selected"]??""}"=="2"?Colors.red: Colors.black,),
                   SizedBox(height: 7,),
-                   CustomText(text: "C . I am from sadhhali   ", fontSize: 13, fontWeight: FontWeight.w400),
+                  CustomText(text: "C . ${data[index]["option_3"]??""}",fontSize: 13, fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="3"  ? Colors.green: "${data[index]["answer_list"]??""}"=="3" && "${data[index]["answer_selected"]??""}"==3?Colors.green:"${data[index]["answer_selected"]??""}"=="3"?Colors.red: Colors.black,),
                   SizedBox(height: 7,),
-                  CustomText(text: "D . I am from sadhhali  ", fontSize:13,text_color:index==3? Colors.red : Colors.black, fontWeight: FontWeight.w400),
+                  CustomText(text: "D . ${data[index]["option_4"]??""}",fontSize:13,   fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="4" ? Colors.green: "${data[index]["answer_list"]??""}"=="4" && "${data[index]["answer_selected"]??""}"==4?Colors.green:"${data[index]["answer_selected"]??""}"=="4"?Colors.red: Colors.black,),
 
                 ],
               ),

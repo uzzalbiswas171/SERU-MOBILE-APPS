@@ -10,8 +10,8 @@ import '../../../../../CustomWidget/CustomText/custom_text.dart';
 import '../../../../../custom_const.dart'; 
 
 class MockTestQuestionScreen extends StatefulWidget {
-  const MockTestQuestionScreen({super.key});
-
+  MockTestQuestionScreen({super.key,required this.moc_test_no});
+  String moc_test_no;
   @override
   State<MockTestQuestionScreen> createState() => _MockTestQuestionScreenState();
 }
@@ -19,153 +19,62 @@ class MockTestQuestionScreen extends StatefulWidget {
 class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
   @override
   Widget build(BuildContext context) {
-    final moctest= Provider.of<ProfileController>(context).MOCID_WISE_QUESTION_LIST_GET;
-
- //   print("mmmmmmmmmmmmmmmmmmmmmmmmmmm------->${moctest}");
-
-
+    final data= Provider.of<ProfileController>(context).MOCID_WISE_QUESTION_LIST_GET;
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomIndividualAppbar(onPress: () {
         Navigator.pop(context);
-      }, title: "Mock Test")),
-      body: Consumer<ProfileController>(
-        builder: (context, value, child)   => Container(
+      }, title: "Mock test no - ${widget.moc_test_no}")),
+      body: RefreshIndicator(
+        onRefresh:() {
+          return Future.delayed(Duration(seconds: 1),() {
+
+          },);
+        },
+        child:
+        "${data}"=="null"?
+        Center(child:  CircularProgressIndicator(),):"${data}"=="[]"?
+        Center(child: CustomText(text: "Data not found..",fontSize: 18,fontWeight: FontWeight.w500,)):
+
+        Container(
           height: double.infinity,
           width: double.infinity,
           padding: EdgeInsets.all(10),
           child: ListView.builder(
-            scrollDirection: Axis.vertical,
-            itemCount:value.MOCID_WISE_QUESTION_LIST_GET==null?0: value.MOCID_WISE_QUESTION_LIST_GET.length,
-            itemBuilder: (context, index) =>
-                Container(
-                  margin: EdgeInsets.only(bottom: 7),
-                  padding: EdgeInsets.all(10),
+            //   itemCount: data.length,
+            itemCount: 5,
+            itemBuilder: (context, index) {
+              return Card(
+                elevation: 2,
+                child: Container(
+                  // margin: EdgeInsets.only(bottom: 7),
                   width: double.infinity,
                   decoration: BoxDecoration(
-                      borderRadius:BorderRadius.circular(10),
-                      color: question_color
+                      borderRadius: BorderRadius.circular(7),
+                      //  color: appbarcollor.withOpacity(0.5),
+                      border: Border.all(
+                          color: Colors.black.withOpacity(0.5)
+                      )
                   ),
+                  padding: EdgeInsets.all(10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomText(text: "${value.MOCID_WISE_QUESTION_LIST_GET[index]["question_description"]}", fontSize: 15, fontWeight: FontWeight.w500),
+
+                      CustomText(text: "Q1 . ${data[index]["question_description"]??""}", fontSize: 14, fontWeight: FontWeight.w400),
+                      Divider(height: 5,),
+                      CustomText(text:"A . ${data[index]["option_1"]??""}", fontSize: 11, fontWeight: FontWeight.w400 ,  text_color: "${data[index]["answer_list"]??""}"=="1"  ? Colors.green:"${data[index]["answer_list"]??""}"=="1" && "${data[index]["answer_selected"]??""}"==1?Colors.green:"${data[index]["answer_selected"]??""}"=="1"?Colors.red: Colors.black,),
                       SizedBox(height: 7,),
-                      Column(
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                child: InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      is_check=!is_check;
-                                    });
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        height: 16,
-                                        width: 16,
-                                        decoration: BoxDecoration(
-                                          //   color: Main_Theme_blac,
-                                            border: Border.all(color:Main_Theme_blac.withOpacity(0.4) ),
-                                            image: DecorationImage(image: AssetImage(is_check?"assets/Icons/check 1.png":"assets/Icons/check 1.png"),fit: BoxFit.fill)
-                                        ),
-                                      ),
-                                      const  SizedBox(width: 10,),
-                                      Expanded(child: CustomText(text: "A for apple",fontSize:15 ,fontWeight: FontWeight.w400,))
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      is_check=!is_check;
-                                    });
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        height: 16,
-                                        width: 16,
+                      CustomText(text: "B . ${data[index]["option_2"]??""}", fontSize: 11, fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="2" ? Colors.green:"${data[index]["answer_list"]??""}"=="2" && "${data[index]["answer_selected"]??""}"==2?Colors.green:"${data[index]["answer_selected"]??""}"=="2"?Colors.red: Colors.black,),
+                      SizedBox(height: 7,),
+                      CustomText(text: "C . ${data[index]["option_3"]??""}",fontSize: 11, fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="3"  ? Colors.green: "${data[index]["answer_list"]??""}"=="3" && "${data[index]["answer_selected"]??""}"==3?Colors.green:"${data[index]["answer_selected"]??""}"=="3"?Colors.red: Colors.black,),
+                      SizedBox(height: 7,),
+                      CustomText(text: "D . ${data[index]["option_4"]??""}",fontSize:11,   fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="4" ? Colors.green: "${data[index]["answer_list"]??""}"=="4" && "${data[index]["answer_selected"]??""}"==4?Colors.green:"${data[index]["answer_selected"]??""}"=="4"?Colors.red: Colors.black,),
 
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color:Main_Theme_blac.withOpacity(0.4) ),
-
-                                            image: DecorationImage(image: AssetImage(is_check?"assets/Icons/check 1.png":"assets/Icons/check 1.png"),fit: BoxFit.fill)
-                                        ),
-                                      ),
-                                      const  SizedBox(width: 10,),
-                                      Expanded(child: CustomText(text: "B for Ball",fontSize:15 ,fontWeight: FontWeight.w400,))
-                                    ],
-                                  ),
-                                ),
-                              ),
-
-                            ],
-                          ),
-                          SizedBox(height: 7,),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      is_check=!is_check;
-                                    });
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        height: 16,
-                                        width: 16,
-
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color:Main_Theme_blac.withOpacity(0.4) ),
-
-                                            image: DecorationImage(image: AssetImage(is_check?"assets/Icons/check 1.png":"assets/Icons/check 1.png"),fit: BoxFit.fill)
-                                        ),
-                                      ),
-                                      const  SizedBox(width: 10,),
-                                      Expanded(child: CustomText(text: "C for cat",fontSize:15 ,fontWeight: FontWeight.w400,))
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      is_check=!is_check;
-                                    });
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        height: 16,
-                                        width: 16,
-
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color:Main_Theme_blac.withOpacity(0.4) ),
-                                            image: DecorationImage(image: AssetImage(is_check?"assets/Icons/check 1.png":"assets/Icons/check 1.png"),fit: BoxFit.fill)
-                                        ),
-                                      ),
-                                      const  SizedBox(width: 10,),
-                                      Expanded(child: CustomText(text: "D for dog",fontSize:15 ,fontWeight: FontWeight.w400,))
-                                    ],
-                                  ),
-                                ),
-                              ),
-
-                            ],
-                          ),
-                        ],
-                      ),
                     ],
                   ),
-                ),),
+                ),
+              );
+            },),
         ),
       ),
       bottomNavigationBar: CustomButton(onTap: () {

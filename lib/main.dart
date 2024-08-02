@@ -48,8 +48,8 @@ class MyApp extends StatelessWidget {
       ),
 
       /// Main Route --------------------------
-   //   home:MainSplashPageViewScreen(),
-      home:IndividualResultScreen(),
+  home:MainSplashPageViewScreen(),
+      //   home:IndividualResultScreen(),
 
       /// Working route -----------------------
       // home:BttotomBarScreen(index: 0,),

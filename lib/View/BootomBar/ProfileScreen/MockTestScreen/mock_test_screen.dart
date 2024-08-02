@@ -48,7 +48,9 @@ class _MockTestScreenState extends State<MockTestScreen> {
                       onTap: () {
                         Provider.of<ProfileController>(context,listen: false).getMyMOCID_WISE_QUESTION_LIST_GETProvider(
                             context, "${value.MockTest[index]["mocktest_id"]}");
-                        Navigator.push(context, CupertinoPageRoute(builder: (context) => MockTestQuestionScreen(),));
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) => MockTestQuestionScreen(
+                          moc_test_no: "${index+1}",
+                        ),));
                       },
                       child: Container(
                         height: 100,
