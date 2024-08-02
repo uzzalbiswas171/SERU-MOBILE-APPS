@@ -1,4 +1,5 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
@@ -52,17 +53,17 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
 
     final data=Provider.of<ProfileController>(context).All_MyMARK_RESULT_LIST_GET;
 
-    print("rrrrrrrrrrrrrrrrrrrrrrrrrrrr $data");
 
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomIndividualAppbar(onPress: () {
          Navigator.pop(context);
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("You have to finish or submit")));
+      //  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("You have to finish or submit")));
       }, title: "Exam result")),
-      body:  Consumer<ProfileController>(
-        builder: (context, value, child) {
+      body: "${data}"=="null"?
+      Center(child:  CircularProgressIndicator(),):"${data}"=="[]"?Center(child: CustomText(text: "Data not found..",fontSize: 18,fontWeight: FontWeight.w500,)): Consumer<ProfileController>(
+        builder: (context, value, child) { 
           return Container(
             height: double.infinity,
             width: double.infinity,
@@ -94,7 +95,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CustomText(text:"${value.All_MyMARK_RESULT_LIST_GET.length}"=="null"?"0": "${value.All_MyMARK_RESULT_LIST_GET.length}", fontSize: 12, fontWeight: FontWeight.w500)
+                            CustomText(text:"${value.All_MyMARK_RESULT_LIST_GET}"=="[]"?"0": "${value.All_MyMARK_RESULT_LIST_GET.length}", fontSize: 12, fontWeight: FontWeight.w500)
                           ],
                         ),
                       ),
@@ -259,7 +260,13 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                         scrollDirection: Axis.vertical,
                         itemCount:"${value.All_MyMARK_RESULT_LIST_GET.length}"=="null"?0: value.All_MyMARK_RESULT_LIST_GET.length,
                         itemBuilder: (context, index) => InkWell(
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => IndividualResultScreen(),)),
+                          onTap: () {
+                            Provider.of<ProfileController>(context,listen: false).get_All_My_MARK_RESULT_HISTORYProvider(context, "${value.All_MyMARK_RESULT_LIST_GET[index]["question_set"]}");
+                            showDialog(context: context, builder: (context) => AlertDialog(title: Center(child: CircularProgressIndicator(),),),);
+                            Future.delayed(Duration(seconds: 1),() {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => IndividualResultScreen(),));
+                            },);
+                            },
                           child: Container(
                             height: 74,
                             width: double.infinity,
@@ -338,17 +345,17 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
 
     );
   }
-  String selected2Datee = DateFormat.yMMMEd().format(DateTime.now()).toString();
-  Future<void> _select2Date(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selected2Datee) {
-      final df = new DateFormat.yMMMEd();
-      setState(() {
-        selected2Datee = df.format(picked);
-      });
-    }
-  }
+  // String selected2Datee = DateFormat.yMMMEd().format(DateTime.now()).toString();
+  // Future<void> _select2Date(BuildContext context) async {
+  //   final DateTime? picked = await showDatePicker(
+  //       context: context,
+  //       firstDate: DateTime(2015, 8),
+  //       lastDate: DateTime(2101));
+  //   if (picked != null && picked != selected2Datee) {
+  //     final df = new DateFormat.yMMMEd();
+  //     setState(() {
+  //       selected2Datee = df.format(picked);
+  //     });
+  //   }
+  // }
 }

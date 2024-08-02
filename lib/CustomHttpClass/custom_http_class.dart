@@ -120,4 +120,19 @@ class CustomHttp{
     return getAllMy_MARKRESULTList;
   }
 
+  ///  All_MyMARK_RESULT_LIST_GET list History  get-------------------------------
+  List getAllMy_MARKRESULT_HistoryList=[];
+  get_AllMy_MARK_RESULT_HISTORY_function(BuildContext context,String question_set)async{
+    String url="${BASEURL}${MARKRESULT_HISTORY}/${question_set}?api_token=${GetStorage().read("Api_token")}";
+    try{
+      Response response=await http.get(Uri.parse(url), headers: headers);
+      final data=jsonDecode(response.body);
+      getAllMy_MARKRESULT_HistoryList=data["data"];
+
+    }catch(e){
+      print("getAllMy_MARKRESULT_HistoryList catch error > $e");
+    }
+    return getAllMy_MARKRESULT_HistoryList;
+  }
+
 }

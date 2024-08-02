@@ -51,6 +51,15 @@ class ProfileController with ChangeNotifier{
     notifyListeners();
   }
 
+  ///  All_MyMARK_RESULT_LIST_GET_HISTORY  ///
+  dynamic All_MyMARK_RESULT_LIST_HISTORY_GET;
+  get_All_My_MARK_RESULT_HISTORYProvider(
+      BuildContext context, String question_set
+      )async{
+    All_MyMARK_RESULT_LIST_HISTORY_GET= await CustomHttp().get_AllMy_MARK_RESULT_HISTORY_function(context,question_set);
+    notifyListeners();
+  }
+
 
 
 }
