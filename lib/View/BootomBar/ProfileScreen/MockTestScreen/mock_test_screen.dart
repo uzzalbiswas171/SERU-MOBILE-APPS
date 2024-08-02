@@ -26,7 +26,7 @@ class _MockTestScreenState extends State<MockTestScreen> {
       }, title: "Mock Test")),
       body: Consumer<ProfileController>(
         builder: (context, value, child) {
-          print("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmm ${value.MockTest}");
+     //     print("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmm ${value.MockTest}");
         return "${value.MockTest}"=="null"?Center(child: CircularProgressIndicator(),): Container(
             height: double.infinity,
             width: double.infinity,

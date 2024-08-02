@@ -46,5 +46,10 @@ String MOCID_WISE_QUESTION_LIST_GET ="api/protected/questions/";
 
 
 
+/// MarKResult
+String MARKRESULT ="api/protected/results";
+
+
+
 
 

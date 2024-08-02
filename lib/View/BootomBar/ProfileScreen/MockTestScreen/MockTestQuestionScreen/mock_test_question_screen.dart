@@ -21,7 +21,7 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
   Widget build(BuildContext context) {
     final moctest= Provider.of<ProfileController>(context).MOCID_WISE_QUESTION_LIST_GET;
 
-    print("mmmmmmmmmmmmmmmmmmmmmmmmmmm------->${moctest}");
+ //   print("mmmmmmmmmmmmmmmmmmmmmmmmmmm------->${moctest}");
 
 
     return Scaffold(
@@ -66,7 +66,6 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
                                       Container(
                                         height: 16,
                                         width: 16,
-
                                         decoration: BoxDecoration(
                                           //   color: Main_Theme_blac,
                                             border: Border.all(color:Main_Theme_blac.withOpacity(0.4) ),
@@ -172,8 +171,8 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
       bottomNavigationBar: CustomButton(onTap: () {
 
       }, text: "Submit Answer", button_text_fontSize: 16, button_height: 60),
-
     );
   }
   bool is_check=false;
 }
+

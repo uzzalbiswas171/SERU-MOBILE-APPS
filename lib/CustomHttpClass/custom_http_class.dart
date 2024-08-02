@@ -13,11 +13,11 @@ import '../Routes/routes.dart';
 class CustomHttp{
 
  /// Custom Header  --------------------------------------------------
- //  Map<String, String> headers= <String,String>{
- //    "accept": "application/json",
- //    'Authorization': 'Bearer ${GetStorage().read("Api_token")}'
- //  };
- //
+  Map<String, String> headers= <String,String>{
+    "accept": "application/json",
+ //   'Authorization': 'Bearer ${GetStorage().read("Api_token")}'
+  };
+
 
 
   /// Get All Package-------------------------------
@@ -88,6 +88,8 @@ class CustomHttp{
     return getAllMySubscriptionList;
   }
 
+
+
   ///   Mock id wise moc test question list get-------------------------------
   List getAllMyMOCID_WISE_QUESTION_LIST_GET=[];
   getAllMyMOCID_WISE_QUESTION_LIST_GETFunction(BuildContext context, String id)async{
@@ -101,6 +103,21 @@ class CustomHttp{
       print("getAllMyMOCID_WISE_QUESTION_LIST_GET catch error > $e");
     }
     return getAllMyMOCID_WISE_QUESTION_LIST_GET;
+  }
+
+  ///  All_MyMARK_RESULT_LIST_GET list get-------------------------------
+  List getAllMy_MARKRESULTList=[];
+  get_AllMy_MARK_RESULT_function(BuildContext context )async{
+    String url="${BASEURL}${MARKRESULT}?api_token=${GetStorage().read("Api_token")}";
+    try{
+      Response response=await http.get(Uri.parse(url), headers: headers);
+      final data=jsonDecode(response.body);
+      getAllMy_MARKRESULTList=data["data"];
+
+    }catch(e){
+      print("getAllMy_MARKRESULTList catch error > $e");
+    }
+    return getAllMy_MARKRESULTList;
   }
 
 }

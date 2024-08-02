@@ -37,7 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final getProfile=Provider.of<ProfileController>(context).getProfile;
-    print("prrrrrrrrrrrrrrrrrrrrrrr $getProfile}");
+  //  print("prrrrrrrrrrrrrrrrrrrrrrr $getProfile}");
     return Scaffold(
       body: Container(
         color: Main_Theme_Color.withOpacity(0.7),

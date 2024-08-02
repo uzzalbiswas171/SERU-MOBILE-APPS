@@ -19,7 +19,7 @@ class _LiveExamScreenState extends State<LiveExamScreen> {
 int count=10;
 void itmer(){
   Timer.periodic(const Duration(seconds: 1), (timer) {
-    print("timeeeee  eee   e eee ${timer.tick}");
+  //  print("timeeeee  eee   e eee ${timer.tick}");
     if(timer.tick==10) {
       ElegantNotification(
         borderRadius: BorderRadius.circular(11),
@@ -32,7 +32,7 @@ void itmer(){
         title: CustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Answer submitted successfully",  text_color: Colors.white),
         description: CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Please wait for result" , text_color: Colors.white),
         onDismiss: () {
-          print('Message when the notification is dismissed');
+      //    print('Message when the notification is dismissed');
         }, icon: Icon(Icons.info_outlined,color:Colors.black,),
       ).show(context);
       timer.cancel();
@@ -48,7 +48,7 @@ void itmer(){
         title: CustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Answer submitted successfully",  text_color: Colors.white),
         description: CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Please wait for result" , text_color: Colors.white),
         onDismiss: () {
-          print('Message when the notification is dismissed');
+        //  print('Message when the notification is dismissed');
         }, icon: Icon(Icons.info_outlined,color:Colors.black,),
       ).show(context);
     }else{
