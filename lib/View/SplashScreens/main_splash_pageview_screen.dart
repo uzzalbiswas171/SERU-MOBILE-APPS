@@ -19,7 +19,6 @@ class _MainSplashPageViewScreenState extends State<MainSplashPageViewScreen> {
 @override
   void initState() {
   Provider.of<HomeController>(context,listen: false).getAllPackageProvider(context);
-  GetStorage().write("Api_token","AHmKozwmRuNgM60c6f8EHnCm9mx42feB");
   // TODO: implement initState
     super.initState();
   }

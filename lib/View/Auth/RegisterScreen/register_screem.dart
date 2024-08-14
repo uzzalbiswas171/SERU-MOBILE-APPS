@@ -1,5 +1,25 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:seru_test_project/Controller/registrationController.dart';
 import 'package:seru_test_project/CustomWidget/CustomText/custom_text.dart';
 import 'package:seru_test_project/CustomWidget/CustomTextFromField/custom_text_from_fild.dart';
 import 'package:seru_test_project/View/Auth/Login/screens/login_screen.dart';
@@ -18,6 +38,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _emailController = TextEditingController();
   final _psswordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  TextEditingController name =TextEditingController();
+  TextEditingController surname =TextEditingController();
+  TextEditingController email =TextEditingController();
+  TextEditingController password =TextEditingController();
+  TextEditingController address =TextEditingController();
+  TextEditingController currentworking =TextEditingController();
+  TextEditingController qualification =TextEditingController();
+  TextEditingController qualification_other =TextEditingController();
 
   @override
   void initState() {
@@ -81,15 +109,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(
                         height: 20,
                       ), 
-                      CustomTExtFromField(controller: _emailController, hintText: "Enter Name", text: "NAme", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), suffixIcon: Icon(Icons.person,color: main_text_blac_color.withOpacity(0.6),), obscureText: false,),
+                      CustomTExtFromField(controller: name, hintText: "Enter Name", text: "NAme", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), suffixIcon: Icon(Icons.person,color: main_text_blac_color.withOpacity(0.6),), obscureText: false,),
                       SizedBox(
                         height: 15,
                       ),
-                      CustomTExtFromField(controller: _emailController, hintText: "Enter Email", text: "Email", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), suffixIcon: Icon(Icons.email,color: main_text_blac_color.withOpacity(0.6),), obscureText: false,),
+                      CustomTExtFromField(controller: email, hintText: "Enter Email", text: "Email", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), suffixIcon: Icon(Icons.email,color: main_text_blac_color.withOpacity(0.6),), obscureText: false,),
                       SizedBox(
                         height: 15,
                       ),
-                      CustomTExtFromField(controller: _psswordController, hintText: "Enter Password", text: "passwod", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), obscureText: is_show_pass, suffixIcon: IconButton(
+                      CustomTExtFromField(controller: password, hintText: "Enter Password", text: "passwod", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), obscureText: is_show_pass, suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
                             is_show_pass=!is_show_pass;
@@ -100,7 +128,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(
                         height: 15,
                       ),
-                      CustomTExtFromField(controller: _psswordController, hintText: "Enter Password", text: "passwod", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), obscureText: is_show_pass, suffixIcon: IconButton(
+                      CustomTExtFromField(controller: password, hintText: "Enter Password", text: "passwod", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), obscureText: is_show_pass, suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
                             is_show_pass=!is_show_pass;
@@ -114,7 +142,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                       CustomButton(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+
+
+                            Provider.of<RegistrationController>(context,listen: false).getRegistrationInfoProvider(
+                                "${name.text}",
+                                "${surname.text}",
+                                "${email.text}",
+                                "${password.text}",
+                                "${address.text}",
+                                "${currentworking.text}",
+                                "${qualification.text}",
+                                "${qualification_other.text}",
+                                "123456789",
+                                context
+                            );
+
+
                           },
                           text: is_clicked_loginbutton == true
                               ? "Login Processing"

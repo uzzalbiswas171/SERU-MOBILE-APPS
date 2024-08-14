@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Controller/homeController.dart';
@@ -41,7 +42,112 @@ class _PackageScreenState extends State<PackageScreen> {
                 ), itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+                    "${GetStorage().read("Api_token")}"=="" || "${GetStorage().read("Api_token")}"=="null"?     Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),))
+                        :
+                    showDialog(context: context, builder: (context) {
+                      return StatefulBuilder(
+                        builder: (context, setState) {
+                          return AlertDialog(
+                            title: CustomText(text: "For who do you want to buy ?..", fontSize: 18, fontWeight: FontWeight.w600),
+                            content: Container(
+                              height: is_cliced==true?265:60,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 60,
+                                    width: MediaQuery.of(context).size.width*0.8,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        ElevatedButton( style: ElevatedButton.styleFrom(
+                                            backgroundColor:is_cliced_for_own==false? BootomBarColor :Colors.white
+                                        ),
+                                            onPressed: () {
+
+                                              setState(() {
+                                                is_cliced_for_own=false;
+                                                is_cliced=true;
+                                              },);
+                                            }, child: CustomText(text: "FOR GIFT", fontSize: 16, fontWeight: FontWeight.w500)),
+                                        ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                                backgroundColor:is_cliced_for_own==true? BootomBarColor:Colors.white
+                                            ),
+                                            onPressed: () {
+                                              setState(() {
+                                                is_cliced_for_own=true;
+                                                is_cliced=true;
+                                              },);
+                                            }, child: CustomText(text: "FOR OWN", fontSize: 16, fontWeight: FontWeight.w500)),
+                                      ],
+                                    ),
+                                  ),
+
+                                  is_cliced==false?Container():
+                                  SizedBox(height: 20,),
+                                  is_cliced==false?Container():
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
+                                    },
+                                    child: Container(
+                                      height: 60,
+                                      width: MediaQuery.of(context).size.width*0.8,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          CustomImageSection(image:AssetImage("assets/PymentImage/mastercad.PNG"), img_height: 90, img_width: 80, img_margin: 10, Img_radius: 11),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  is_cliced==false?Container():  Container(
+                                    height: 60,
+                                    width: MediaQuery.of(context).size.width*0.8,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+
+                                        GestureDetector(
+                                            onTap: () {
+                                              Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
+                                            },
+                                            child: CustomImageSection(image:AssetImage("assets/PymentImage/payple.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
+                                        CircleAvatar(
+                                          radius: 30,
+                                          backgroundColor: BootomBarColor.withOpacity(0.3),
+                                          child: Text("??",style: TextStyle(
+                                            fontSize: 33,
+                                          ),),
+                                        ),
+                                        GestureDetector(
+                                            onTap: () {
+                                              Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
+                                            },child: CustomImageSection(image:AssetImage("assets/PymentImage/gpay.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
+
+                                      ],
+                                    ),
+                                  ),
+                                  is_cliced==false?Container():  Container(
+                                    height: 60,
+                                    width: MediaQuery.of(context).size.width*0.8,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        GestureDetector(
+                                            onTap: () {
+                                              Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
+                                            },child: CustomImageSection(image:AssetImage("assets/PymentImage/mastercad.PNG"), img_height: 90, img_width: 80, img_margin: 10, Img_radius: 11)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },);
                   },
                   child: Container(
                     height: 100,

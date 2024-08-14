@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:seru_test_project/Controller/profile_controller.dart';
 import 'package:seru_test_project/CustomWidget/CustomAppbar/custom_individual_appbar.dart';
@@ -60,7 +61,7 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
 
-                      CustomText(text: "Q1 . ${data[index]["question_description"]??""}", fontSize: 14, fontWeight: FontWeight.w400),
+                      CustomText(text: "Q1 . ${Bidi.stripHtmlIfNeeded("${data[index]["question_description"]??""}").replaceAll( "\n", " " )} ", fontSize: 14, fontWeight: FontWeight.w400),
                       Divider(height: 5,),
                       CustomText(text:"A . ${data[index]["option_1"]??""}", fontSize: 11, fontWeight: FontWeight.w400 ,),
                       SizedBox(height: 7,),

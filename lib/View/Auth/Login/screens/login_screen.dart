@@ -5,8 +5,10 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 import 'package:seru_test_project/View/Auth/RegisterScreen/register_screem.dart';
 import 'package:seru_test_project/custom_const.dart'; 
+import '../../../../Controller/loginController.dart';
 import '../../../../CustomWidget/CustomButton/custom_button.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
 import '../../../../CustomWidget/CustomTextFromField/custom_text_from_fild.dart';
@@ -82,7 +84,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(
                         height: 15,
                       ),
-                      CustomTExtFromField(controller: _psswordController, hintText: "Enter Password", text: "passwod", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), obscureText: is_show_pass, suffixIcon: IconButton(
+                      CustomTExtFromField(
+                          controller: _psswordController,
+                          hintText: "Enter Password", text: "passwod", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), obscureText: is_show_pass, suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
                             is_show_pass=!is_show_pass;
@@ -102,7 +106,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             Container(
                               height: 16,
                               width: 16,
-                  
                               decoration: BoxDecoration(
                                   color: BootomBarColor,
                                   image: DecorationImage(image: AssetImage(is_check?"assets/Icons/check 1.png":""),fit: BoxFit.fill)
@@ -114,8 +117,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(height: 40,),
+                      ///  Login profileeeeeeeeeeeeeeeeeeee
                       CustomButton(onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => BttotomBarScreen(index: 0,),));
+                        Provider.of<LoginController>(context,listen: false).getLoginInfoProvider(_emailController.text, _psswordController.text, "123456789", context);
                       }, text: is_clicked_loginbutton==true? "Login Processing" : "Sign In", button_text_fontSize: 22, button_height: 45)
                       ,SizedBox(
                         height: 20,
@@ -131,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               CustomText(text: "Don’t have an account?", fontSize: 15, fontWeight:FontWeight.w400),
                               InkWell(
                                   onTap: () {
-Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen(),));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen(),));
                                   },
                                   child: CustomText(text: "  Sign up here",text_color: redColor ,fontSize: 15, fontWeight:FontWeight.w400,))
                             ],

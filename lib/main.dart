@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'Controller/homeController.dart';
+import 'Controller/loginController.dart';
 import 'Controller/profile_controller.dart';
+import 'Controller/registrationController.dart';
 import 'View/BootomBar/ProfileScreen/ExamResultScreen/IndividualResult/individual_result.dart';
 import 'View/BootomBar/bootombar.dart';
 import 'View/SplashScreens/main_splash_pageview_screen.dart';
@@ -38,6 +40,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(providers: [
       ChangeNotifierProvider<HomeController>(create: (context) => HomeController(),),
       ChangeNotifierProvider<ProfileController>(create: (context) => ProfileController(),),
+      ChangeNotifierProvider<LoginController>(create: (context) => LoginController(),),
+      ChangeNotifierProvider<RegistrationController>(create: (context) => RegistrationController(),),
     ],
     child: MaterialApp(
       debugShowCheckedModeBanner: false,

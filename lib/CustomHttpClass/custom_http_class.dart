@@ -9,8 +9,72 @@ import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 
 import '../Routes/routes.dart';
+import '../View/BootomBar/bootombar.dart';
 
 class CustomHttp{
+
+
+
+  ///  Login ------------------------------------------
+  loginCustomHttpRequest(String email,String pass,String phoneid,BuildContext context)async{
+
+    var response = await http.post(
+      Uri.parse("${BASEURL}${LOGIN}"),
+      body: {
+        'email': "$email",
+        'password': "$pass",
+        'phone_id': "$phoneid",
+      },
+    );
+    print('Responsesssssssssssssssssssssssssssssss :${response.body}');
+    if (response.statusCode == 200) {
+      var r =  jsonDecode(response.body)["data"];
+      GetStorage().write("Api_token",r["api_token"]);
+      Navigator.push(context, MaterialPageRoute(builder: (context) => BttotomBarScreen(index: 0,),));
+    }
+  }
+
+
+  ///  registrationCustomHttpRequest ------------------------------------------
+  registrationCustomHttpRequest(
+      String name,
+      String surname,
+      String email,
+      String password,
+      String address,
+      String currentworking,
+      String qualification,
+      String qualification_other,
+      String phone_id,
+      BuildContext context
+
+      )async{
+
+    var response = await http.post(
+      Uri.parse("${BASEURL}${REGISTRATION}"),
+      body: {
+        'name': "$name",
+        'surname': "$surname",
+        'email': "$email",
+        'password': "$password",
+        'password_confirmation': "$password",
+        'address': "$address",
+        'currentworking': "$currentworking",
+        'qualification': "$qualification",
+        'qualification_other': "$qualification_other",
+        'phone_id': "$phone_id",
+      },
+    );
+    print('Responsesssssssssssssssssssssssssssssss :${response.body}');
+    if (response.statusCode == 200) {
+      var r =  jsonDecode(response.body)["data"];
+      Navigator.push(context, MaterialPageRoute(builder: (context) => BttotomBarScreen(index: 0,),));
+    }
+  }
+
+
+
+
 
  /// Custom Header  --------------------------------------------------
   Map<String, String> headers= <String,String>{
