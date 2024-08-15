@@ -18,6 +18,7 @@ class MockTestQuestionScreen extends StatefulWidget {
 }
 
 class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
+  int _selectedIndex=-1;
   @override
   Widget build(BuildContext context) {
     final data= Provider.of<ProfileController>(context).MOCID_WISE_QUESTION_LIST_GET;
@@ -63,13 +64,19 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
 
                       CustomText(text: "Q${index+1} . ${Bidi.stripHtmlIfNeeded("${data[index]["question_description"]??""}").replaceAll( "\n", " " )} ", fontSize: 14, fontWeight: FontWeight.w400),
                       Divider(height: 5,),
-                      CustomText(text:"A . ${data[index]["option_1"]??""}", fontSize: 11, fontWeight: FontWeight.w400 ,),
+                      InkWell(
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex=index;
+                            });
+                          },
+                          child: CustomText(text:"A . ${data[index]["option_1"]??""}", text_color: _selectedIndex==index? Colors.green:Colors.black87,fontSize: 11, fontWeight: FontWeight.w400 ,)),
                       SizedBox(height: 7,),
-                      CustomText(text: "B . ${data[index]["option_2"]??""}", fontSize: 11, fontWeight: FontWeight.w400),
+                      CustomText(text: "B . ${data[index]["option_2"]??""}",text_color: _selectedIndex==index? Colors.green:Colors.black87, fontSize: 11, fontWeight: FontWeight.w400),
                       SizedBox(height: 7,),
-                      CustomText(text: "C . ${data[index]["option_3"]??""}",fontSize: 11, fontWeight: FontWeight.w400 ,),
+                      CustomText(text: "C . ${data[index]["option_3"]??""}",text_color: _selectedIndex==index? Colors.green:Colors.black87, fontSize: 11, fontWeight: FontWeight.w400 ,),
                       SizedBox(height: 7,),
-                      CustomText(text: "D . ${data[index]["option_4"]??""}",fontSize:11,   fontWeight: FontWeight.w400 ),
+                      CustomText(text: "D . ${data[index]["option_4"]??""}",text_color: _selectedIndex==index? Colors.green:Colors.black87, fontSize:11,   fontWeight: FontWeight.w400 ),
 
                     ],
                   ),
