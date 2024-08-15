@@ -61,7 +61,7 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
 
-                      CustomText(text: "Q1 . ${Bidi.stripHtmlIfNeeded("${data[index]["question_description"]??""}").replaceAll( "\n", " " )} ", fontSize: 14, fontWeight: FontWeight.w400),
+                      CustomText(text: "Q${index+1} . ${Bidi.stripHtmlIfNeeded("${data[index]["question_description"]??""}").replaceAll( "\n", " " )} ", fontSize: 14, fontWeight: FontWeight.w400),
                       Divider(height: 5,),
                       CustomText(text:"A . ${data[index]["option_1"]??""}", fontSize: 11, fontWeight: FontWeight.w400 ,),
                       SizedBox(height: 7,),

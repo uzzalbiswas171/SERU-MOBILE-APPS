@@ -19,11 +19,12 @@ class _IndividualResultScreenState extends State<IndividualResultScreen> {
   Widget build(BuildContext context) {
     final data=Provider.of<ProfileController>(context).All_MyMARK_RESULT_LIST_HISTORY_GET;
 
+
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomIndividualAppbar(onPress: () {
          Navigator.pop(context);
       //  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("You have to finish or submit")));
-      }, title: "Your result on 30/10/2024")),
+      }, title: "Result")),
     body : RefreshIndicator(
       onRefresh:() {
       return Future.delayed(Duration(seconds: 1),() {
@@ -58,17 +59,7 @@ class _IndividualResultScreenState extends State<IndividualResultScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                 //  CustomText(text: "Q1 . I am from sadhhali sn Lorem text is so damy datta from here", fontSize: 13, fontWeight: FontWeight.w400),
-                 // Divider(height: 5,),
-                 //  CustomText(text: "A . asvasvdjasv js as jajs djasdjagsdj", fontSize: 13, fontWeight: FontWeight.w400,text_color: Colors.green,),
-                 //  SizedBox(height: 7,),
-                 //  CustomText(text: "B . I am ,shdvucsd cusd cuadugscuagsudgasugduasgdu as du asud uasgfrom sadhhali   ", fontSize: 13, fontWeight: FontWeight.w400),
-                 //  SizedBox(height: 7,),
-                 //   CustomText(text: "C . I am from sadhhali   ", fontSize: 13, fontWeight: FontWeight.w400),
-                 //  SizedBox(height: 7,),
-                 //  CustomText(text: "D . I am from sadhhali  ", fontSize:13,text_color:index==3? Colors.red : Colors.black, fontWeight: FontWeight.w400),
-
-                  CustomText(text: "Q1 . ${data[index]["question_description"].replaceAll( "\n", " " )??""}", fontSize: 13, fontWeight: FontWeight.w400),
+                  CustomText(text: "Q${index+1} . ${data[index]["question_description"].replaceAll( "\n", " " )??""}", fontSize: 13, fontWeight: FontWeight.w400),
                   Divider(height: 5,),
                   CustomText(text:"A . ${data[index]["option_1"]??""}", fontSize: 13, fontWeight: FontWeight.w400 ,  text_color: "${data[index]["answer_list"]??""}"=="1"  ? Colors.green:"${data[index]["answer_list"]??""}"=="1" && "${data[index]["answer_selected"]??""}"==1?Colors.green:"${data[index]["answer_selected"]??""}"=="1"?Colors.red: Colors.black,),
                   SizedBox(height: 7,),

@@ -53,10 +53,6 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
 
     final data=Provider.of<ProfileController>(context).All_MyMARK_RESULT_LIST_GET;
 
-
-    print("sssssssssssssssssssssssssssss ${data}");
-    
-    
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
     return Scaffold(
@@ -266,9 +262,16 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                           onTap: () {
                             print("seeeeeeeeeettttttttttttttttttt  ${value.All_MyMARK_RESULT_LIST_GET[index]["question_set"]}");
                             Provider.of<ProfileController>(context,listen: false).get_All_My_MARK_RESULT_HISTORYProvider(context, "${value.All_MyMARK_RESULT_LIST_GET[index]["question_set"]}");
-                            showDialog(context: context, builder: (context) => AlertDialog(title: Center(child: CircularProgressIndicator(),),),);
+                            showDialog(context: context, builder: (context) => AlertDialog(title: Center(child: Column(
+                              children: [
+                                CircularProgressIndicator(
+                                  backgroundColor: textFieldBoarderColorC,
+                                ),
+                                Text("Please wait")
+                              ],
+                            ),),),);
                             Future.delayed(Duration(seconds: 1),() {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => IndividualResultScreen(),));
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => IndividualResultScreen(),));
                             },);
                             },
                           child: Container(
