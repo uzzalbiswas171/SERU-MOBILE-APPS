@@ -51,7 +51,7 @@ String MARKRESULT ="api/protected/results";
 
 
 /// MarKResult history
-String MARKRESULT_HISTORY ="/api/protected/result/";
+String MARKRESULT_HISTORY ="api/protected/result";
 
 
 

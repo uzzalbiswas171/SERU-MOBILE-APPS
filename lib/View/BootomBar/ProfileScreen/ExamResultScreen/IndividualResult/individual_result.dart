@@ -40,8 +40,7 @@ class _IndividualResultScreenState extends State<IndividualResultScreen> {
         width: double.infinity,
         padding: EdgeInsets.all(10),
         child: ListView.builder(
-       //   itemCount: data.length,
-          itemCount: 5,
+        itemCount: data.length,
           itemBuilder: (context, index) {
           return Card(
             elevation: 2,
@@ -69,7 +68,7 @@ class _IndividualResultScreenState extends State<IndividualResultScreen> {
                  //  SizedBox(height: 7,),
                  //  CustomText(text: "D . I am from sadhhali  ", fontSize:13,text_color:index==3? Colors.red : Colors.black, fontWeight: FontWeight.w400),
 
-                  CustomText(text: "Q1 . ${data[index]["question_description"]??""}", fontSize: 13, fontWeight: FontWeight.w400),
+                  CustomText(text: "Q1 . ${data[index]["question_description"].replaceAll( "\n", " " )??""}", fontSize: 13, fontWeight: FontWeight.w400),
                   Divider(height: 5,),
                   CustomText(text:"A . ${data[index]["option_1"]??""}", fontSize: 13, fontWeight: FontWeight.w400 ,  text_color: "${data[index]["answer_list"]??""}"=="1"  ? Colors.green:"${data[index]["answer_list"]??""}"=="1" && "${data[index]["answer_selected"]??""}"==1?Colors.green:"${data[index]["answer_selected"]??""}"=="1"?Colors.red: Colors.black,),
                   SizedBox(height: 7,),

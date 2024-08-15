@@ -172,6 +172,10 @@ class CustomHttp{
   ///  All_MyMARK_RESULT_LIST_GET list get-------------------------------
   List getAllMy_MARKRESULTList=[];
   get_AllMy_MARK_RESULT_function(BuildContext context )async{
+
+    print( "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn${GetStorage().read("Api_token")}");
+
+
     String url="${BASEURL}${MARKRESULT}?api_token=${GetStorage().read("Api_token")}";
     try{
       Response response=await http.get(Uri.parse(url), headers: headers);
@@ -187,7 +191,7 @@ class CustomHttp{
   ///  All_MyMARK_RESULT_LIST_GET list History  get-------------------------------
   List getAllMy_MARKRESULT_HistoryList=[];
   get_AllMy_MARK_RESULT_HISTORY_function(BuildContext context,String question_set)async{
-    String url="${BASEURL}${MARKRESULT_HISTORY}/${question_set}?api_token=${GetStorage().read("Api_token")}";
+    String url="${BASEURL}${MARKRESULT_HISTORY}/A12UV12?api_token=${GetStorage().read("Api_token")}";
     try{
       Response response=await http.get(Uri.parse(url), headers: headers);
       final data=jsonDecode(response.body);
