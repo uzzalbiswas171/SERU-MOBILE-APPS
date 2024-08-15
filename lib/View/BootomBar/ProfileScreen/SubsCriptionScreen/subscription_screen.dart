@@ -72,7 +72,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                           CustomText(text: "${value.MySubscription[index]["title"]}", fontSize: 13, fontWeight: FontWeight.w500)
                           ,
                           SizedBox(height: 5,),
-                          CustomText(text:Bidi.stripHtmlIfNeeded("${value.MySubscription[index]["description"]}") , fontSize: 16, fontWeight: FontWeight.w500)
+                          CustomText(text:Bidi.stripHtmlIfNeeded("${value.MySubscription[index]["description"]}") ,overflow: TextOverflow.ellipsis, fontSize: 16, fontWeight: FontWeight.w500)
                           ,SizedBox(height: 5,),
                           // Image.asset("assets/Gif/buynow.webp",height: 40,width: 100,fit: BoxFit.fill,)
                         ],
