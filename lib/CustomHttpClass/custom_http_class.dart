@@ -203,4 +203,34 @@ class CustomHttp{
     return getAllMy_MARKRESULT_HistoryList;
   }
 
+
+  ///  Answer Submit Provider CustomHtt pRequest list History  get-------------------------------
+  List AnswerSubmitProviderCustomHttpRequestList=[];
+  AnswerSubmitProviderCustomHttpRequest(
+      BuildContext context,
+      String mocktest_id,
+      String mocktest_question_id,
+      String answer,
+      String question_set,
+      )async{
+
+    try{
+      var response = await http.post(
+        Uri.parse("https://www.tflserutest.co.uk/api/protected/answer?api_token=${GetStorage().read("Api_token")}"),
+        body: {
+          'mocktest_id': "$mocktest_id",
+          'mocktest_question_id': "$mocktest_question_id",
+          'answer': "$answer",
+          'question_set': "$question_set",
+        },
+      );
+
+      final data=jsonDecode(response.body);
+     print(data);
+    }catch(e){
+      print("Answer Submit Provider Custom Http Request List catch error > $e");
+    }
+    return AnswerSubmitProviderCustomHttpRequestList;
+  }
+
 }

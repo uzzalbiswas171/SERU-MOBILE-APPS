@@ -54,6 +54,10 @@ String MARKRESULT ="api/protected/results";
 String MARKRESULT_HISTORY ="api/protected/result";
 
 
+/// MarKResult history
+String AnswerSubmit ="api/protected/answer";
+
+
 
 
 
