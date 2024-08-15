@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
@@ -117,7 +118,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         },label: Text("No",style: TextStyle(color: Colors.black),)),
 
                         ActionChip(onPressed: () {
-                          Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => LiveExamScreen(),));
+                          var rng = new Random();
+                          var code = rng.nextInt(900000) + 100000;
+                          Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => LiveExamScreen(
+                            randomdata: code,
+                          ),));
 
                         },label: Text("Yes",style: TextStyle(color: Colors.black),)),
 

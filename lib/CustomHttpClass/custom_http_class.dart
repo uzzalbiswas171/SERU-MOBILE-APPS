@@ -3,11 +3,14 @@
 
 import 'dart:convert';
 
+import 'package:elegant_notification/elegant_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
+import 'package:seru_test_project/View/Auth/Login/screens/login_screen.dart';
 
+import '../CustomWidget/CustomText/custom_text.dart';
 import '../Routes/routes.dart';
 import '../View/BootomBar/bootombar.dart';
 
@@ -54,21 +57,36 @@ class CustomHttp{
       Uri.parse("${BASEURL}${REGISTRATION}"),
       body: {
         'name': "$name",
-        'surname': "$surname",
+        'surname': "surname",
         'email': "$email",
         'password': "$password",
         'password_confirmation': "$password",
-        'address': "$address",
-        'currentworking': "$currentworking",
-        'qualification': "$qualification",
-        'qualification_other': "$qualification_other",
+        'address': "address",
+        'currentworking': "currentworking",
+        'currentworking_other': "currentworking_other",
+        'qualification': "qualification",
+        'qualification_other': "qualification_other",
         'phone_id': "$phone_id",
       },
     );
     print('Responsesssssssssssssssssssssssssssssss :${response.body}');
     if (response.statusCode == 200) {
+      ElegantNotification(
+        borderRadius: BorderRadius.circular(11),
+        width: 380,
+        iconSize: 25,
+        background: Colors.green,
+        progressIndicatorBackground: Colors.green,
+        progressIndicatorColor: Colors.red,
+        // position: Alignment.center,
+        title:   CustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Registration successfully",  ),
+        description:  CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks for registration",     ),
+        onDismiss: () {
+          print('Message when the notification is dismissed');
+        }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+      ).show(context);
       var r =  jsonDecode(response.body)["data"];
-      Navigator.push(context, MaterialPageRoute(builder: (context) => BttotomBarScreen(index: 0,),));
+      Navigator.push(context, MaterialPageRoute(builder: (context) =>LoginScreen(),));
     }
   }
 

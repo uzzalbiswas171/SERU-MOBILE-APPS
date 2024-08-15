@@ -142,8 +142,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                       CustomButton(
                           onTap: () {
-
-
                             Provider.of<RegistrationController>(context,listen: false).getRegistrationInfoProvider(
                                 "${name.text}",
                                 "${surname.text}",
