@@ -69,7 +69,7 @@ class _MockTestScreenState extends State<MockTestScreen> {
                             CustomText(text: "Mocktest\n✓${value.MockTest[index]["mocktest_id"]}", fontSize: 14, fontWeight: FontWeight.w500,textAlign: TextAlign.center,)
                             ,
                             SizedBox(height: 5,),
-                            CustomText(text: "${value.MockTest[index]["description"]}",fontSize: 11, fontWeight: FontWeight.w400,textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,maxLines: 3,)
+                            CustomText(text: "${value.MockTest[index]["description"]}",fontSize: 11, fontWeight: FontWeight.w400,textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,maxLines: 2,)
                             ,SizedBox(height: 5,),
                           ],
                         ),

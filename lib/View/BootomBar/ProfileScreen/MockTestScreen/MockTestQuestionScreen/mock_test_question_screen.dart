@@ -24,6 +24,8 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
   int _selectedIndex=-1;
   String _selectedIndex2="";
   String option="";
+  final List<int> selectedIndexes = [];
+  final List<String> selectedIndexesString = [];
   @override
   Widget build(BuildContext context) {
     print("rrrrrrrrrrrrrrrrrrrrrrrrrrrr =========> ${widget.randomNumber}");
@@ -48,17 +50,19 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
           width: double.infinity,
           padding: EdgeInsets.all(10),
           child: ListView.builder(
-            //   itemCount: data.length,
-            itemCount: 5,
+              itemCount: data.length,
             itemBuilder: (context, index) {
               return Card(
                 elevation: 2,
-                child: Container(
+                child:data==null?Center(child: CircularProgressIndicator(backgroundColor: Colors.red,),):
+                Container(
                   // margin: EdgeInsets.only(bottom: 7),
                   width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(7),
-                      //  color: appbarcollor.withOpacity(0.5),
+                    // color:   selectedIndexes.contains(index)
+                    //       ? redColor.withOpacity(0.2)
+                    //       : Color(0xffF4F4F6) ,
                       border: Border.all(
                           color: Colors.black.withOpacity(0.5)
                       )
@@ -73,8 +77,18 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
                       InkWell(
                           onTap: () {
                             setState(() {
+
+
+
+                              ///------------------------------------------------------------------
+
+
+                                  selectedIndexes.add(index);
+
+                              ///------------------------------------------------------------------
                               _selectedIndex=index;
                               _selectedIndex2="${data[index]["mocktest_question_id"]}";
+                                  selectedIndexesString.add(data[index]["option_1"]);
                               option="1";
                               Provider.of<AnswerSubmitController>(context,listen: false).AnswerSubmitProvider(
                                   context,
@@ -85,11 +99,16 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
                               );
                             });
                           },
-                          child: CustomText(text:"A . ${data[index]["option_1"]??""}", text_color: _selectedIndex==index &&  _selectedIndex2=="${data[index]["option_2"]}" && option=="1"? Colors.green:Colors.black87,fontSize: 11, fontWeight: FontWeight.w400 ,)),
+                          child: CustomText(text:"A . ${data[index]["option_1"]??""}", text_color:  selectedIndexes.contains(index) && option=="1"? Colors.green:Colors.black87,fontSize: 11, fontWeight: FontWeight.w400 ,)),
+
+
+
                       SizedBox(height: 7,),
                       InkWell(
                           onTap: () {
                             setState(() {
+                              selectedIndexes.add(index);
+                              selectedIndexesString.add(data[index]["option_2"]);////
                               _selectedIndex=index;
                               _selectedIndex2="${data[index]["mocktest_question_id"]}";
                               option="2";
@@ -102,11 +121,13 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
                               );
                             });
                           },
-                          child: CustomText(text: "B . ${data[index]["option_2"]??""}",text_color: _selectedIndex==index && option=="2"? Colors.green:Colors.black87, fontSize: 11, fontWeight: FontWeight.w400)),
+                          child: CustomText(text: "B . ${data[index]["option_2"]??""}",text_color: selectedIndexes.contains(index)&&  option=="2"? Colors.green:Colors.black87, fontSize: 11, fontWeight: FontWeight.w400)),
                       SizedBox(height: 7,),
                       InkWell(
                           onTap: () {
                             setState(() {
+                              selectedIndexes.add(index);
+                              selectedIndexesString.add(data[index]["option_3"]);
                               _selectedIndex=index;
                               _selectedIndex2="${data[index]["mocktest_question_id"]}";
                               option="3";
@@ -119,11 +140,13 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
                               );
                             });
                           },
-                          child: CustomText(text: "C . ${data[index]["option_3"]??""}",text_color: _selectedIndex==index && option=="3"? Colors.green:Colors.black87, fontSize: 11, fontWeight: FontWeight.w400 ,)),
+                          child: CustomText(text: "C . ${data[index]["option_3"]??""}",text_color: selectedIndexes.contains(index)&&  option=="3"? Colors.green:Colors.black87, fontSize: 11, fontWeight: FontWeight.w400 ,)),
                       SizedBox(height: 7,),
                       InkWell(
                           onTap: () {
                             setState(() {
+                              selectedIndexes.add(index);
+                              selectedIndexesString.add(data[index]["option_4"]);
                               _selectedIndex=index;
                               _selectedIndex2="${data[index]["mocktest_question_id"]}";
                               option="4";
@@ -136,7 +159,7 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
                               );
                             });
                           },
-                          child: CustomText(text: "D . ${data[index]["option_4"]??""}",text_color: _selectedIndex==index && option=="4"? Colors.green:Colors.black87, fontSize:11,   fontWeight: FontWeight.w400 )),
+                          child: CustomText(text: "D . ${data[index]["option_4"]??""}",text_color: selectedIndexes.contains(index)&&  option=="4"? Colors.green:Colors.black87, fontSize:11,   fontWeight: FontWeight.w400 )),
 
                     ],
                   ),
