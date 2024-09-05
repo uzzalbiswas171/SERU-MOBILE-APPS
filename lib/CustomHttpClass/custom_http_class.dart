@@ -33,6 +33,20 @@ class CustomHttp{
     if (response.statusCode == 200) {
       var r =  jsonDecode(response.body)["data"];
       GetStorage().write("Api_token",r["api_token"]);
+      ElegantNotification(
+        borderRadius: BorderRadius.circular(11),
+        width: 380,
+        iconSize: 25,
+        background: Colors.green,
+        progressIndicatorBackground: Colors.green,
+        progressIndicatorColor: Colors.red,
+        // position: Alignment.center,
+        title:   CustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Login successfully",  ),
+        description:  CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks for Login",     ),
+        onDismiss: () {
+          print('Message when the notification is dismissed');
+        }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+      ).show(context);
       Navigator.push(context, MaterialPageRoute(builder: (context) => BttotomBarScreen(index: 0,),));
     }
   }

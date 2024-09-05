@@ -301,9 +301,10 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                                     borderRadius: BorderRadius.circular(7),
                                   ),
                                   child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      //      CustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "${DateFormat.yMMMEd().format(value.All_MyMARK_RESULT_LIST_GET[index]["date"])}",  text_color: appbarcollor),
-                                  CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${value.All_MyMARK_RESULT_LIST_GET[index]["is_pass"]}", text_color: appbarcollor),
+                                        //  CustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "${DateFormat.yMMMEd().format(value.All_MyMARK_RESULT_LIST_GET[index]["date"])}",  text_color: appbarcollor),
+                                  CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${value.All_MyMARK_RESULT_LIST_GET[index]["is_pass"]}"=="false" ?"Fail" : "Pass", text_color: appbarcollor),
                                     ],
                                   ),
                                 ),
