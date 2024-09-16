@@ -125,7 +125,12 @@ class CustomHttp{
     try{
       Response response=await http.get(Uri.parse(url), );
       final data=jsonDecode(response.body);
-      getAllPackageList=data["data"];
+      for(int i=0;i<data["data"].length;i++){
+        if("${data["data"][i]["active_status"]}" == "Active"){
+          getAllPackageList.add(data["data"][i]);
+        }
+      }
+
 
     }catch(e){
       print("getAllPackageFunction catch error-----------------------------------------> $e");
@@ -239,13 +244,8 @@ class CustomHttp{
   ///  Answer Submit Provider CustomHtt pRequest list History  get-------------------------------
   List AnswerSubmitProviderCustomHttpRequestList=[];
   AnswerSubmitProviderCustomHttpRequest(
-      BuildContext context,
-      String mocktest_id,
-      String mocktest_question_id,
-      String answer,
-      String question_set,
+      BuildContext context, String mocktest_id, String mocktest_question_id, String answer, String question_set,
       )async{
-
     try{
       var response = await http.post(
         Uri.parse("https://www.tflserutest.co.uk/api/protected/answer?api_token=${GetStorage().read("Api_token")}"),
@@ -256,7 +256,6 @@ class CustomHttp{
           'question_set': "$question_set",
         },
       );
-
       final data=jsonDecode(response.body);
      print(data);
     }catch(e){
@@ -265,4 +264,51 @@ class CustomHttp{
     return AnswerSubmitProviderCustomHttpRequestList;
   }
 
+
+  ///  Buy Package Without Voucher-------------------------------
+  dynamic buyPackageWithoutVouche;
+  buyPackageWithoutVoucherHttpFunction(
+      BuildContext context,
+      int package_id,
+      int subscription_structure_id,
+      String voucher_gift,
+      String friend_relative_email,
+      String name,
+      String surname,
+      String address,
+      String address_2,
+      String city,
+      String country,
+      int postal_code,
+      String personal_email,
+      String date_for_physical,
+      )async{
+    try{
+      var response = await http.post(
+        Uri.parse("$BASEURL${BuyPackageWithoutVoucher}?api_token=${GetStorage().read("Api_token")}"),
+        body: {
+      "package_id":package_id,
+      "subscription_structure_id":subscription_structure_id,
+      "voucher_gift":"${voucher_gift}",
+      "friend_relative_email":"$friend_relative_email",
+      "name":"$name",
+      "surname" : "$surname",
+      "address":"$address",
+      "address_2":"$address_2",
+      "city"	:"$city",
+      "country":"$country",
+      "postal_code":postal_code,
+      "email"	:"${personal_email}",
+      "date_for_physical"	:"${date_for_physical}"
+        },
+      );
+      dynamic data=jsonDecode(response.body);
+      buyPackageWithoutVouche=data;
+      print("pppppppppppppppppppppppppppppppppppppppppppp buyyyyyyyyyyyyyyyyyyyyyyy apiiiiiiiiiiiiiii  $data");
+    }catch(e){
+      print("Pacage buy screen catch error > $e");
+    }
+  }
+
 }
+

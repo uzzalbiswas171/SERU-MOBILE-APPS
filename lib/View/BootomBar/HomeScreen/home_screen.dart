@@ -34,11 +34,13 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 bool  is_cliced=false;
  bool  is_cliced_for_own=true;
-
+  List getAllActivePackageList=[];
   @override
   Widget build(BuildContext context) {
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
+  //  final getAllPackageList=Provider.of<HomeController>(context).getAllPackageList;
+
     return Scaffold(
 
      body: RefreshIndicator(
@@ -80,7 +82,9 @@ bool  is_cliced=false;
                    ), itemBuilder: (context, index) {
                      return InkWell(
                        onTap: () {
-                         "${GetStorage().read("Api_token")}"=="" || "${GetStorage().read("Api_token")}"=="null"?     Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),))
+                         "${GetStorage().read("Api_token")}"=="" || "${GetStorage().read("Api_token")}"=="null"?
+
+                         Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),))
                              :
                          showDialog(context: context, builder: (context) {
                            return StatefulBuilder(
@@ -208,14 +212,14 @@ bool  is_cliced=false;
                                  color: Colors.black
                                ),
                                alignment: Alignment.center,
-                               child: CustomText(text: "\£ ${value.getAllPackageList[index]["price"]??0}",text_color: main_text_white_color ,fontSize: 17, fontWeight: FontWeight.w500),
+                               child: CustomText(text: "\£ ${value.getAllPackageList[index]["amount"]??0}",text_color: main_text_white_color ,fontSize: 17, fontWeight: FontWeight.w500),
                              ),
                              ),
                              SizedBox(height: 5,),
-                             CustomText(text: "${value.getAllPackageList[index]["title"]??"0"}", fontSize: 16, fontWeight: FontWeight.w500)
+                             CustomText(maxLines:2, text: "${value.getAllPackageList[index]["title"]??"0"}", fontSize: 16, fontWeight: FontWeight.w500)
                              ,
                              SizedBox(height: 5,),
-                             CustomText(text: "Package ${value.getAllPackageList[index]["package_id"]??"0"}", fontSize: 16, fontWeight: FontWeight.w500)
+                             CustomText(text: "Package ${value.getAllPackageList[index]["subscription_structure_id"]??"0"}", fontSize: 16, fontWeight: FontWeight.w500)
                            ,SizedBox(height: 5,),
                             InkWell(
                               onTap: () {

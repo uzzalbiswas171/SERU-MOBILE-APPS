@@ -46,31 +46,31 @@ class _CustomAppbarState extends State<CustomAppbar> {
       
         centerTitle: true,
         actions: [
-          InkWell(
-            onTap: () {
-          //    Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNavigatiomBar(index: 2, indexchange: 2),));
-            },
-            child: Stack(
-              children: [
-                CircleAvatar(
-                  radius: 18,
-                  child: Icon(Icons.shopping_cart,color: Colors.grey,size: 25,),
-                ),
-
-                Positioned(
-                   right: 6,
-                   top: 5,
-                   child: CircleAvatar(
-                     backgroundColor: Colors.black87,
-                     radius: 7,
-                     child: Text("11",style: TextStyle(fontSize: 10,color: Colors.white),
-                     ),
-                   ),
-                 ),
-              ],
-            ),
-          ),
-          SizedBox(width: 5,),
+          // InkWell(
+          //   onTap: () {
+          // //    Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNavigatiomBar(index: 2, indexchange: 2),));
+          //   },
+          //   child: Stack(
+          //     children: [
+          //       CircleAvatar(
+          //         radius: 18,
+          //         child: Icon(Icons.shopping_cart,color: Colors.grey,size: 25,),
+          //       ),
+          //
+          //       Positioned(
+          //          right: 6,
+          //          top: 5,
+          //          child: CircleAvatar(
+          //            backgroundColor: Colors.black87,
+          //            radius: 7,
+          //            child: Text("11",style: TextStyle(fontSize: 10,color: Colors.white),
+          //            ),
+          //          ),
+          //        ),
+          //     ],
+          //   ),
+          // ),
+       //   SizedBox(width: 5,),
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: InkWell(
@@ -87,8 +87,9 @@ class _CustomAppbarState extends State<CustomAppbar> {
                           child: Icon(Icons.person),
                         ),
                       ),
-                    )),
-            ),
+                   )
+                ),
+             ),
           ),
         ],
       ),

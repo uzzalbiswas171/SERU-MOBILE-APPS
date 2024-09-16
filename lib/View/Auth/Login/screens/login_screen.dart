@@ -52,8 +52,8 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: [
                 Container(
-                  height: h*0.28,
-                  width: h*0.30,
+                  height:h>700? h*0.28 : h*0.18 ,
+                  width:h>700? h*0.30 : h*0.20,
                   decoration: BoxDecoration(
                      image: DecorationImage(image: AssetImage("assets/Icons/onride.png"),fit: BoxFit.fill),
                   ),

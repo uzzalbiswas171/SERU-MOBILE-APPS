@@ -168,14 +168,16 @@ class _PackageScreenState extends State<PackageScreen> {
                                 color: Colors.black
                             ),
                             alignment: Alignment.center,
-                            child: CustomText(text: "\£ ${value.getAllPackageList[index]["price"]??0}",text_color: main_text_white_color ,fontSize: 17, fontWeight: FontWeight.w500),
+                            child: CustomText(text: "\£ ${value.getAllPackageList[index]["payable_amount"]??0}",text_color: main_text_white_color ,fontSize: 17, fontWeight: FontWeight.w500),
                           ),
                         ),
                         SizedBox(height: 5,),
-                        CustomText(text: "${value.getAllPackageList[index]["title"]??"0"}", fontSize: 16, fontWeight: FontWeight.w500)
+                        CustomText(
+                            maxLines: 2,
+                            text: "${value.getAllPackageList[index]["title"]??"0"}", fontSize: 16, fontWeight: FontWeight.w500)
                         ,
                         SizedBox(height: 5,),
-                        CustomText(text: "Package ${value.getAllPackageList[index]["package_id"]??"0"}", fontSize: 16, fontWeight: FontWeight.w500)
+                        CustomText(text: "Package ${value.getAllPackageList[index]["subscription_structure_id"]??"0"}", fontSize: 16, fontWeight: FontWeight.w500)
                         ,SizedBox(height: 5,),
                         InkWell(
                           onTap: () {
