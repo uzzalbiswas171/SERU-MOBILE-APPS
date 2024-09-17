@@ -95,12 +95,22 @@ class _RegistrationForBuyScreenState extends State<RegistrationForBuyScreen> {
                     SizedBox(height: 15,),
                     
                     CustomButton(onTap: () {
-                      showDialog(context: context, builder: (context) => AlertDialog(
-                        title: CustomText(text: "Enter your card information", fontSize: 14, fontWeight: FontWeight.w400),
-                        actions: [
-                          
-                        ],
-                      ),);
+                      // Provider.of<BuyPackageController>(context,listen: false).buyPackageWithoutVoucherProvider(
+                      //     context,
+                      //     package_id,
+                      //     subscription_structure_id,
+                      //     voucher_gift,
+                      //     friend_relative_email,
+                      //     name,
+                      //     surname,
+                      //     address,
+                      //     address_2,
+                      //     city,
+                      //     country,
+                      //     postal_code,
+                      //     personal_email,
+                      //     date_for_physical
+                      // )
                     }, text: "Next", button_text_fontSize: 15, button_height: 50)
                   ],
                 ),

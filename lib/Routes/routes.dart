@@ -30,7 +30,7 @@
 
  ///---------------------------------------------------------Home Screen Part------------------------------
 /// GET ALL PACKAGE
-String GETALLPACKAGRE ="api/packages";
+String GETALLPACKAGRE ="api/subscriptions";
 
 
 /// MOCK TEST
@@ -56,6 +56,10 @@ String MARKRESULT_HISTORY ="api/protected/result";
 
 /// MarKResult history
 String AnswerSubmit ="api/protected/answer";
+
+
+/// Buy Package Without Voucher
+String BuyPackageWithoutVoucher ="api/protected/buy-package";
 
 
 

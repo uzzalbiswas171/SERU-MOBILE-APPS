@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
+import 'package:seru_test_project/Controller/buy_package_controller.dart';
 import 'Controller/answerSubmitController.dart';
 import 'Controller/homeController.dart';
 import 'Controller/loginController.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
       ChangeNotifierProvider<LoginController>(create: (context) => LoginController(),),
       ChangeNotifierProvider<RegistrationController>(create: (context) => RegistrationController(),),
       ChangeNotifierProvider<AnswerSubmitController>(create: (context) => AnswerSubmitController(),),
+      ChangeNotifierProvider<BuyPackageController>(create: (context) => BuyPackageController(),),
     ],
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
