@@ -88,8 +88,10 @@ class _PackageScreenState extends State<PackageScreen> {
                                   is_cliced==false?Container():
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
-                                    },
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                        package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
+                                        subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                      ),)); },
                                     child: Container(
                                       height: 60,
                                       width: MediaQuery.of(context).size.width*0.8,
@@ -110,8 +112,10 @@ class _PackageScreenState extends State<PackageScreen> {
 
                                         GestureDetector(
                                             onTap: () {
-                                              Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
-                                            },
+                                              Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
+                                                subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                              ),)); },
                                             child: CustomImageSection(image:AssetImage("assets/PymentImage/payple.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
                                         CircleAvatar(
                                           radius: 30,
@@ -122,8 +126,10 @@ class _PackageScreenState extends State<PackageScreen> {
                                         ),
                                         GestureDetector(
                                             onTap: () {
-                                              Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
-                                            },child: CustomImageSection(image:AssetImage("assets/PymentImage/gpay.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
+                                              Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
+                                                subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                              ),)); },child: CustomImageSection(image:AssetImage("assets/PymentImage/gpay.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
 
                                       ],
                                     ),
@@ -136,8 +142,10 @@ class _PackageScreenState extends State<PackageScreen> {
                                       children: [
                                         GestureDetector(
                                             onTap: () {
-                                              Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
-                                            },child: CustomImageSection(image:AssetImage("assets/PymentImage/mastercad.PNG"), img_height: 90, img_width: 80, img_margin: 10, Img_radius: 11)),
+                                              Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
+                                                subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                              ),)); },child: CustomImageSection(image:AssetImage("assets/PymentImage/mastercad.PNG"), img_height: 90, img_width: 80, img_margin: 10, Img_radius: 11)),
                                       ],
                                     ),
                                   ),
@@ -223,8 +231,11 @@ class _PackageScreenState extends State<PackageScreen> {
                                           is_cliced==false?Container():   SizedBox(height: 20,),
                                           is_cliced==false?Container(): GestureDetector(
                                             onTap: () {
-                                              Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
-                                            },
+                                              Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
+                                                subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                              ),));
+                                              },
                                             child: Container(
                                               height: 60,
                                               width: MediaQuery.of(context).size.width*0.8,
@@ -245,8 +256,11 @@ class _PackageScreenState extends State<PackageScreen> {
 
                                                 GestureDetector(
                                                     onTap: () {
-                                                      Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
-                                                    },
+                                                      Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                        package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
+                                                        subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                      ),));
+                                                      },
                                                     child: CustomImageSection(image:AssetImage("assets/PymentImage/payple.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
                                                 CircleAvatar(
                                                   radius: 30,
@@ -257,8 +271,10 @@ class _PackageScreenState extends State<PackageScreen> {
                                                 ),
                                                 GestureDetector(
                                                     onTap: () {
-                                                      Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
-                                                    },child: CustomImageSection(image:AssetImage("assets/PymentImage/gpay.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
+                                                      Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                        package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
+                                                        subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                      ),)); },child: CustomImageSection(image:AssetImage("assets/PymentImage/gpay.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
 
                                               ],
                                             ),
@@ -271,8 +287,10 @@ class _PackageScreenState extends State<PackageScreen> {
                                               children: [
                                                 GestureDetector(
                                                     onTap: () {
-                                                      Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
-                                                    },child: CustomImageSection(image:AssetImage("assets/PymentImage/mastercad.PNG"), img_height: 90, img_width: 80, img_margin: 10, Img_radius: 11)),
+                                                      Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                        package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
+                                                        subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                      ),)); },child: CustomImageSection(image:AssetImage("assets/PymentImage/mastercad.PNG"), img_height: 90, img_width: 80, img_margin: 10, Img_radius: 11)),
                                               ],
                                             ),
                                           ),
