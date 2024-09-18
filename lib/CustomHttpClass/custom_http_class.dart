@@ -9,6 +9,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 import 'package:seru_test_project/View/Auth/Login/screens/login_screen.dart';
+import 'package:seru_test_project/View/RegistrationForBuyScreen/stripe_payment.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../CustomWidget/CustomText/custom_text.dart';
 import '../Routes/routes.dart';
@@ -279,16 +281,16 @@ class CustomHttp{
       String address_2,
       String city,
       String country,
-      int postal_code,
+      String postal_code,
       String personal_email,
       String date_for_physical,
       )async{
     try{
       var response = await http.post(
-        Uri.parse("$BASEURL${BuyPackageWithoutVoucher}?api_token=${GetStorage().read("Api_token")}"),
+        Uri.parse("https://www.tflserutest.co.uk/api/protected/buy-package?api_token=${GetStorage().read("Api_token")}"),
         body: {
-      "package_id":package_id,
-      "subscription_structure_id":subscription_structure_id,
+      "package_id":"$package_id",
+      "subscription_structure_id":"$subscription_structure_id",
       "voucher_gift":"${voucher_gift}",
       "friend_relative_email":"$friend_relative_email",
       "name":"$name",
@@ -297,18 +299,41 @@ class CustomHttp{
       "address_2":"$address_2",
       "city"	:"$city",
       "country":"$country",
-      "postal_code":postal_code,
+      "postal_code":"${postal_code}",
       "email"	:"${personal_email}",
       "date_for_physical"	:"${date_for_physical}"
+
+
+
+      // "package_id" : int.parse("$package_id"),
+      // "subscription_structure_id":int.parse("$subscription_structure_id"),
+      // "voucher_gift":"${voucher_gift}",
+      // "friend_relative_email":"$friend_relative_email",
+      // "name":"$name",
+      // "surname":"$surname",
+      // "address":"$address",
+      // "address_2":"$address_2",
+      // "city":"$city",
+      // date_for_physical:
+
         },
       );
-      dynamic data=jsonDecode(response.body);
+      var data=jsonDecode(response.body);
       buyPackageWithoutVouche=data;
+       // Navigator.push(context, MaterialPageRoute(builder: (context) => StripePaymentScreen(
+       //    pay_url: data["pay_url"],
+       // ),));
+      _launchURL(data["pay_url"]);
       print("pppppppppppppppppppppppppppppppppppppppppppp buyyyyyyyyyyyyyyyyyyyyyyy apiiiiiiiiiiiiiii  $data");
     }catch(e){
       print("Pacage buy screen catch error > $e");
     }
   }
-
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }}
 }
 

@@ -18,7 +18,7 @@ class BuyPackageController with ChangeNotifier{
       String address_2,
       String city,
       String country,
-      int postal_code,
+      String postal_code,
       String personal_email,
       String date_for_physical,
       )async{

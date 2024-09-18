@@ -126,7 +126,7 @@ class _RegistrationForBuyScreenState extends State<RegistrationForBuyScreen> {
                           _address2Controller.text,
                           _cityController.text,
                           _countryController.text,
-                          int.parse(_zipController.text),
+                          _zipController.text,
                           _emailController.text,
                           ""
                       );
