@@ -60,8 +60,8 @@ class _RegistrationForBuyScreenState extends State<RegistrationForBuyScreen> {
               SizedBox(height: h*0.025,),
               /// Apply Sections
               CustomApplyVaucherSection(applyCuponController: _applyCuponController),
-             SizedBox(height: 15,),
-              Container(
+           widget.is_cliced_for_own==true?Container():  SizedBox(height: 15,),
+            widget.is_cliced_for_own==true?Container():  Container(
                 height: 120,
                 width: double.infinity,
                 margin: EdgeInsets.all(10),
@@ -113,7 +113,7 @@ class _RegistrationForBuyScreenState extends State<RegistrationForBuyScreen> {
                     CustomTExtFromField(controller: _countryController, hintText: "Country*", text: "Email", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), suffixIcon: Icon(Icons.person,color: main_text_blac_color.withOpacity(0.6),), obscureText: false,),
           
                     SizedBox(height: 15,),
-                    CustomTExtFromField(controller: _zipController, hintText: "Zip Postal Code*", text: "Email", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), suffixIcon: Icon(Icons.person,color: main_text_blac_color.withOpacity(0.6),), obscureText: false,),
+                    CustomTExtFromField(keyboardType: TextInputType.number,controller: _zipController, hintText: "Zip Postal Code*", text: "Email", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), suffixIcon: Icon(Icons.person,color: main_text_blac_color.withOpacity(0.6),), obscureText: false,),
           
                     SizedBox(height: 15,),
                     CustomTExtFromField(controller: _emailController, hintText: "Email*", text: "Email", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), suffixIcon: Icon(Icons.person,color: main_text_blac_color.withOpacity(0.6),), obscureText: false,),

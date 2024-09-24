@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     "assets/SeruTestBanner/seru_banner.jpg",
     "assets/SeruTestBanner/seru_banner.jpg",
   ];
-bool  is_cliced=false;
+bool  is_cliced=true;
  bool  is_cliced_for_own=true;
   List getAllActivePackageList=[];
   @override
@@ -97,7 +97,7 @@ bool  is_cliced=false;
                                      children: [
                                        Container(
                                          height: 60,
-                                         width: MediaQuery.of(context).size.width*0.8,
+                                         width: MediaQuery.of(context).size.width*0.85,
                                          child: Row(
                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                            children: [
@@ -110,7 +110,7 @@ bool  is_cliced=false;
                                                      is_cliced_for_own=false;
                                                      is_cliced=true;
                                                    },);
-                                                 }, child: CustomText(text: "FOR GIFT", fontSize: 16, fontWeight: FontWeight.w500)),
+                                                 }, child: CustomText(text: "FOR GIFT", fontSize:h<700?10: 12, fontWeight: FontWeight.w500)),
                                              ElevatedButton(
                                                  style: ElevatedButton.styleFrom(
                                                      backgroundColor:is_cliced_for_own==true? BootomBarColor:Colors.white
@@ -120,7 +120,7 @@ bool  is_cliced=false;
                                                      is_cliced_for_own=true;
                                                      is_cliced=true;
                                                    },);
-                                                 }, child: CustomText(text: "FOR OWN", fontSize: 16, fontWeight: FontWeight.w500)),
+                                                 }, child: CustomText(text: "FOR OWN", fontSize:h<700?10: 12, fontWeight: FontWeight.w500)),
                                            ],
                                          ),
                                        ),
@@ -251,7 +251,7 @@ bool  is_cliced=false;
                                             children: [
                                               Container(
                                                 height: 60,
-                                                width: MediaQuery.of(context).size.width*0.8,
+                                                width: MediaQuery.of(context).size.width*0.85,
                                                 child: Row(
                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                   children: [
@@ -264,7 +264,7 @@ bool  is_cliced=false;
                                                         is_cliced_for_own=false;
                                                         is_cliced=true;
                                                       },);
-                                                    }, child: CustomText(text: "FOR GIFT", fontSize: 16, fontWeight: FontWeight.w500)),
+                                                    }, child: CustomText(text: "FOR GIFT", fontSize:h<700?12: 16, fontWeight: FontWeight.w500)),
                                                     ElevatedButton(
                                                         style: ElevatedButton.styleFrom(
                                                           backgroundColor:is_cliced_for_own==true? BootomBarColor:Colors.white
@@ -274,7 +274,7 @@ bool  is_cliced=false;
                                                         is_cliced_for_own=true;
                                                         is_cliced=true;
                                                       },);
-                                                    }, child: CustomText(text: "FOR OWN", fontSize: 16, fontWeight: FontWeight.w500)),
+                                                    }, child: CustomText(text: "FOR OWN", fontSize: h<700?12:16, fontWeight: FontWeight.w500)),
                                                   ],
                                                 ),
                                               ),

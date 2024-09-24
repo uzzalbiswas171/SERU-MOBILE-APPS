@@ -11,6 +11,7 @@ class CustomTExtFromField extends StatelessWidget {
     required this.text_color,
     required this.suffixIcon,
     required this.obscureText,
+    this.keyboardType,
   }) : super(key: key);
    TextEditingController controller;
    String hintText;
@@ -19,10 +20,12 @@ class CustomTExtFromField extends StatelessWidget {
   final FontWeight fontWeight;
   final Color?  text_color;
   final Widget?  suffixIcon;
+      TextInputType? keyboardType;
   bool obscureText;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+       keyboardType:keyboardType ,
       obscureText:obscureText ,
       controller: controller,
       decoration: InputDecoration(

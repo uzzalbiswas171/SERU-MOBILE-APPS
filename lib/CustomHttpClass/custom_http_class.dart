@@ -319,11 +319,11 @@ class CustomHttp{
       );
       var data=jsonDecode(response.body);
       buyPackageWithoutVouche=data;
-         print("pppppppppppppppppppppppppppppppppppppppppppp buyyyyyyyyyyyyyyyyyyyyyyy apiiiiiiiiiiiiiii  $data");
+         print("pppppppppppppppppppppppppppppppppppppppppppp buyyyyyyyyyyyyyyyyyyyyyyy apiiiiiiiiiiiiiii  ${data.toString().replaceAll("}","").split("pay_url: ")[1]}");
        // Navigator.push(context, MaterialPageRoute(builder: (context) => StripePaymentScreen(
        //    pay_url: data["pay_url"],
        // ),));
-      _launchURL(data["pay_url"]);
+      _launchURL("${data.toString().replaceAll("}","").split("pay_url: ")[1]}");
    
     }catch(e){
       print("Pacage buy screen catch error > $e");
