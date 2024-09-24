@@ -288,8 +288,7 @@ class CustomHttp{
     try{
       var response = await http.post(
         Uri.parse("https://www.tflserutest.co.uk/api/protected/buy-package?api_token=${GetStorage().read("Api_token")}"),
-        body: {
-      "package_id":"$package_id",
+        body: { 
       "subscription_structure_id":"$subscription_structure_id",
       "voucher_gift":"${voucher_gift}",
       "friend_relative_email":"$friend_relative_email",
@@ -320,11 +319,12 @@ class CustomHttp{
       );
       var data=jsonDecode(response.body);
       buyPackageWithoutVouche=data;
+         print("pppppppppppppppppppppppppppppppppppppppppppp buyyyyyyyyyyyyyyyyyyyyyyy apiiiiiiiiiiiiiii  $data");
        // Navigator.push(context, MaterialPageRoute(builder: (context) => StripePaymentScreen(
        //    pay_url: data["pay_url"],
        // ),));
       _launchURL(data["pay_url"]);
-      print("pppppppppppppppppppppppppppppppppppppppppppp buyyyyyyyyyyyyyyyyyyyyyyy apiiiiiiiiiiiiiii  $data");
+   
     }catch(e){
       print("Pacage buy screen catch error > $e");
     }

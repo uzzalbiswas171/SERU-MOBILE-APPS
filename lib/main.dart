@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:seru_test_project/Controller/buy_package_controller.dart';
+import 'package:seru_test_project/View/SplashScreens/splash_screen3.dart';
 import 'Controller/answerSubmitController.dart';
 import 'Controller/homeController.dart';
 import 'Controller/loginController.dart';
@@ -56,7 +57,7 @@ class MyApp extends StatelessWidget {
       ),
 
       /// Main Route --------------------------
-  home:MainSplashPageViewScreen(),
+  home:SplashScreen3(),
       //   home:IndividualResultScreen(),
 
       /// Working route -----------------------

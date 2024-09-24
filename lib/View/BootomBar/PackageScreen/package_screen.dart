@@ -91,6 +91,7 @@ class _PackageScreenState extends State<PackageScreen> {
                                       Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
                                         package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
                                         subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                         is_cliced_for_own: is_cliced_for_own,
                                       ),)); },
                                     child: Container(
                                       height: 60,
@@ -115,6 +116,7 @@ class _PackageScreenState extends State<PackageScreen> {
                                               Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
                                                 package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
                                                 subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                 is_cliced_for_own: is_cliced_for_own,
                                               ),)); },
                                             child: CustomImageSection(image:AssetImage("assets/PymentImage/payple.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
                                         CircleAvatar(
@@ -129,6 +131,7 @@ class _PackageScreenState extends State<PackageScreen> {
                                               Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
                                                 package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
                                                 subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                 is_cliced_for_own: is_cliced_for_own,
                                               ),)); },child: CustomImageSection(image:AssetImage("assets/PymentImage/gpay.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
 
                                       ],
@@ -145,6 +148,7 @@ class _PackageScreenState extends State<PackageScreen> {
                                               Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
                                                 package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
                                                 subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                 is_cliced_for_own: is_cliced_for_own,
                                               ),)); },child: CustomImageSection(image:AssetImage("assets/PymentImage/mastercad.PNG"), img_height: 90, img_width: 80, img_margin: 10, Img_radius: 11)),
                                       ],
                                     ),
@@ -234,6 +238,7 @@ class _PackageScreenState extends State<PackageScreen> {
                                               Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
                                                 package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
                                                 subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                 is_cliced_for_own: is_cliced_for_own,
                                               ),));
                                               },
                                             child: Container(
@@ -259,6 +264,7 @@ class _PackageScreenState extends State<PackageScreen> {
                                                       Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
                                                         package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
                                                         subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                         is_cliced_for_own: is_cliced_for_own,
                                                       ),));
                                                       },
                                                     child: CustomImageSection(image:AssetImage("assets/PymentImage/payple.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
@@ -274,6 +280,7 @@ class _PackageScreenState extends State<PackageScreen> {
                                                       Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
                                                         package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
                                                         subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                         is_cliced_for_own: is_cliced_for_own,
                                                       ),)); },child: CustomImageSection(image:AssetImage("assets/PymentImage/gpay.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
 
                                               ],
@@ -290,6 +297,7 @@ class _PackageScreenState extends State<PackageScreen> {
                                                       Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
                                                         package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
                                                         subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                         is_cliced_for_own: is_cliced_for_own,
                                                       ),)); },child: CustomImageSection(image:AssetImage("assets/PymentImage/mastercad.PNG"), img_height: 90, img_width: 80, img_margin: 10, Img_radius: 11)),
                                               ],
                                             ),

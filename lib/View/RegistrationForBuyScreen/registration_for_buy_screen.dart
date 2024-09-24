@@ -21,9 +21,14 @@ import '../../CustomWidget/CustomTextFromField/custom_text_from_fild.dart';
 import '../../custom_const.dart';
 
 class RegistrationForBuyScreen extends StatefulWidget {
-  RegistrationForBuyScreen({Key? key, required this.package_id, required this.subscription_structure_id}) : super(key: key);
+  RegistrationForBuyScreen({Key? key, 
+  required this.package_id, 
+  required this.subscription_structure_id,
+  required this.is_cliced_for_own
+  }) : super(key: key);
  String package_id;
   String subscription_structure_id;
+  bool is_cliced_for_own;
   @override
   State<RegistrationForBuyScreen> createState() => _RegistrationForBuyScreenState();
 }
@@ -118,7 +123,7 @@ class _RegistrationForBuyScreenState extends State<RegistrationForBuyScreen> {
                           context,
                           int.parse("${widget.package_id}"),
                           int.parse("${widget.subscription_structure_id}"),
-                          "",
+                          "no",
                           _friendemailController.text,
                           _nameController.text,
                           _surnameController.text,
