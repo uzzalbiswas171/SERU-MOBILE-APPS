@@ -20,7 +20,8 @@ const BootomBarColor=Color(0xffACC027);
  const main_text_blac_color=Color(0xff333333);
  const main_text_white_color=Color(0xffffffff);
 const redColor=Color(0xffEA4C62);
-const bootomNavigationbarBackgrountcolor=Color(0xff24a5de);
+// const bootomNavigationbarBackgrountcolor=Color(0xff24a5de);
+const bootomNavigationbarBackgrountcolor=Color(0xff90EE90);
 ///Text form color boarder
 // const textFieldBoarderColorC=Color(0xff7ab4f8);
 const textFieldBoarderColorC=bootomNavigationbarBackgrountcolor;
