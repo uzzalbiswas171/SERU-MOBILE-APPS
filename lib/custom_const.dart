@@ -15,13 +15,13 @@ const Seru_Test_logo = "assets/SeruTestLogo/appstore.png";
  String Splash2_text="TFL SERU online training Platform is online based self-learning training platform for PHV drivers.Based on TFL's new announcement to introduce the SERU assessment to demonstrate and understanding of safety, equality, and regulatory matters for new and renewal applicants.We believe a huge number of private hire driver's may find difficulties and worry about the new test.";
  String Splash3_text="We believe a huge number of private hire driver's may find difficulties and worry about the new test.";
 
-const BootomBarColor=Color(0xffACC027);
+const BootomBarColor=Color(0xff90EE90);
 // const BootomBarColor=Color(0xffee5124);
  const main_text_blac_color=Color(0xff333333);
  const main_text_white_color=Color(0xffffffff);
 const redColor=Color(0xffEA4C62);
-// const bootomNavigationbarBackgrountcolor=Color(0xff24a5de);
-const bootomNavigationbarBackgrountcolor=Color(0xff90EE90);
+ const bootomNavigationbarBackgrountcolor=Color(0xff24a5de);
+//const bootomNavigationbarBackgrountcolor=Color(0xff90EE90);
 ///Text form color boarder
 // const textFieldBoarderColorC=Color(0xff7ab4f8);
 const textFieldBoarderColorC=bootomNavigationbarBackgrountcolor;

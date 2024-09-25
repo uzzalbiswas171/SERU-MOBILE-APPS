@@ -130,7 +130,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Navigator.push(context, CupertinoPageRoute(builder: (context) => SubscriptionScreen(),));
                     }
                     else if(index==1){
-                    Navigator.push(context, CupertinoPageRoute(builder: (context) => VideoListScreen(),));
+                    Navigator.push(context, CupertinoPageRoute(builder: (context) => VideoClassScreen(),));
                     }
                     else if(index==2){
                       Navigator.push(context, CupertinoPageRoute(builder: (context) => ModelTestScreen(),));

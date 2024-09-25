@@ -95,12 +95,12 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
     BottomBarItem(
     inActiveItem: Icon(
     Icons.home,
-    color: Colors.white,
+      color: Color(0xff6C0BA9),
     size: 25,
     ),
     activeItem: Icon(
     Icons.home,
-    color: main_text_white_color,
+      color: Color(0xff6C0BA9),
     size: 25,
     ),
     itemLabel: 'Page 1',
@@ -108,12 +108,12 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
     BottomBarItem(
     inActiveItem: Icon(
     Icons.production_quantity_limits,
-    color: Colors.white,
+      color: Color(0xff6C0BA9),
     size: 25,
     ),
     activeItem: Icon(
     Icons.production_quantity_limits,
-    color: main_text_white_color,
+      color: Color(0xff6C0BA9),
     size: 25,
     ),
     itemLabel: 'Page 1',
@@ -121,12 +121,12 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
     BottomBarItem(
     inActiveItem: Icon(
     Icons.person,
-    color: main_text_white_color,
+      color: Color(0xff6C0BA9),
     size: 25,
     ),
     activeItem: Icon(
     Icons.person,
-    color: main_text_white_color,
+      color: Color(0xff6C0BA9),
     size: 25,
     ),
     itemLabel: 'Page 5',
