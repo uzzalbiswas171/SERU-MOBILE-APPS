@@ -1,3 +1,8 @@
+
+
+import 'dart:io';
+import 'dart:ui';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
@@ -46,13 +51,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController currentworking =TextEditingController();
   TextEditingController qualification =TextEditingController();
   TextEditingController qualification_other =TextEditingController();
-
+  String? _deviceId;
   @override
   void initState() {
+    deviceInfo();
     // TODO: implement initState
     super.initState();
   }
+  deviceInfo()async{
 
+    if(Platform.isAndroid){
+      DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+      AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+      _deviceId = androidInfo.id;
+      print('Running on ${androidInfo.id}');
+    }
+
+    if(Platform.isIOS){
+      DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+      IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
+      _deviceId = iosInfo.model;
+      print('Running on ${iosInfo.utsname.machine}');
+    }
+
+  }
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -151,7 +173,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 "${currentworking.text}",
                                 "${qualification.text}",
                                 "${qualification_other.text}",
-                                "123456789",
+                                _deviceId!,
                                 context
                             );
 
