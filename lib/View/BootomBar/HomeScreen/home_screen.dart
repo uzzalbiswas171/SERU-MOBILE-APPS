@@ -32,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     "assets/SeruTestBanner/seru_banner.jpg",
     "assets/SeruTestBanner/seru_banner.jpg",
   ];
+  
 bool  is_cliced=true;
  bool  is_cliced_for_own=true;
   List getAllActivePackageList=[];
