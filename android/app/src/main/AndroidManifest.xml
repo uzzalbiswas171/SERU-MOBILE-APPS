@@ -1,8 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
-        android:label="seru_mobile_test"
+        android:label="SERU TEST"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

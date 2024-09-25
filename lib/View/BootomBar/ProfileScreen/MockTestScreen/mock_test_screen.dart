@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -46,10 +48,13 @@ class _MockTestScreenState extends State<MockTestScreen> {
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
+                        var rng = new Random();
+                        var code = rng.nextInt(900000) + 100000;
                         Provider.of<ProfileController>(context,listen: false).getMyMOCID_WISE_QUESTION_LIST_GETProvider(
                             context, "${value.MockTest[index]["mocktest_id"]}");
-                        Navigator.push(context, CupertinoPageRoute(builder: (context) => MockTestQuestionScreen(
+                          Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => MockTestQuestionScreen(
                           moc_test_no: "${index+1}",
+                          randomNumber: code,
                         ),));
                       },
                       child: Container(
@@ -64,7 +69,7 @@ class _MockTestScreenState extends State<MockTestScreen> {
                             CustomText(text: "Mocktest\n✓${value.MockTest[index]["mocktest_id"]}", fontSize: 14, fontWeight: FontWeight.w500,textAlign: TextAlign.center,)
                             ,
                             SizedBox(height: 5,),
-                            CustomText(text: "${value.MockTest[index]["description"]}",fontSize: 11, fontWeight: FontWeight.w400,textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,maxLines: 3,)
+                            CustomText(text: "${value.MockTest[index]["description"]}",fontSize: 11, fontWeight: FontWeight.w400,textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,maxLines: 2,)
                             ,SizedBox(height: 5,),
                           ],
                         ),

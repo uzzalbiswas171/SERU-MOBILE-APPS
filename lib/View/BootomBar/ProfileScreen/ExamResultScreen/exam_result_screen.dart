@@ -53,7 +53,6 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
 
     final data=Provider.of<ProfileController>(context).All_MyMARK_RESULT_LIST_GET;
 
-
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
     return Scaffold(
@@ -261,10 +260,18 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                         itemCount:"${value.All_MyMARK_RESULT_LIST_GET.length}"=="null"?0: value.All_MyMARK_RESULT_LIST_GET.length,
                         itemBuilder: (context, index) => InkWell(
                           onTap: () {
+                            print("seeeeeeeeeettttttttttttttttttt  ${value.All_MyMARK_RESULT_LIST_GET[index]["question_set"]}");
                             Provider.of<ProfileController>(context,listen: false).get_All_My_MARK_RESULT_HISTORYProvider(context, "${value.All_MyMARK_RESULT_LIST_GET[index]["question_set"]}");
-                            showDialog(context: context, builder: (context) => AlertDialog(title: Center(child: CircularProgressIndicator(),),),);
+                            showDialog(context: context, builder: (context) => AlertDialog(title: Center(child: Column(
+                              children: [
+                                CircularProgressIndicator(
+                                  backgroundColor: textFieldBoarderColorC,
+                                ),
+                                Text("Please wait")
+                              ],
+                            ),),),);
                             Future.delayed(Duration(seconds: 1),() {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => IndividualResultScreen(),));
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => IndividualResultScreen(),));
                             },);
                             },
                           child: Container(
@@ -294,9 +301,10 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                                     borderRadius: BorderRadius.circular(7),
                                   ),
                                   child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      //      CustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "${DateFormat.yMMMEd().format(value.All_MyMARK_RESULT_LIST_GET[index]["date"])}",  text_color: appbarcollor),
-                                  CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${value.All_MyMARK_RESULT_LIST_GET[index]["is_pass"]}", text_color: appbarcollor),
+                                        //  CustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "${DateFormat.yMMMEd().format(value.All_MyMARK_RESULT_LIST_GET[index]["date"])}",  text_color: appbarcollor),
+                                  CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${value.All_MyMARK_RESULT_LIST_GET[index]["is_pass"]}"=="false" ?"Fail" : "Pass", text_color: appbarcollor),
                                     ],
                                   ),
                                 ),

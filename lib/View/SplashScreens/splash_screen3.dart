@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:seru_test_project/Controller/homeController.dart';
 import 'package:seru_test_project/View/BootomBar/bootombar.dart';
 import '../../../CustomWidget/TermsAndCondition/terms_and_condition_part.dart';
 import '../../CustomWidget/CustomButton/custom_button.dart';
@@ -16,6 +18,12 @@ class SplashScreen3 extends StatefulWidget {
 }
 
 class _SplashScreen3State extends State<SplashScreen3> {
+  @override
+  void initState() {
+  Provider.of<HomeController>(context,listen: false).getAllPackageProvider(context);
+  // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     double c_h = MediaQuery.of(context).size.height;
@@ -33,7 +41,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
             children: [
               // SizedBox(height: 69,),
               SizedBox(
-                height: c_h * 0.084,
+                height:c_h<700? c_h * 0.044 :c_h * 0.084 ,
               ),
               CustomImageSction(
                   height: 98,
@@ -41,7 +49,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
                   radius: 11,
                   image: "$Seru_Test_logo"),
               SizedBox(
-                height: c_h * 0.025,
+                height:c_h<700? c_h * 0.015 : c_h * 0.025,
               ),
               // SizedBox(height: 20,),
               CustomText(
@@ -50,25 +58,25 @@ class _SplashScreen3State extends State<SplashScreen3> {
                   text: "Auto Certified",
                 ),
               SizedBox(
-                height: c_h * 0.025,
+                height:c_h<700? c_h * 0.015 : c_h * 0.025,
               ),
+             
               Stack(
                 alignment: Alignment.center,
                 children: [
-                  Container(
-                    height: 340,
-                    width: 500,
+                  Container( 
+                    height:c_h<700?270: 340,
+                    width: double.infinity,
                     child: Container(
-                        height: 400,
-                        width: 500,
+                        height:  400,
+                       width: double.infinity,
 
-                        padding: EdgeInsets.all(60),
                         child: Container(
                           padding: EdgeInsets.only(top: 50),
                           child: Image.asset(
                             "assets/Gif/third_splashcsreen.gif",
                             height: 240,
-                            width: 278,
+                           width: double.infinity,
                             fit: BoxFit.fill,
                           ),
                         )),
@@ -115,7 +123,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
                       text2: "Conveyance Tracking")),
 
               SizedBox(
-                height: c_h * 0.075,
+                height: c_h<700 ?c_h * 0.045 : c_h * 0.075,
               ),
               Container(
                 height: 32,
@@ -124,16 +132,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                  Align(
-                  alignment: Alignment.center,
-                  child:    Container(height: 20,width: 25,child: Image.asset("assets/SeruTestBanner/480px-Orange_animated_left_arrow.gif",fit: BoxFit.fill,),),
-                ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
+                 
                     Container(
                       height: 100,
                       width: 110,

@@ -3,14 +3,112 @@
 
 import 'dart:convert';
 
+import 'package:elegant_notification/elegant_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
+import 'package:seru_test_project/View/Auth/Login/screens/login_screen.dart';
+import 'package:seru_test_project/View/RegistrationForBuyScreen/stripe_payment.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../CustomWidget/CustomText/custom_text.dart';
 import '../Routes/routes.dart';
+import '../View/BootomBar/bootombar.dart';
 
 class CustomHttp{
+
+
+
+  ///  Login ------------------------------------------
+  loginCustomHttpRequest(String email,String pass,String phoneid,BuildContext context)async{
+
+    var response = await http.post(
+      Uri.parse("${BASEURL}${LOGIN}"),
+      body: {
+        'email': "$email",
+        'password': "$pass",
+        'phone_id': "$phoneid",
+      },
+    );
+    print('Responsesssssssssssssssssssssssssssssss :${response.body}');
+    if (response.statusCode == 200) {
+      var r =  jsonDecode(response.body)["data"];
+      GetStorage().write("Api_token",r["api_token"]);
+      ElegantNotification(
+        borderRadius: BorderRadius.circular(11),
+        width: 380,
+        iconSize: 25,
+        background: Colors.green,
+        progressIndicatorBackground: Colors.green,
+        progressIndicatorColor: Colors.red,
+        // position: Alignment.center,
+        title:   CustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Login successfully",  ),
+        description:  CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks for Login",     ),
+        onDismiss: () {
+          print('Message when the notification is dismissed');
+        }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+      ).show(context);
+      Navigator.push(context, MaterialPageRoute(builder: (context) => BttotomBarScreen(index: 0,),));
+    }
+  }
+
+
+  ///  registrationCustomHttpRequest ------------------------------------------
+  registrationCustomHttpRequest(
+      String name,
+      String surname,
+      String email,
+      String password,
+      String address,
+      String currentworking,
+      String qualification,
+      String qualification_other,
+      String phone_id,
+      BuildContext context
+
+      )async{
+
+    var response = await http.post(
+      Uri.parse("${BASEURL}${REGISTRATION}"),
+      body: {
+        'name': "$name",
+        'surname': "surname",
+        'email': "$email",
+        'password': "$password",
+        'password_confirmation': "$password",
+        'address': "address",
+        'currentworking': "currentworking",
+        'currentworking_other': "currentworking_other",
+        'qualification': "qualification",
+        'qualification_other': "qualification_other",
+        'phone_id': "$phone_id",
+      },
+    );
+    print('Responsesssssssssssssssssssssssssssssss :${response.body}');
+    if (response.statusCode == 200) {
+      ElegantNotification(
+        borderRadius: BorderRadius.circular(11),
+        width: 380,
+        iconSize: 25,
+        background: Colors.green,
+        progressIndicatorBackground: Colors.green,
+        progressIndicatorColor: Colors.red,
+        // position: Alignment.center,
+        title:   CustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Registration successfully",  ),
+        description:  CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Thanks for registration",     ),
+        onDismiss: () {
+          print('Message when the notification is dismissed');
+        }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+      ).show(context);
+      var r =  jsonDecode(response.body)["data"];
+      Navigator.push(context, MaterialPageRoute(builder: (context) =>LoginScreen(),));
+    }
+  }
+
+
+
+
 
  /// Custom Header  --------------------------------------------------
   Map<String, String> headers= <String,String>{
@@ -29,7 +127,12 @@ class CustomHttp{
     try{
       Response response=await http.get(Uri.parse(url), );
       final data=jsonDecode(response.body);
-      getAllPackageList=data["data"];
+      for(int i=0;i<data["data"].length;i++){
+        if("${data["data"][i]["active_status"]}" == "Active"){
+          getAllPackageList.add(data["data"][i]);
+        }
+      }
+
 
     }catch(e){
       print("getAllPackageFunction catch error-----------------------------------------> $e");
@@ -108,6 +211,10 @@ class CustomHttp{
   ///  All_MyMARK_RESULT_LIST_GET list get-------------------------------
   List getAllMy_MARKRESULTList=[];
   get_AllMy_MARK_RESULT_function(BuildContext context )async{
+
+    print( "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn${GetStorage().read("Api_token")}");
+
+
     String url="${BASEURL}${MARKRESULT}?api_token=${GetStorage().read("Api_token")}";
     try{
       Response response=await http.get(Uri.parse(url), headers: headers);
@@ -123,7 +230,7 @@ class CustomHttp{
   ///  All_MyMARK_RESULT_LIST_GET list History  get-------------------------------
   List getAllMy_MARKRESULT_HistoryList=[];
   get_AllMy_MARK_RESULT_HISTORY_function(BuildContext context,String question_set)async{
-    String url="${BASEURL}${MARKRESULT_HISTORY}/${question_set}?api_token=${GetStorage().read("Api_token")}";
+    String url="${BASEURL}${MARKRESULT_HISTORY}/$question_set?api_token=${GetStorage().read("Api_token")}";
     try{
       Response response=await http.get(Uri.parse(url), headers: headers);
       final data=jsonDecode(response.body);
@@ -135,4 +242,138 @@ class CustomHttp{
     return getAllMy_MARKRESULT_HistoryList;
   }
 
+
+  ///  Answer Submit Provider CustomHtt pRequest list History  get-------------------------------
+  List AnswerSubmitProviderCustomHttpRequestList=[];
+  AnswerSubmitProviderCustomHttpRequest(
+      BuildContext context, String mocktest_id, String mocktest_question_id, String answer, String question_set,
+      )async{
+    try{
+      var response = await http.post(
+        Uri.parse("https://www.tflserutest.co.uk/api/protected/answer?api_token=${GetStorage().read("Api_token")}"),
+        body: {
+          'mocktest_id': "$mocktest_id",
+          'mocktest_question_id': "$mocktest_question_id",
+          'answer': "$answer",
+          'question_set': "$question_set",
+        },
+      );
+      final data=jsonDecode(response.body);
+     print(data);
+    }catch(e){
+      print("Answer Submit Provider Custom Http Request List catch error > $e");
+    }
+    return AnswerSubmitProviderCustomHttpRequestList;
+  }
+
+
+  ///  Buy Package Without Voucher-------------------------------
+  dynamic buyPackageWithoutVouche;
+  buyPackageWithoutVoucherHttpFunction(
+      BuildContext context,
+      int package_id,
+      int subscription_structure_id,
+      String voucher_gift,
+      String friend_relative_email,
+      String name,
+      String surname,
+      String address,
+      String address_2,
+      String city,
+      String country,
+      String postal_code,
+      String personal_email,
+      String date_for_physical,
+      )async{
+    try{
+      var response = await http.post(
+        Uri.parse("https://www.tflserutest.co.uk/api/protected/buy-package?api_token=${GetStorage().read("Api_token")}"),
+        body: { 
+      "subscription_structure_id":"$subscription_structure_id",
+      "voucher_gift":"${voucher_gift}",
+      "friend_relative_email":"$friend_relative_email",
+      "name":"$name",
+      "surname" : "$surname",
+      "address":"$address",
+      "address_2":"$address_2",
+      "city"	:"$city",
+      "country":"$country",
+      "postal_code":"${postal_code}",
+      "email"	:"${personal_email}",
+      "date_for_physical"	:"${date_for_physical}"
+
+
+
+      // "package_id" : int.parse("$package_id"),
+      // "subscription_structure_id":int.parse("$subscription_structure_id"),
+      // "voucher_gift":"${voucher_gift}",
+      // "friend_relative_email":"$friend_relative_email",
+      // "name":"$name",
+      // "surname":"$surname",
+      // "address":"$address",
+      // "address_2":"$address_2",
+      // "city":"$city",
+      // date_for_physical:
+
+        },
+      );
+      var data=jsonDecode(response.body);
+      buyPackageWithoutVouche=data;
+         print("pppppppppppppppppppppppppppppppppppppppppppp buyyyyyyyyyyyyyyyyyyyyyyy apiiiiiiiiiiiiiii  ${data.toString().replaceAll("}","").split("pay_url: ")[1]}");
+       // Navigator.push(context, MaterialPageRoute(builder: (context) => StripePaymentScreen(
+       //    pay_url: data["pay_url"],
+       // ),));
+      _launchURL("${data.toString().replaceAll("}","").split("pay_url: ")[1]}");
+   
+    }catch(e){
+      print("Pacage buy screen catch error > $e");
+    }
+  }
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }}
+
+
+  ///   Voucher- apply ------------------------------
+  dynamic VoucheApply;
+  VoucheApplyHttpFunction(
+      BuildContext context,
+      String voucher_code_id,
+      String date_for_physical,
+      )async{
+    try{
+      var response = await http.post(
+        Uri.parse("https://www.tflserutest.co.uk/api/protected/buy-package?api_token=${GetStorage().read("Api_token")}"),
+        body: {
+          "voucher_code_id":"$voucher_code_id",
+          "date_for_physical"	:"${date_for_physical}"
+        },
+      );
+      var data=jsonDecode(response.body);
+      ElegantNotification(
+        borderRadius: BorderRadius.circular(11),
+        width: 380,
+        iconSize: 25,
+        background: Colors.green,
+        progressIndicatorBackground: Colors.green,
+        progressIndicatorColor: Colors.red,
+        // position: Alignment.center,
+        title:   CustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Invalid Code",  ),
+        description:  CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Please Enter Right Code",     ),
+        onDismiss: () {
+          print('Message when the notification is dismissed');
+        }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+      ).show(context);
+      VoucheApply=data;
+      print(" pppppppppppppppppppppp   $VoucheApply");
+
+
+    }catch(e){
+      print("Pacage buy screen catch error > $e");
+    }
+  }
 }
+

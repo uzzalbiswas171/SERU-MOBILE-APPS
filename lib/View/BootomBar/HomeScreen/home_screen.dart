@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:seru_test_project/Controller/homeController.dart';
 import 'package:seru_test_project/Controller/profile_controller.dart';
@@ -14,6 +16,7 @@ import 'package:seru_test_project/CustomWidget/CustomImageScetion/custom_image_s
 import 'package:seru_test_project/CustomWidget/CustomText/custom_text.dart';
 import 'package:seru_test_project/CustomWidget/SelectionOptions/selection_option.dart';
 import 'package:seru_test_project/View/RegistrationForBuyScreen/registration_for_buy_screen.dart';
+import '../../../Controller/buy_package_controller.dart';
 import '../../../custom_const.dart';
 import '../../Auth/Login/screens/login_screen.dart';
 
@@ -31,13 +34,16 @@ class _HomeScreenState extends State<HomeScreen> {
     "assets/SeruTestBanner/seru_banner.jpg",
     "assets/SeruTestBanner/seru_banner.jpg",
   ];
-bool  is_cliced=false;
+  
+bool  is_cliced=true;
  bool  is_cliced_for_own=true;
-
+  List getAllActivePackageList=[];
   @override
   Widget build(BuildContext context) {
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
+  //  final getAllPackageList=Provider.of<HomeController>(context).getAllPackageList;
+
     return Scaffold(
 
      body: RefreshIndicator(
@@ -54,7 +60,13 @@ bool  is_cliced=false;
              children: [
                SizedBox(height: h*0.025,),
                /// Apply Sections
-               CustomApplyVaucherSection(applyCuponController: _applyCuponController),
+               CustomApplyVaucherSection(applyCuponController: _applyCuponController,onTap: () {
+                 Provider.of<BuyPackageController>(context,listen: false).vautureapplyprovider(
+                     context,
+                     "${_applyCuponController.text}",
+                     "${DateFormat("yyyy-MM-dd").format(DateTime.now())}"
+                 );
+               },),
                SizedBox(height: h*0.025,),
                /// Slide Company Banner
                CalosolSelalider(custom_height: 130, carousal_list: carosal, carousal_onTab: () {
@@ -79,7 +91,132 @@ bool  is_cliced=false;
                    ), itemBuilder: (context, index) {
                      return InkWell(
                        onTap: () {
-                         Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+                         "${GetStorage().read("Api_token")}"=="" || "${GetStorage().read("Api_token")}"=="null"?
+
+                         Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),))
+                             :
+                         showDialog(context: context, builder: (context) {
+                           return StatefulBuilder(
+                             builder: (context, setState) {
+                               return AlertDialog(
+                                 title: CustomText(text: "For who do you want to buy ?..", fontSize: 18, fontWeight: FontWeight.w600),
+                                 content: Container(
+                                   height: is_cliced==true?265:60,
+                                   child: Column(
+                                     children: [
+                                       Container(
+                                         height: 60,
+                                         width: MediaQuery.of(context).size.width*0.85,
+                                         child: Row(
+                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                           children: [
+                                             ElevatedButton( style: ElevatedButton.styleFrom(
+                                                 backgroundColor:is_cliced_for_own==false? BootomBarColor :Colors.white
+                                             ),
+                                                 onPressed: () {
+
+                                                   setState(() {
+                                                     is_cliced_for_own=false;
+                                                     is_cliced=true;
+                                                   },);
+                                                 }, child: CustomText(text: "FOR GIFT", fontSize:h<700?10: 12, fontWeight: FontWeight.w500)),
+                                             ElevatedButton(
+                                                 style: ElevatedButton.styleFrom(
+                                                     backgroundColor:is_cliced_for_own==true? BootomBarColor:Colors.white
+                                                 ),
+                                                 onPressed: () {
+                                                   setState(() {
+                                                     is_cliced_for_own=true;
+                                                     is_cliced=true;
+                                                   },);
+                                                 }, child: CustomText(text: "FOR OWN", fontSize:h<700?10: 12, fontWeight: FontWeight.w500)),
+                                           ],
+                                         ),
+                                       ),
+
+                                       is_cliced==false?Container():
+                                       SizedBox(height: 20,),
+                                       is_cliced==false?Container():
+                                       GestureDetector(
+                                         onTap: () {
+                                           Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                             package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
+                                             subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                             is_cliced_for_own: is_cliced_for_own,
+                                           ),));
+                                         },
+                                         child: Container(
+                                           height: 60,
+                                           width: MediaQuery.of(context).size.width*0.8,
+                                           child: Row(
+                                             mainAxisAlignment: MainAxisAlignment.center,
+                                             children: [
+                                               CustomImageSection(image:AssetImage("assets/PymentImage/mastercad.PNG"), img_height: 90, img_width: 80, img_margin: 10, Img_radius: 11),
+                                             ],
+                                           ),
+                                         ),
+                                       ),
+                                       is_cliced==false?Container():  Container(
+                                         height: 60,
+                                         width: MediaQuery.of(context).size.width*0.8,
+                                         child: Row(
+                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                           children: [
+
+                                             GestureDetector(
+                                                 onTap: () {
+                                                   Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                     package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
+                                                     subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                      is_cliced_for_own: is_cliced_for_own,
+                                                   ),));
+                                               },
+                                                 child: CustomImageSection(image:AssetImage("assets/PymentImage/payple.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
+                                             CircleAvatar(
+                                               radius: 30,
+                                               backgroundColor: BootomBarColor.withOpacity(0.3),
+                                               child: Text("??",style: TextStyle(
+                                                 fontSize: 33,
+                                               ),),
+                                             ),
+                                             GestureDetector(
+                                                 onTap: () {
+                                                   Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                     package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
+                                                     subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                      is_cliced_for_own: is_cliced_for_own,
+                                                   ),));
+                                                   },child: CustomImageSection(image:AssetImage("assets/PymentImage/gpay.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
+
+                                           ],
+                                         ),
+                                       ),
+                                       is_cliced==false?Container():  Container(
+                                         height: 60,
+                                         width: MediaQuery.of(context).size.width*0.8,
+                                         child: Row(
+                                           mainAxisAlignment: MainAxisAlignment.center,
+                                           children: [
+                                             GestureDetector(
+                                                 onTap: () {
+                                                   Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                     package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
+                                                     subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                      is_cliced_for_own: is_cliced_for_own,
+                                                   ),));
+                                                   },child: CustomImageSection(image:AssetImage("assets/PymentImage/mastercad.PNG"), img_height: 90, img_width: 80, img_margin: 10, Img_radius: 11)),
+                                           ],
+                                         ),
+                                       ),
+                                     ],
+                                   ),
+                                 ),
+                               );
+                             },
+                           );
+                         },);
+
+
                        },
                        child: Container(
                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)
@@ -100,14 +237,14 @@ bool  is_cliced=false;
                                  color: Colors.black
                                ),
                                alignment: Alignment.center,
-                               child: CustomText(text: "\£ ${value.getAllPackageList[index]["price"]??0}",text_color: main_text_white_color ,fontSize: 17, fontWeight: FontWeight.w500),
+                               child: CustomText(text: "\£ ${value.getAllPackageList[index]["amount"]??0}",text_color: main_text_white_color ,fontSize: 17, fontWeight: FontWeight.w500),
                              ),
                              ),
                              SizedBox(height: 5,),
-                             CustomText(text: "${value.getAllPackageList[index]["title"]??"0"}", fontSize: 16, fontWeight: FontWeight.w500)
+                             CustomText(maxLines:2, text: "${value.getAllPackageList[index]["title"]??"0"}", fontSize: 16, fontWeight: FontWeight.w500)
                              ,
                              SizedBox(height: 5,),
-                             CustomText(text: "Package ${value.getAllPackageList[index]["package_id"]??"0"}", fontSize: 16, fontWeight: FontWeight.w500)
+                             CustomText(text: "Package ${value.getAllPackageList[index]["subscription_structure_id"]??"0"}", fontSize: 16, fontWeight: FontWeight.w500)
                            ,SizedBox(height: 5,),
                             InkWell(
                               onTap: () {
@@ -123,7 +260,7 @@ bool  is_cliced=false;
                                             children: [
                                               Container(
                                                 height: 60,
-                                                width: MediaQuery.of(context).size.width*0.8,
+                                                width: MediaQuery.of(context).size.width*0.85,
                                                 child: Row(
                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                   children: [
@@ -136,7 +273,7 @@ bool  is_cliced=false;
                                                         is_cliced_for_own=false;
                                                         is_cliced=true;
                                                       },);
-                                                    }, child: CustomText(text: "FOR GIFT", fontSize: 16, fontWeight: FontWeight.w500)),
+                                                    }, child: CustomText(text: "FOR GIFT", fontSize:h<700?12: 16, fontWeight: FontWeight.w500)),
                                                     ElevatedButton(
                                                         style: ElevatedButton.styleFrom(
                                                           backgroundColor:is_cliced_for_own==true? BootomBarColor:Colors.white
@@ -146,7 +283,7 @@ bool  is_cliced=false;
                                                         is_cliced_for_own=true;
                                                         is_cliced=true;
                                                       },);
-                                                    }, child: CustomText(text: "FOR OWN", fontSize: 16, fontWeight: FontWeight.w500)),
+                                                    }, child: CustomText(text: "FOR OWN", fontSize: h<700?12:16, fontWeight: FontWeight.w500)),
                                                   ],
                                                 ),
                                               ),
@@ -156,8 +293,12 @@ bool  is_cliced=false;
                                              is_cliced==false?Container():
                                               GestureDetector(
                                                 onTap: () {
-                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
-                                                },
+                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                    package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
+                                                    subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                     is_cliced_for_own: is_cliced_for_own,
+                                                  ),));
+                                                  },
                                                 child: Container(
                                                   height: 60,
                                                   width: MediaQuery.of(context).size.width*0.8,
@@ -178,8 +319,12 @@ bool  is_cliced=false;
 
                                                     GestureDetector(
                                                         onTap: () {
-                                                          Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
-                                                        },
+                                                          Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                            package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
+                                                            subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                             is_cliced_for_own: is_cliced_for_own,
+                                                          ),));
+                                                          },
                                                         child: CustomImageSection(image:AssetImage("assets/PymentImage/payple.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
                                                     CircleAvatar(
                                                       radius: 30,
@@ -190,8 +335,12 @@ bool  is_cliced=false;
                                                     ),
                                                     GestureDetector(
                                                         onTap: () {
-                                                          Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
-                                                        },child: CustomImageSection(image:AssetImage("assets/PymentImage/gpay.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
+                                                          Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                            package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
+                                                            subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                             is_cliced_for_own: is_cliced_for_own,
+                                                          ),));
+                                                          },child: CustomImageSection(image:AssetImage("assets/PymentImage/gpay.PNG"), img_height: 90, img_width: 80, img_margin: 0, Img_radius: 11)),
 
                                                   ],
                                                 ),
@@ -204,8 +353,12 @@ bool  is_cliced=false;
                                                   children: [
                                                     GestureDetector(
                                                         onTap: () {
-                                                          Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(),));
-                                                        },child: CustomImageSection(image:AssetImage("assets/PymentImage/mastercad.PNG"), img_height: 90, img_width: 80, img_margin: 10, Img_radius: 11)),
+                                                          Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                            package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
+                                                            subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
+                                                             is_cliced_for_own: is_cliced_for_own,
+                                                          ),));
+                                                          },child: CustomImageSection(image:AssetImage("assets/PymentImage/mastercad.PNG"), img_height: 90, img_width: 80, img_margin: 10, Img_radius: 11)),
                                                   ],
                                                 ),
                                               ),

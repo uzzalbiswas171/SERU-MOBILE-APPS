@@ -7,12 +7,13 @@ import 'package:seru_test_project/Controller/profile_controller.dart';
 import 'package:seru_test_project/CustomWidget/CustomAppbar/custom_individual_appbar.dart';
 import 'package:seru_test_project/CustomWidget/CustomButton/custom_button.dart';
 
+import '../../../../Controller/answerSubmitController.dart';
 import '../../../../CustomWidget/CustomText/custom_text.dart';
 import '../../../../custom_const.dart';
 
 class LiveExamScreen extends StatefulWidget {
-  const LiveExamScreen({super.key});
-
+    LiveExamScreen({super.key,required this.randomdata});
+    var randomdata;
   @override
   State<LiveExamScreen> createState() => _LiveExamScreenState();
 }
@@ -68,6 +69,9 @@ void initState() {
   super.initState();
 }
 int countt=2;
+int _selectedIndex=-1;
+String _selectedIndex2="";
+String option="";
 @override
 Widget build(BuildContext context) {
   final data= Provider.of<ProfileController>(context).MOCID_WISE_QUESTION_LIST_GET;
@@ -122,14 +126,73 @@ Widget build(BuildContext context) {
 
                       CustomText(text: "Q1 . ${data[index]["question_description"]??""}", fontSize: 14, fontWeight: FontWeight.w400),
                       Divider(height: 5,),
-                      CustomText(text:"A . ${data[index]["option_1"]??""}", fontSize: 11, fontWeight: FontWeight.w400 ,  text_color: "${data[index]["answer_list"]??""}"=="1"  ? Colors.green:"${data[index]["answer_list"]??""}"=="1" && "${data[index]["answer_selected"]??""}"==1?Colors.green:"${data[index]["answer_selected"]??""}"=="1"?Colors.red: Colors.black,),
+                      InkWell(
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex=index;
+                              _selectedIndex2="${data[index]["mocktest_question_id"]}";
+                              option="1";
+                              Provider.of<AnswerSubmitController>(context,listen: false).AnswerSubmitProvider(
+                                  context,
+                                  "${data[index]["mocktest_id"]}",
+                                  "${data[index]["mocktest_question_id"]}",
+                                  "1",
+                                  "${widget.randomdata}"
+                              );
+                            });
+                          },
+                          child: CustomText(text:"A . ${data[index]["option_1"]??""}", text_color: _selectedIndex==index &&  _selectedIndex2=="${data[index]["option_2"]}" && option=="1"? Colors.green:Colors.black87,fontSize: 11, fontWeight: FontWeight.w400 ,)),
                       SizedBox(height: 7,),
-                      CustomText(text: "B . ${data[index]["option_2"]??""}", fontSize: 11, fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="2" ? Colors.green:"${data[index]["answer_list"]??""}"=="2" && "${data[index]["answer_selected"]??""}"==2?Colors.green:"${data[index]["answer_selected"]??""}"=="2"?Colors.red: Colors.black,),
+                      InkWell(
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex=index;
+                              _selectedIndex2="${data[index]["mocktest_question_id"]}";
+                              option="2";
+                              Provider.of<AnswerSubmitController>(context,listen: false).AnswerSubmitProvider(
+                                  context,
+                                  "${data[index]["mocktest_id"]}",
+                                  "${data[index]["mocktest_question_id"]}",
+                                  "2",
+                                  "${widget.randomdata}"
+                              );
+                            });
+                          },
+                          child: CustomText(text: "B . ${data[index]["option_2"]??""}",text_color: _selectedIndex==index && option=="2"? Colors.green:Colors.black87, fontSize: 11, fontWeight: FontWeight.w400)),
                       SizedBox(height: 7,),
-                      CustomText(text: "C . ${data[index]["option_3"]??""}",fontSize: 11, fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="3"  ? Colors.green: "${data[index]["answer_list"]??""}"=="3" && "${data[index]["answer_selected"]??""}"==3?Colors.green:"${data[index]["answer_selected"]??""}"=="3"?Colors.red: Colors.black,),
+                      InkWell(
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex=index;
+                              _selectedIndex2="${data[index]["mocktest_question_id"]}";
+                              option="3";
+                              Provider.of<AnswerSubmitController>(context,listen: false).AnswerSubmitProvider(
+                                  context,
+                                  "${data[index]["mocktest_id"]}",
+                                  "${data[index]["mocktest_question_id"]}",
+                                  "3",
+                                  "${widget.randomdata}"
+                              );
+                            });
+                          },
+                          child: CustomText(text: "C . ${data[index]["option_3"]??""}",text_color: _selectedIndex==index && option=="3"? Colors.green:Colors.black87, fontSize: 11, fontWeight: FontWeight.w400 ,)),
                       SizedBox(height: 7,),
-                      CustomText(text: "D . ${data[index]["option_4"]??""}",fontSize:11,   fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="4" ? Colors.green: "${data[index]["answer_list"]??""}"=="4" && "${data[index]["answer_selected"]??""}"==4?Colors.green:"${data[index]["answer_selected"]??""}"=="4"?Colors.red: Colors.black,),
-
+                      InkWell(
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex=index;
+                              _selectedIndex2="${data[index]["mocktest_question_id"]}";
+                              option="4";
+                              Provider.of<AnswerSubmitController>(context,listen: false).AnswerSubmitProvider(
+                                  context,
+                                  "${data[index]["mocktest_id"]}",
+                                  "${data[index]["mocktest_question_id"]}",
+                                  "4",
+                                  "${widget.randomdata}"
+                              );
+                            });
+                          },
+                          child: CustomText(text: "D . ${data[index]["option_4"]??""}",text_color: _selectedIndex==index && option=="4"? Colors.green:Colors.black87, fontSize:11,   fontWeight: FontWeight.w400 )),
                     ],
                   ),
                 ),

@@ -2,8 +2,12 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:provider/provider.dart';
+import '../../Controller/homeController.dart';
 import '../../CustomWidget/CustomAppbar/custom_appbar.dart';
 import '../../custom_const.dart';
+import '../Auth/Login/screens/login_screen.dart';
 import 'HomeScreen/home_screen.dart';
 import 'PackageScreen/package_screen.dart';
 import 'ProfileScreen/prfile_screen.dart';
@@ -34,6 +38,7 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
   var _controller = NotchBottomBarController(index:1);
   @override
   void initState() { /// Controller to handle PageView and also handles initial page
+
     _pageController = PageController(initialPage:widget.index);
 
     /// Controller to handle bottom nav bar and also handles initial page
@@ -47,7 +52,7 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
 
     HomeScreen( ),
     PackageScreen(),
-    ProfileScreen( ),
+    "${GetStorage().read("Api_token")}"=="" || "${GetStorage().read("Api_token")}"=="null"?  LoginScreen() : ProfileScreen( ),
 
 
 
