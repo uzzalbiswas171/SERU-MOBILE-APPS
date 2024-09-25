@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:seru_test_project/Controller/homeController.dart';
 import 'package:seru_test_project/View/BootomBar/bootombar.dart';
@@ -21,6 +22,14 @@ class _SplashScreen3State extends State<SplashScreen3> {
   @override
   void initState() {
   Provider.of<HomeController>(context,listen: false).getAllPackageProvider(context);
+  if("${GetStorage().read("Api_token")}"=="" || "${GetStorage().read("Api_token")}"=="null"){
+    print("${GetStorage().read("Api_token")}");
+  }else{
+    print("${GetStorage().read("Api_token")}");
+    Future.delayed(Duration(seconds: 2),() {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => BttotomBarScreen(index: 0,),));
+    },);
+  }
   // TODO: implement initState
     super.initState();
   }
@@ -29,7 +38,8 @@ class _SplashScreen3State extends State<SplashScreen3> {
     double c_h = MediaQuery.of(context).size.height;
     double c_w = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Container(
+      body: "${GetStorage().read("Api_token")}"=="" || "${GetStorage().read("Api_token")}"=="null" ?
+      Container(
         height: double.infinity,
         width: double.infinity,
         //  color: Main_3Theme_SplashScreenColor,
@@ -107,9 +117,9 @@ class _SplashScreen3State extends State<SplashScreen3> {
                   alignment: Alignment.center,
                   child: CustomSplashMenue(
                       image1: "assets/circle_count1.png",
-                      text1: "learn Location Tracking",
+                      text1: "learn Rules of Driving",
                       image2: "assets/circle_count2.png",
-                      text2: "alert Tracking Notification")),
+                      text2: "Online Exam")),
               SizedBox(
                 height: 13,
               ),
@@ -120,7 +130,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
                       image1: "assets/circle_count3.png",
                       text1: "Way Fence",
                       image2: "assets/circle_count4.png",
-                      text2: "Conveyance Tracking")),
+                      text2: "Online Certificate")),
 
               SizedBox(
                 height: c_h<700 ?c_h * 0.045 : c_h * 0.075,
@@ -160,7 +170,17 @@ class _SplashScreen3State extends State<SplashScreen3> {
             ],
           ),
         ),
-      ),
+      )
+          : Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset("assets/Gif/carmoving.gif",height: 100,width: 100,),
+            CustomText(text: "Loading...", fontSize: 22, fontWeight: FontWeight.w700,fontStyle:FontStyle.italic ,)
+          ],
+        ),
+      )
     );
   }
 }
