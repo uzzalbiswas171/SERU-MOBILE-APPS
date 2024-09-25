@@ -335,5 +335,45 @@ class CustomHttp{
     } else {
       throw 'Could not launch $url';
     }}
+
+
+  ///   Voucher- apply ------------------------------
+  dynamic VoucheApply;
+  VoucheApplyHttpFunction(
+      BuildContext context,
+      String voucher_code_id,
+      String date_for_physical,
+      )async{
+    try{
+      var response = await http.post(
+        Uri.parse("https://www.tflserutest.co.uk/api/protected/buy-package?api_token=${GetStorage().read("Api_token")}"),
+        body: {
+          "voucher_code_id":"$voucher_code_id",
+          "date_for_physical"	:"${date_for_physical}"
+        },
+      );
+      var data=jsonDecode(response.body);
+      ElegantNotification(
+        borderRadius: BorderRadius.circular(11),
+        width: 380,
+        iconSize: 25,
+        background: Colors.green,
+        progressIndicatorBackground: Colors.green,
+        progressIndicatorColor: Colors.red,
+        // position: Alignment.center,
+        title:   CustomText(fontSize: 16, fontWeight: FontWeight.w500, text: "Invalid Code",  ),
+        description:  CustomText(fontSize: 14, fontWeight: FontWeight.w400, text: "Please Enter Right Code",     ),
+        onDismiss: () {
+          print('Message when the notification is dismissed');
+        }, icon: Icon(Icons.info_outlined,color:Colors.black,),
+      ).show(context);
+      VoucheApply=data;
+      print(" pppppppppppppppppppppp   $VoucheApply");
+
+
+    }catch(e){
+      print("Pacage buy screen catch error > $e");
+    }
+  }
 }
 

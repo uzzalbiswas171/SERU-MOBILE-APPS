@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:seru_test_project/Controller/homeController.dart';
 import 'package:seru_test_project/Controller/profile_controller.dart';
@@ -15,6 +16,7 @@ import 'package:seru_test_project/CustomWidget/CustomImageScetion/custom_image_s
 import 'package:seru_test_project/CustomWidget/CustomText/custom_text.dart';
 import 'package:seru_test_project/CustomWidget/SelectionOptions/selection_option.dart';
 import 'package:seru_test_project/View/RegistrationForBuyScreen/registration_for_buy_screen.dart';
+import '../../../Controller/buy_package_controller.dart';
 import '../../../custom_const.dart';
 import '../../Auth/Login/screens/login_screen.dart';
 
@@ -58,7 +60,13 @@ bool  is_cliced=true;
              children: [
                SizedBox(height: h*0.025,),
                /// Apply Sections
-               CustomApplyVaucherSection(applyCuponController: _applyCuponController),
+               CustomApplyVaucherSection(applyCuponController: _applyCuponController,onTap: () {
+                 Provider.of<BuyPackageController>(context,listen: false).vautureapplyprovider(
+                     context,
+                     "${_applyCuponController.text}",
+                     "${DateFormat("yyyy-MM-dd").format(DateTime.now())}"
+                 );
+               },),
                SizedBox(height: h*0.025,),
                /// Slide Company Banner
                CalosolSelalider(custom_height: 130, carousal_list: carosal, carousal_onTab: () {

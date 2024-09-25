@@ -27,4 +27,16 @@ class BuyPackageController with ChangeNotifier{
     );
     notifyListeners();
   }
+  ///  vaututre apply ///
+  dynamic vautureapply;
+  vautureapplyprovider(
+      BuildContext context,
+      String voucher_code_id,
+      String date_for_physical,
+      )async{
+    vautureapply= await CustomHttp().VoucheApplyHttpFunction(
+        context,  voucher_code_id,date_for_physical
+    );
+    notifyListeners();
+  }
 }

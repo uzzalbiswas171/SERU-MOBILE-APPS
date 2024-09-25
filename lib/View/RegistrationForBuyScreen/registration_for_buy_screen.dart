@@ -9,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:seru_test_project/CustomWidget/CustomButton/custom_button.dart';
 import 'package:seru_test_project/CustomWidget/CustomText/custom_text.dart';
@@ -59,7 +60,15 @@ class _RegistrationForBuyScreenState extends State<RegistrationForBuyScreen> {
             children: [
               SizedBox(height: h*0.025,),
               /// Apply Sections
-              CustomApplyVaucherSection(applyCuponController: _applyCuponController),
+              CustomApplyVaucherSection(applyCuponController: _applyCuponController,onTap: () {
+                Provider.of<BuyPackageController>(context,listen: false).vautureapplyprovider(
+                  context,
+                  "${_applyCuponController.text}",
+                  "${DateFormat("yyyy-MM-dd").format(DateTime.now())}"
+                );
+              },),
+           
+           
            widget.is_cliced_for_own==true?Container():  SizedBox(height: 15,),
             widget.is_cliced_for_own==true?Container():  Container(
                 height: 120,
