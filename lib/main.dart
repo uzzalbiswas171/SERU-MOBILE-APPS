@@ -57,13 +57,11 @@ class MyApp extends StatelessWidget {
       ),
 
       /// Main Route --------------------------
-  home:SplashScreen3(),
+      home:SplashScreen3(),
       //   home:IndividualResultScreen(),
-
       /// Working route -----------------------
       // home:BttotomBarScreen(index: 0,),
-
-    ),
+      ),
     );
   }
 }

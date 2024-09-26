@@ -38,7 +38,7 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
   var _controller = NotchBottomBarController(index:1);
   @override
   void initState() { /// Controller to handle PageView and also handles initial page
-
+    Provider.of<HomeController>(context,listen: false).getAllPackageProvider(context);
     _pageController = PageController(initialPage:widget.index);
 
     /// Controller to handle bottom nav bar and also handles initial page

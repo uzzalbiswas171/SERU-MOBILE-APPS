@@ -248,7 +248,10 @@ bool  is_cliced=true;
                            ,SizedBox(height: 5,),
                             InkWell(
                               onTap: () {
+                                "${GetStorage().read("Api_token")}"=="" || "${GetStorage().read("Api_token")}"=="null"?
 
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),))
+                                    :
                                 showDialog(context: context, builder: (context) {
                                   return StatefulBuilder(
                                     builder: (context, setState) {
