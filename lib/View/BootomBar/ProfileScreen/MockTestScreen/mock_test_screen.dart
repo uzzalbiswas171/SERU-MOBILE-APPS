@@ -29,7 +29,18 @@ class _MockTestScreenState extends State<MockTestScreen> {
       body: Consumer<ProfileController>(
         builder: (context, value, child) {
      //     print("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmm ${value.MockTest}");
-        return "${value.MockTest}"=="null"?Center(child: CircularProgressIndicator(),): Container(
+        return "${value.MockTest}"=="null"? Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset("assets/Gif/carmoving.gif",height: 100,width: 100,),
+              CustomText(text: "Loading...", fontSize: 22, fontWeight: FontWeight.w700,fontStyle:FontStyle.italic ,)
+            ],
+          ),
+        )
+
+            : Container(
             height: double.infinity,
             width: double.infinity,
             child:  Padding(

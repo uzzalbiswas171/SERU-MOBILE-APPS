@@ -28,7 +28,8 @@ class _SplashScreen3State extends State<SplashScreen3> {
     print("${GetStorage().read("Api_token")}");
     Future.delayed(Duration(seconds: 2),() {
       Navigator.push(context, MaterialPageRoute(builder: (context) => BttotomBarScreen(index: 0,),));
-    },);
+       },
+    );
   }
   // TODO: implement initState
     super.initState();

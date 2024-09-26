@@ -42,7 +42,18 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
         },
         child:
         "${data}"=="null"?
-        Center(child:  CircularProgressIndicator(),):"${data}"=="[]"?
+        Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset("assets/Gif/carmoving.gif",height: 100,width: 100,),
+              CustomText(text: "Loading...", fontSize: 22, fontWeight: FontWeight.w700,fontStyle:FontStyle.italic ,)
+            ],
+          ),
+        )
+
+            :"${data}"=="[]"?
         Center(child: CustomText(text: "Data not found..",fontSize: 18,fontWeight: FontWeight.w500,)):
 
         Container(

@@ -139,7 +139,7 @@ bool  is_cliced=true;
                                        is_cliced==false?Container():
                                        GestureDetector(
                                          onTap: () {
-                                           Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
                                              package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
                                              subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
                                              is_cliced_for_own: is_cliced_for_own,
@@ -165,7 +165,7 @@ bool  is_cliced=true;
 
                                              GestureDetector(
                                                  onTap: () {
-                                                   Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
                                                      package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
                                                      subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
                                                       is_cliced_for_own: is_cliced_for_own,
@@ -181,7 +181,7 @@ bool  is_cliced=true;
                                              ),
                                              GestureDetector(
                                                  onTap: () {
-                                                   Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
                                                      package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
                                                      subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
                                                       is_cliced_for_own: is_cliced_for_own,
@@ -248,7 +248,10 @@ bool  is_cliced=true;
                            ,SizedBox(height: 5,),
                             InkWell(
                               onTap: () {
+                                "${GetStorage().read("Api_token")}"=="" || "${GetStorage().read("Api_token")}"=="null"?
 
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),))
+                                    :
                                 showDialog(context: context, builder: (context) {
                                   return StatefulBuilder(
                                     builder: (context, setState) {
@@ -293,7 +296,7 @@ bool  is_cliced=true;
                                              is_cliced==false?Container():
                                               GestureDetector(
                                                 onTap: () {
-                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
                                                     package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
                                                     subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
                                                      is_cliced_for_own: is_cliced_for_own,
@@ -319,7 +322,7 @@ bool  is_cliced=true;
 
                                                     GestureDetector(
                                                         onTap: () {
-                                                          Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
                                                             package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
                                                             subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
                                                              is_cliced_for_own: is_cliced_for_own,
@@ -335,7 +338,7 @@ bool  is_cliced=true;
                                                     ),
                                                     GestureDetector(
                                                         onTap: () {
-                                                          Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
                                                             package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
                                                             subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
                                                              is_cliced_for_own: is_cliced_for_own,
@@ -353,7 +356,7 @@ bool  is_cliced=true;
                                                   children: [
                                                     GestureDetector(
                                                         onTap: () {
-                                                          Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
+                                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegistrationForBuyScreen(
                                                             package_id: "${value.getAllPackageList[index]["subscription_structure_id"]??"0"}",
                                                             subscription_structure_id:"${value.getAllPackageList[index]["subscription_structure_id"]??"0"}" ,
                                                              is_cliced_for_own: is_cliced_for_own,

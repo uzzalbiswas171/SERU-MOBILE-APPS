@@ -38,7 +38,7 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
   var _controller = NotchBottomBarController(index:1);
   @override
   void initState() { /// Controller to handle PageView and also handles initial page
-
+    Provider.of<HomeController>(context,listen: false).getAllPackageProvider(context);
     _pageController = PageController(initialPage:widget.index);
 
     /// Controller to handle bottom nav bar and also handles initial page
@@ -100,7 +100,7 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
     ),
     activeItem: Icon(
     Icons.home,
-      color: Color(0xff6C0BA9),
+      color: main_text_white_color,
     size: 25,
     ),
     itemLabel: 'Page 1',
@@ -113,7 +113,7 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
     ),
     activeItem: Icon(
     Icons.production_quantity_limits,
-      color: Color(0xff6C0BA9),
+      color: main_text_white_color,
     size: 25,
     ),
     itemLabel: 'Page 1',
@@ -126,7 +126,7 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
     ),
     activeItem: Icon(
     Icons.person,
-      color: Color(0xff6C0BA9),
+      color: main_text_white_color,
     size: 25,
     ),
     itemLabel: 'Page 5',

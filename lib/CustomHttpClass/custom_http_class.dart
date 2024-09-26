@@ -328,6 +328,27 @@ class CustomHttp{
     }catch(e){
       print("Pacage buy screen catch error > $e");
     }
+    showDialog(context: context, builder: (context) {
+      Future.delayed(Duration(seconds: 2),() {
+        Navigator.pop(context);
+      },);
+   return   AlertDialog(
+        content: Container(
+          height: 200,
+          width: 200,
+          child:Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset("assets/Gif/carmoving.gif",height: 100,width: 100,),
+                CustomText(text: "Loading...", fontSize: 22, fontWeight: FontWeight.w700,fontStyle:FontStyle.italic ,)
+              ],
+            ),
+          ),
+        ),
+      );
+    },);
   }
   _launchURL(String url) async {
     if (await canLaunch(url)) {
