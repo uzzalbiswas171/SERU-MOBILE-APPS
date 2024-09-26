@@ -61,7 +61,18 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
       //  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("You have to finish or submit")));
       }, title: "Exam result")),
       body: "${data}"=="null"?
-      Center(child:  CircularProgressIndicator(),):"${data}"=="[]"?Center(child: CustomText(text: "Data not found..",fontSize: 18,fontWeight: FontWeight.w500,)): Consumer<ProfileController>(
+      Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset("assets/Gif/carmoving.gif",height: 100,width: 100,),
+            CustomText(text: "Loading...", fontSize: 22, fontWeight: FontWeight.w700,fontStyle:FontStyle.italic ,)
+          ],
+        ),
+      )
+
+          :"${data}"=="[]"?Center(child: CustomText(text: "Data not found..",fontSize: 18,fontWeight: FontWeight.w500,)): Consumer<ProfileController>(
         builder: (context, value, child) { 
           return Container(
             height: double.infinity,
