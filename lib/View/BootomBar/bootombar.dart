@@ -75,6 +75,7 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
       ),
     ),
     extendBody: true,
+    
     bottomNavigationBar: (bottomBarPages.length <= maxCount)
     ? AnimatedNotchBottomBar(
     /// Provide NotchBottomBarController
