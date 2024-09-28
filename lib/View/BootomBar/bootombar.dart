@@ -63,7 +63,7 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: PreferredSize(preferredSize:Size.fromHeight(75), child: CustomAppbar()),
+      appBar: PreferredSize(preferredSize:Size.fromHeight(70), child: CustomAppbar()),
     key: _scaffoldkey,
     body: WillPopScope(
       onWillPop: () => Future(() => false),
