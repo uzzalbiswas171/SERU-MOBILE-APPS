@@ -63,11 +63,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
                 height:c_h<700? c_h * 0.015 : c_h * 0.025,
               ),
               // SizedBox(height: 20,),
-              CustomText(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  text: "Auto Certified",
-                ),
+
               SizedBox(
                 height:c_h<700? c_h * 0.015 : c_h * 0.025,
               ),
@@ -81,11 +77,12 @@ class _SplashScreen3State extends State<SplashScreen3> {
                     child: Container(
                         height:  400,
                        width: double.infinity,
-
+padding: EdgeInsets.all(10),
                         child: Container(
                           padding: EdgeInsets.only(top: 50),
                           child: Image.asset(
-                            "assets/Gif/third_splashcsreen.gif",
+                           // "assets/Gif/third_splashcsreen.gif",
+                            "assets/Splash_Screen_banneer/spash_1.png",
                             height: 240,
                            width: double.infinity,
                             fit: BoxFit.fill,
@@ -100,41 +97,42 @@ class _SplashScreen3State extends State<SplashScreen3> {
                         width: 369,
                         padding: EdgeInsets.only(left: 20, right: 20),
                         child: CustomText(
-                            fontSize: 14,
+                            fontSize: 20,
                             textAlign: TextAlign.center,
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w600,
+                            text_color: main_text_blac_color.withOpacity(0.8),
                             text:
-                                "Mobile apps for small enterprises, web applications & mobile apps for large enterprises.",
+                                "Training makes more Learn, Confident & Success",
                           )),
                   ),
                 ],
               ),
 
-              SizedBox(
-                height: 13,
-              ),
-              Container(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20),
-                  alignment: Alignment.center,
-                  child: CustomSplashMenue(
-                      image1: "assets/circle_count1.png",
-                      text1: "learn Rules of Driving",
-                      image2: "assets/circle_count2.png",
-                      text2: "Online Exam")),
-              SizedBox(
-                height: 13,
-              ),
-              Container(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20),
-                  alignment: Alignment.center,
-                  child: CustomSplashMenue(
-                      image1: "assets/circle_count3.png",
-                      text1: "Way Fence",
-                      image2: "assets/circle_count4.png",
-                      text2: "Online Certificate")),
+              // SizedBox(
+              //   height: 13,
+              // ),
+              // Container(
+              //     padding: const EdgeInsets.only(left: 20.0, right: 20),
+              //     alignment: Alignment.center,
+              //     child: CustomSplashMenue(
+              //         image1: "assets/circle_count1.png",
+              //         text1: "learn Rules of Driving",
+              //         image2: "assets/circle_count2.png",
+              //         text2: "Online Exam")),
+              // SizedBox(
+              //   height: 13,
+              // ),
+              // Container(
+              //     padding: const EdgeInsets.only(left: 20.0, right: 20),
+              //     alignment: Alignment.center,
+              //     child: CustomSplashMenue(
+              //         image1: "assets/circle_count3.png",
+              //         text1: "Way Fence",
+              //         image2: "assets/circle_count4.png",
+              //         text2: "Online Certificate")),
 
               SizedBox(
-                height: c_h<700 ?c_h * 0.045 : c_h * 0.075,
+                height: c_h<700 ?c_h * 0.095 : c_h * 0.075,
               ),
               Container(
                 height: 32,
@@ -161,7 +159,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
                 ),
               ),
               SizedBox(
-                height: c_h * 0.035,
+                height: c_h * 0.095,
               ),
 
               CustomTermsAndConditionPart(),

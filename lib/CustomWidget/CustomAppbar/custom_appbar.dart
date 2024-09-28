@@ -2,6 +2,7 @@
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
+import 'package:seru_test_project/CustomWidget/CustomText/custom_text.dart';
  import '../../custom_const.dart';
 
 class CustomAppbar extends StatefulWidget {
@@ -13,8 +14,7 @@ class CustomAppbar extends StatefulWidget {
   State<CustomAppbar> createState() => _CustomAppbarState();
 }
 
-class _CustomAppbarState extends State<CustomAppbar> {
-  TextEditingController controller=TextEditingController();
+class _CustomAppbarState extends State<CustomAppbar> { 
 
   @override
   Widget build(BuildContext context) {
@@ -23,73 +23,35 @@ class _CustomAppbarState extends State<CustomAppbar> {
       padding: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
        // color: Colors.white,
-        color: appbarcollor,
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(15),
-          bottomRight: Radius.circular(15)
-        )
+      gradient: customBackground(),
+
       ),
       child: AppBar(
       //  backgroundColor: Colors.white,
-        backgroundColor: appbarcollor,
-        leading: Container(
-          margin: EdgeInsets.only(left: 15,bottom: 8,top: 8),
-          height: 40,
-          width: 45,
-         decoration: BoxDecoration(
-           color: Colors.white,
-           borderRadius: BorderRadius.circular(10),
-           image: DecorationImage(image: AssetImage("$Seru_Test_logo"))
-         ),
+        backgroundColor: appbarcollor.withOpacity(0.0),
+        leading:Container(
+          margin: const EdgeInsets.only(left: 10.0),
+          child: CircleAvatar(
+            radius: 21,
+            child: CircleAvatar(
+              backgroundImage: AssetImage("$Seru_Test_logo"),
+              radius: 23,
+            ),
+          ),
         ),
 
       
         centerTitle: true,
         actions: [
-          // InkWell(
-          //   onTap: () {
-          // //    Navigator.push(context, MaterialPageRoute(builder: (context) => BootomNavigatiomBar(index: 2, indexchange: 2),));
-          //   },
-          //   child: Stack(
-          //     children: [
-          //       CircleAvatar(
-          //         radius: 18,
-          //         child: Icon(Icons.shopping_cart,color: Colors.grey,size: 25,),
-          //       ),
-          //
-          //       Positioned(
-          //          right: 6,
-          //          top: 5,
-          //          child: CircleAvatar(
-          //            backgroundColor: Colors.black87,
-          //            radius: 7,
-          //            child: Text("11",style: TextStyle(fontSize: 10,color: Colors.white),
-          //            ),
-          //          ),
-          //        ),
-          //     ],
-          //   ),
-          // ),
-       //   SizedBox(width: 5,),
           Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: InkWell(
-                onTap: widget.onTap,
-                child: CircleAvatar(
-                  radius: 18,
-                    backgroundColor: defaultBackgroundColor,
-                    child: Center(
-                      child: CircleAvatar(
-                        radius: 16,
-                        backgroundColor: Colors.white,
-                        child: Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Icon(Icons.person),
-                        ),
-                      ),
-                   )
-                ),
-             ),
+            padding: const EdgeInsets.only(right: 10.0,top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                CustomText(text: "Welcome to SERU TEST", fontSize: 16, fontWeight: FontWeight.bold,text_color: Main_Theme_white.withOpacity(0.9),),
+                CustomText(text: "Let's Learn...", fontSize: 12, fontWeight: FontWeight.bold,text_color: Main_Theme_white.withOpacity(0.7),),
+              ],
+            )
           ),
         ],
       ),

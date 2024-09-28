@@ -29,7 +29,7 @@ final FontStyle? fontStyle;
         "$text",
         textAlign: textAlign,
         overflow: overflow,
-        style: TextStyle(
+        style: GoogleFonts.roboto(
           fontSize: fontSize,
           fontWeight:fontWeight,
           color: text_color,
