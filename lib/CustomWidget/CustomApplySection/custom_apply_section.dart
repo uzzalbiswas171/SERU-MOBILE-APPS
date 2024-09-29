@@ -12,12 +12,13 @@ class CustomApplyVaucherSection extends StatelessWidget {
     return  Container(
       height: 47,
       width: double.infinity,
-      padding: EdgeInsets.only(
+      margin: EdgeInsets.only(
         left: 10,
         right: 10,
       ),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20)
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white
       ),
       child: Row(
         children: [

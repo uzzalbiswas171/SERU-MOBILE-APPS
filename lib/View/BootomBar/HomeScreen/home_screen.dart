@@ -45,7 +45,7 @@ bool  is_cliced=true;
   //  final getAllPackageList=Provider.of<HomeController>(context).getAllPackageList;
 
     return Scaffold(
-
+backgroundColor: Colors.white,
      body: RefreshIndicator(
        onRefresh: () {
          return Future.delayed(Duration(seconds: 2),() {
@@ -76,15 +76,20 @@ bool  is_cliced=true;
                                 gradient: customBackground(),
                               ),
                            )),
-                           Expanded(child: Container()),
+                           Expanded(child: Container(
+                            color: Colors.white,
+                           )),
                          ],
                        ),
                      ),
-                     /// Apply Sections
-                     Positioned(
-                       top: h*0.025,
-                       child: Container(
-                         child: CustomApplyVaucherSection(
+
+                     Positioned( 
+                      bottom: 0,
+                      child: Container(
+                        color: Colors.white.withOpacity(0.0),
+                        height: 50, 
+                        width: MediaQuery.of(context).size.width, 
+                        child: CustomApplyVaucherSection(
                          applyCuponController: _applyCuponController,onTap: () {
                          Provider.of<BuyPackageController>(context,listen: false).vautureapplyprovider(
                              context,
@@ -92,7 +97,9 @@ bool  is_cliced=true;
                              "${DateFormat("yyyy-MM-dd").format(DateTime.now())}"
                           );
                          },),
-                       ),)
+                      ))
+                     /// Apply Sections
+                   
                    ],
                  ),
                ),
@@ -262,10 +269,10 @@ bool  is_cliced=true;
                                Row(
                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                  children: [
-                                   CustomText(text: "Package: ${value.getAllPackageList[index]["subscription_structure_id"]??0}",text_color: main_text_blac_color ,fontSize: 12, fontWeight: FontWeight.w500),
-
+                                //   CustomText(text: "Package: ${value.getAllPackageList[index]["subscription_structure_id"]??0}",text_color: main_text_blac_color ,fontSize: 12, fontWeight: FontWeight.w500),
+Spacer(),
                                    Container(
-                                     height: 30,
+                                     height: 25,
                                      width: 80,
                                      decoration: BoxDecoration(
                                          borderRadius: BorderRadius.circular(15),
@@ -412,7 +419,7 @@ bool  is_cliced=true;
                                  child: Card(
                                    elevation: 9,
                                    child: Container(
-                                     height: 30,
+                                     height: 26,
                                      width: double.infinity,
                                      decoration: BoxDecoration(
                                        borderRadius: BorderRadius.circular(
@@ -438,6 +445,7 @@ bool  is_cliced=true;
                    },),
                  ),
                ),
+             
                /// Slide Add
                CalosolSelalider(custom_height: 100, carousal_list: carosal, carousal_onTab: () {
                },),
@@ -465,8 +473,10 @@ bool  is_cliced=true;
              ],
            ),
          ),
+       
        ),
      ),
+    
     );
   }
   List imageList=[

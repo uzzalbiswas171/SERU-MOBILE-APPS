@@ -22,7 +22,7 @@ class BttotomBarScreen extends StatefulWidget {
 class _BttotomBarScreenState extends State<BttotomBarScreen> {
 
 
-  int maxCount = 5;
+  int maxCount = 3;
   bool is_get_profie=false;
   dynamic getDynamicSliderData;
 
@@ -63,89 +63,54 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: PreferredSize(preferredSize:Size.fromHeight(70), child: CustomAppbar()),
+      appBar: PreferredSize(preferredSize:Size.fromHeight(60), child: CustomAppbar()),
     key: _scaffoldkey,
     body: WillPopScope(
       onWillPop: () => Future(() => false),
-      child: PageView(
-      controller: _pageController,
-      physics: const NeverScrollableScrollPhysics(),
-      children: List.generate(
-      bottomBarPages.length, (index) => bottomBarPages[index]),
-      ),
+      child: bottomBarPages[Select_index],
     ),
     extendBody: true,
-    bottomNavigationBar: (bottomBarPages.length <= maxCount)
-    ? AnimatedNotchBottomBar(
-    /// Provide NotchBottomBarController
-    notchBottomBarController: _controller,
-    color: BootomBarColor,
-    //    color: Color(0xFFCBCBCB),
-    showLabel: false,
-    shadowElevation:9,
-    kBottomRadius: 28.0,
-    notchColor: BootomBarColor,
-    /// restart app if you change removeMargins
-    removeMargins: false,
-    bottomBarWidth: 500,
-    showShadow: false,
-    durationInMilliSeconds: 300,
-    elevation: 1,
-    bottomBarItems: const [
-    BottomBarItem(
-    inActiveItem: Icon(
-    Icons.home,
-      color: Color(0xff6C0BA9),
-    size: 25,
-    ),
-    activeItem: Icon(
-    Icons.home,
-      color: main_text_white_color,
-    size: 25,
-    ),
-    itemLabel: 'Page 1',
-    ),
-    BottomBarItem(
-    inActiveItem: Icon(
-    Icons.production_quantity_limits,
-      color: Color(0xff6C0BA9),
-    size: 25,
-    ),
-    activeItem: Icon(
-    Icons.production_quantity_limits,
-      color: main_text_white_color,
-    size: 25,
-    ),
-    itemLabel: 'Page 1',
-    ),
-    BottomBarItem(
-    inActiveItem: Icon(
-    Icons.person,
-      color: Color(0xff6C0BA9),
-    size: 25,
-    ),
-    activeItem: Icon(
-    Icons.person,
-      color: main_text_white_color,
-    size: 25,
-    ),
-    itemLabel: 'Page 5',
-    ),
-
-    ],
-    onTap: (index) {
-    if(index==0){
-    _pageController.jumpToPage(0);
-    }
-    else if(index==1){
-    _pageController.jumpToPage(1);
-    }else{
-    _pageController.jumpToPage(2);
-    }
-    },
-    kIconSize: 24.0,
+    bottomNavigationBar: Container( 
+     height: 60,
+     width: double.infinity,
+     decoration: BoxDecoration(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(11),
+        topRight: Radius.circular(11)
+      ),
+      gradient: customBackground()
+     ),
+     child: BottomNavigationBar( 
+      backgroundColor:BootomBarColor.withOpacity(0.6),
+        currentIndex: Select_index,
+        selectedItemColor: Main_Theme_white,
+        unselectedItemColor: Colors.purple,
+        selectedLabelStyle: TextStyle(
+          fontSize: 15
+        ),
+        onTap: (index) {
+          setState(() {
+            Select_index = index;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home', 
+          ),
+       
+          BottomNavigationBarItem(
+            icon: Icon(Icons.production_quantity_limits),
+            label: 'Package',
+          ),
+             BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+      ),
     )
-        : null,
+     
     );
   }
 }

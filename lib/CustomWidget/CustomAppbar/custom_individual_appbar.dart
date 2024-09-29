@@ -9,64 +9,73 @@ class CustomIndividualAppbar extends StatelessWidget {
   String title;
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      elevation: 0,
-      leading: Bouncing(
-        onPress: onPress,
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 10),
-          child: const CircleAvatar(
-            backgroundColor: Colors.white,
-            radius: 20,
-            child: Icon(
-              Icons.chevron_left,
-              color: Colors.black,
-              size: 26,
+    return Container(
+      padding: EdgeInsets.only(bottom: 10),
+      decoration: BoxDecoration(
+       // color: Colors.white,
+      gradient: customBackground(),
+
+      ),
+      child: AppBar(
+    backgroundColor: appbarcollor.withOpacity(0.0),
+        elevation: 0,
+        leading: Bouncing(
+          onPress: onPress,
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 10),
+            child: const CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: 20,
+              child: Icon(
+                Icons.chevron_left,
+                color: Colors.black,
+                size: 26,
+              ),
             ),
           ),
         ),
-      ),
-      title: Text(
-        "$title",
-        style: TextStyle(
-          color: Colors.black,
+        title: Text(
+          "$title",
+          style: TextStyle(
+            color: Colors.black,
+          ),
         ),
+        centerTitle: true,
+        // actions: [
+        //   Container(
+        //     margin: const EdgeInsets.symmetric(horizontal: 10),
+        //     child: GestureDetector(
+        //       onTap: () {
+        //      },
+        //       child: Stack(
+        //         children: [
+        //           CircleAvatar(
+        //               backgroundColor: Colors.white,
+        //               radius: 20,
+        //               child:  Icon(
+        //                 Icons.shopping_cart,
+        //                 color: Colors.black87,
+        //                 size: 22,
+        //               )
+        //           ),
+        //           Positioned(
+        //               right: 0,
+        //               left:0,
+        //               child: CircleAvatar(
+        //                 backgroundColor: Colors.red,
+        //             radius: 6,
+        //             child: Text("z",style: TextStyle(
+        //               fontSize: 7,
+        //               color: Colors.white
+        //             ),),
+        //           ))
+        //         ],
+        //       ),
+        //     ),
+        //   ),
+        // ],
+    
       ),
-      centerTitle: true,
-      // actions: [
-      //   Container(
-      //     margin: const EdgeInsets.symmetric(horizontal: 10),
-      //     child: GestureDetector(
-      //       onTap: () {
-      //      },
-      //       child: Stack(
-      //         children: [
-      //           CircleAvatar(
-      //               backgroundColor: Colors.white,
-      //               radius: 20,
-      //               child:  Icon(
-      //                 Icons.shopping_cart,
-      //                 color: Colors.black87,
-      //                 size: 22,
-      //               )
-      //           ),
-      //           Positioned(
-      //               right: 0,
-      //               left:0,
-      //               child: CircleAvatar(
-      //                 backgroundColor: Colors.red,
-      //             radius: 6,
-      //             child: Text("z",style: TextStyle(
-      //               fontSize: 7,
-      //               color: Colors.white
-      //             ),),
-      //           ))
-      //         ],
-      //       ),
-      //     ),
-      //   ),
-      // ],
-      backgroundColor: BootomBarColor,
     );
   }
 }
