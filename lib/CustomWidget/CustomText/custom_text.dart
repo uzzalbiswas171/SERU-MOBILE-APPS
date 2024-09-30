@@ -33,7 +33,7 @@ final FontStyle? fontStyle;
           fontSize: fontSize,
           fontWeight:fontWeight,
           color: text_color,
-          letterSpacing: 0.3,
+          letterSpacing: 0.4,
           fontStyle: fontStyle,
         ));
   }

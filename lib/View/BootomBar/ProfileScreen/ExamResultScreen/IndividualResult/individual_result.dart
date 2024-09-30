@@ -48,38 +48,70 @@ class _IndividualResultScreenState extends State<IndividualResultScreen> {
       Container(
         height: double.infinity,
         width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: customBackground()
+        ),
         padding: EdgeInsets.all(10),
         child: ListView.builder(
         itemCount: data.length,
           itemBuilder: (context, index) {
           return Card(
             elevation: 2,
-            child: Container(
-              // margin: EdgeInsets.only(bottom: 7),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(7),
-              //  color: appbarcollor.withOpacity(0.5),
-                border: Border.all(
-                  color: Colors.black.withOpacity(0.5)
-                )
-              ),
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomText(text: "Q${index+1} . ${data[index]["question_description"].replaceAll( "\n", " " )??""}", fontSize: 13, fontWeight: FontWeight.w400),
-                  Divider(height: 5,),
-                  CustomText(text:"A . ${data[index]["option_1"]??""}", fontSize: 13, fontWeight: FontWeight.w400 ,  text_color: "${data[index]["answer_list"]??""}"=="1"  ? Colors.green:"${data[index]["answer_list"]??""}"=="1" && "${data[index]["answer_selected"]??""}"==1?Colors.green:"${data[index]["answer_selected"]??""}"=="1"?Colors.red: Colors.black,),
-                  SizedBox(height: 7,),
-                  CustomText(text: "B . ${data[index]["option_2"]??""}", fontSize: 13, fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="2" ? Colors.green:"${data[index]["answer_list"]??""}"=="2" && "${data[index]["answer_selected"]??""}"==2?Colors.green:"${data[index]["answer_selected"]??""}"=="2"?Colors.red: Colors.black,),
-                  SizedBox(height: 7,),
-                  CustomText(text: "C . ${data[index]["option_3"]??""}",fontSize: 13, fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="3"  ? Colors.green: "${data[index]["answer_list"]??""}"=="3" && "${data[index]["answer_selected"]??""}"==3?Colors.green:"${data[index]["answer_selected"]??""}"=="3"?Colors.red: Colors.black,),
-                  SizedBox(height: 7,),
-                  CustomText(text: "D . ${data[index]["option_4"]??""}",fontSize:13,   fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="4" ? Colors.green: "${data[index]["answer_list"]??""}"=="4" && "${data[index]["answer_selected"]??""}"==4?Colors.green:"${data[index]["answer_selected"]??""}"=="4"?Colors.red: Colors.black,),
+            child: Stack(
+              children: [
+                Container(
+                  // margin: EdgeInsets.only(bottom: 7),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(7),
+                  //  color: appbarcollor.withOpacity(0.5),
+                    border: Border.all(
+                      color: Colors.black.withOpacity(0.5)
+                    )
+                  ),
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomText(text: "Q${index+1} . ${data[index]["question_description"].replaceAll( "\n", " " )??""}", fontSize: 13, fontWeight: FontWeight.w400),
+                      Divider(height: 5,),
+                      CustomText(text:"A . ${data[index]["option_1"]??""}", fontSize: 13, fontWeight: FontWeight.w400 ,  text_color: "${data[index]["answer_list"]??""}"=="1"  ? Colors.green:"${data[index]["answer_list"]??""}"=="1" && "${data[index]["answer_selected"]??""}"==1?Colors.green:"${data[index]["answer_selected"]??""}"=="1"?Colors.red: Colors.black,),
+                      SizedBox(height: 7,),
+                      CustomText(text: "B . ${data[index]["option_2"]??""}", fontSize: 13, fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="2" ? Colors.green:"${data[index]["answer_list"]??""}"=="2" && "${data[index]["answer_selected"]??""}"==2?Colors.green:"${data[index]["answer_selected"]??""}"=="2"?Colors.red: Colors.black,),
+                      SizedBox(height: 7,),
+                      CustomText(text: "C . ${data[index]["option_3"]??""}",fontSize: 13, fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="3"  ? Colors.green: "${data[index]["answer_list"]??""}"=="3" && "${data[index]["answer_selected"]??""}"==3?Colors.green:"${data[index]["answer_selected"]??""}"=="3"?Colors.red: Colors.black,),
+                      SizedBox(height: 7,),
+                      CustomText(text: "D . ${data[index]["option_4"]??""}",fontSize:13,   fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="4" ? Colors.green: "${data[index]["answer_list"]??""}"=="4" && "${data[index]["answer_selected"]??""}"==4?Colors.green:"${data[index]["answer_selected"]??""}"=="4"?Colors.red: Colors.black,),
 
-                ],
-              ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                    right: 10,
+                    bottom: 10,
+                    child: Container(
+                      height: 27,
+                      width: 55,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7),
+                          gradient: customBackground()),
+                      alignment: Alignment.center,
+                      child: CustomText(text:
+                      "${data[index]["answer_list"]??""}"=="1" ?
+                      "A"
+                          :
+                      "${data[index]["answer_list"]??""}"=="2" ?
+                      "B"
+                          :
+                      "${data[index]["answer_list"]??""}"=="3" ?
+                      "C"
+                          :
+                      "${data[index]["answer_list"]??""}"=="4" ?
+                      "D"  :
+                      "${data[index]["answer_list"]??""}"  ,
+                        fontSize: 16, fontWeight: FontWeight.w600,),
+                    ))
+              ],
             ),
           );
         },),

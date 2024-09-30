@@ -25,13 +25,13 @@ class _PackageScreenState extends State<PackageScreen> {
     double h=MediaQuery.of(context).size.height;
     double w=MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: PreferredSize(preferredSize:Size.fromHeight(60), child: CustomAppbar()),
       body:  Consumer<HomeController>(
                  builder: (context, value, child)=>Container(
                    padding: const EdgeInsets.all(10.0),
                    child: GridView.builder(
                      shrinkWrap: true,
-                     itemCount:value.getAllPackageList==null?0: value.getAllPackageList.length,
-                     physics: NeverScrollableScrollPhysics(),
+                     itemCount:value.getAllPackageList==null?0: value.getAllPackageList.length, 
                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                      crossAxisCount: 2,
                      crossAxisSpacing: 10,

@@ -41,6 +41,9 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
           Container(
             height: double.infinity,
             width: double.infinity,
+            decoration: BoxDecoration(
+              gradient: customBackground()
+            ),
             child:  Padding(
               padding: const EdgeInsets.all(10.0),
               child: SingleChildScrollView(
@@ -58,36 +61,48 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                     onTap: () {
 
                     },
-                    child: Container(
-                      height: 100,
-                      padding: const EdgeInsets.all(8.0),
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)
-                        ,color: Main_Theme_Color,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child:  Container(
-                              height: 30,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Colors.black
-                              ),
-                              alignment: Alignment.center,
-                              child: CustomText(text: "\£ ${value.MySubscription[index]["amount"]}",text_color: main_text_white_color ,fontSize: 17, fontWeight: FontWeight.w500),
+                    child: Card(
+                      elevation: 9,
+                      child: Container(
+                        height: 100,
+                        padding: const EdgeInsets.all(8.0),
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.white.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3), // changes position of shadow
                             ),
-                          ),
-                          SizedBox(height: 5,),
-                          CustomText(text: "${value.MySubscription[index]["title"]}", fontSize: 13, fontWeight: FontWeight.w500)
-                          ,
-                          SizedBox(height: 5,),
-                          CustomText(text:Bidi.stripHtmlIfNeeded("${value.MySubscription[index]["description"]}") ,overflow: TextOverflow.ellipsis, fontSize: 16, fontWeight: FontWeight.w500)
-                          ,SizedBox(height: 5,),
-                          // Image.asset("assets/Gif/buynow.webp",height: 40,width: 100,fit: BoxFit.fill,)
-                        ],
+                          ],
+                          borderRadius: BorderRadius.circular(10)
+                          ,color: Main_Theme_Color,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child:  Container(
+                                height: 30,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    color: Colors.black
+                                ),
+                                alignment: Alignment.center,
+                                child: CustomText(text: "\£ ${value.MySubscription[index]["amount"]}",text_color: main_text_white_color ,fontSize: 17, fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                            SizedBox(height: 5,),
+                            CustomText(text: "${value.MySubscription[index]["title"]}", fontSize: 13, fontWeight: FontWeight.w500)
+                            ,
+                            SizedBox(height: 5,),
+                            CustomText(text:Bidi.stripHtmlIfNeeded("${value.MySubscription[index]["description"]}") ,overflow: TextOverflow.ellipsis, fontSize: 16, fontWeight: FontWeight.w500)
+                            ,SizedBox(height: 5,),
+                            // Image.asset("assets/Gif/buynow.webp",height: 40,width: 100,fit: BoxFit.fill,)
+                          ],
+                        ),
                       ),
                     ),
                   );

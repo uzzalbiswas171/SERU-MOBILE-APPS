@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:seru_test_project/CustomWidget/CustomAppbar/custom_individual_appbar.dart';
@@ -36,7 +37,7 @@ class _ModelTestScreenState extends State<ModelTestScreen> {
         appBar: PreferredSize(preferredSize: Size.fromHeight(75), child: CustomIndividualAppbar(onPress: () {
           Navigator.pop(context);
           //  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("You have to finish or submit")));
-        }, title: "Your result on 30/10/2024")),
+        }, title: "Model Test")),
         body : RefreshIndicator(
           onRefresh:() {
             setState(() {
@@ -70,39 +71,84 @@ class _ModelTestScreenState extends State<ModelTestScreen> {
             height: double.infinity,
             width: double.infinity,
             padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              gradient: customBackground()
+            ),
             child: ListView.builder(
-              //   itemCount: data.length,
-              itemCount: 5,
+               itemCount: data.length,
+              //   itemCount: 5,
               itemBuilder: (context, index) {
+                double question_textfont_size=15.0;
+                double question_title_textfont_size=16.0;
                 return Card(
                   elevation: 2,
-                  child: Container(
-                    // margin: EdgeInsets.only(bottom: 7),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        //  color: appbarcollor.withOpacity(0.5),
-                        border: Border.all(
-                            color: Colors.black.withOpacity(0.5)
-                        )
-                    ),
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                  child: Stack(
+                    children: [
+                      Container(
+                        // margin: EdgeInsets.only(bottom: 7),
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(7),
+                            //  color: appbarcollor.withOpacity(0.5),
+                            border: Border.all(
+                                color: Colors.black.withOpacity(0.5)
+                            )
+                        ),
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomText(text: "Q$index} . ${data[index]["question_description"]??""}", fontSize: question_title_textfont_size, fontWeight: FontWeight.w400),
+                            Divider(),
+                            Container(
+                                width: double.infinity,
+                                child: CustomText(text:"A . ${data[index]["option_1"]??""}", fontSize: question_textfont_size, fontWeight: FontWeight.w400 ,  text_color: "${data[index]["answer_list"]??""}"=="1"  ? Colors.green:"${data[index]["answer_list"]??""}"=="1" && "${data[index]["answer_selected"]??""}"==1?Colors.green:"${data[index]["answer_selected"]??""}"=="1"?Colors.red: Colors.black,)),
+                            SizedBox(height: 7,),
+                            Container(
+                                width: double.infinity,
+                                child: CustomText(text: "B . ${data[index]["option_2"]??""}", fontSize:question_textfont_size, fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="2" ? Colors.green:"${data[index]["answer_list"]??""}"=="2" && "${data[index]["answer_selected"]??""}"==2?Colors.green:"${data[index]["answer_selected"]??""}"=="2"?Colors.red: Colors.black,)),
+                            SizedBox(height: 7,),
+                            Container(
+                                width: double.infinity,
+                                child: CustomText(text: "C . ${data[index]["option_3"]??""}",fontSize: question_textfont_size, fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="3"  ? Colors.green: "${data[index]["answer_list"]??""}"=="3" && "${data[index]["answer_selected"]??""}"==3?Colors.green:"${data[index]["answer_selected"]??""}"=="3"?Colors.red: Colors.black,)),
+                            SizedBox(height: 7,),
+                            Container(
+                                width: double.infinity,
+                                child: CustomText(text: "D . ${data[index]["option_4"]??""}",fontSize: question_textfont_size,   fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="4" ? Colors.green: "${data[index]["answer_list"]??""}"=="4" && "${data[index]["answer_selected"]??""}"==4?Colors.green:"${data[index]["answer_selected"]??""}"=="4"?Colors.red: Colors.black,)),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        right: 10,
+                          bottom: 10,
+                          child: Container(
+                        height: 27,
+                        width: 55,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7),
+                                gradient: customBackground()),
+                            alignment: Alignment.center,
+                            child: CustomText(text:
+                            "${data[index]["answer_list"]??""}"=="1" ?
+                            "A"
+                                :
+                            "${data[index]["answer_list"]??""}"=="2" ?
+                            "B"
+                                :
+                            "${data[index]["answer_list"]??""}"=="3" ?
+                            "C"
+                                :
+                            "${data[index]["answer_list"]??""}"=="4" ?
+                            "D"  :
+                            "${data[index]["answer_list"]??""}"  ,
 
-                        CustomText(text: "Q1 . ${data[index]["question_description"]??""}", fontSize: 14, fontWeight: FontWeight.w400),
-                        Divider(height: 5,),
-                        CustomText(text:"A . ${data[index]["option_1"]??""}", fontSize: 11, fontWeight: FontWeight.w400 ,  text_color: "${data[index]["answer_list"]??""}"=="1"  ? Colors.green:"${data[index]["answer_list"]??""}"=="1" && "${data[index]["answer_selected"]??""}"==1?Colors.green:"${data[index]["answer_selected"]??""}"=="1"?Colors.red: Colors.black,),
-                        SizedBox(height: 7,),
-                        CustomText(text: "B . ${data[index]["option_2"]??""}", fontSize: 11, fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="2" ? Colors.green:"${data[index]["answer_list"]??""}"=="2" && "${data[index]["answer_selected"]??""}"==2?Colors.green:"${data[index]["answer_selected"]??""}"=="2"?Colors.red: Colors.black,),
-                        SizedBox(height: 7,),
-                        CustomText(text: "C . ${data[index]["option_3"]??""}",fontSize: 11, fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="3"  ? Colors.green: "${data[index]["answer_list"]??""}"=="3" && "${data[index]["answer_selected"]??""}"==3?Colors.green:"${data[index]["answer_selected"]??""}"=="3"?Colors.red: Colors.black,),
-                        SizedBox(height: 7,),
-                        CustomText(text: "D . ${data[index]["option_4"]??""}",fontSize:11,   fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="4" ? Colors.green: "${data[index]["answer_list"]??""}"=="4" && "${data[index]["answer_selected"]??""}"==4?Colors.green:"${data[index]["answer_selected"]??""}"=="4"?Colors.red: Colors.black,),
 
-                      ],
-                    ),
+
+
+
+                              fontSize: 16, fontWeight: FontWeight.w600,),
+                      ))
+                    ],
                   ),
                 );
               },),

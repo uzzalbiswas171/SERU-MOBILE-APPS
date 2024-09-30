@@ -72,7 +72,7 @@ class _MockTestScreenState extends State<MockTestScreen> {
                         height: 100,
                         padding: const EdgeInsets.all(8.0),
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)
-                          ,color: Main_Theme_Color,
+                          , gradient: customBackground()
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -93,7 +93,10 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
             child: ListView.builder(
               itemCount: data.length,
               itemBuilder: (context, index) {
+                double question_textfont_size=15.0;
+                double question_title_textfont_size=16.0;
                 return Card(
+                  color: Colors.white,
                   elevation: 5,
                   margin: EdgeInsets.only(bottom: 10),
                   child: Container(
@@ -109,9 +112,9 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
                         CustomText(
                             text:
                             "Q${index + 1} . ${Bidi.stripHtmlIfNeeded("${data[index]["question_description"] ?? ""}").replaceAll("\n", " ")} ",
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400),
-                        Divider(height: 5),
+                            fontSize: question_title_textfont_size,
+                            fontWeight: FontWeight.w600),
+                        Divider(),
                         InkWell(
                             onTap: () {
                               setState(() {
@@ -125,13 +128,22 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
                                     "${widget.randomNumber}");
                               });
                             },
-                            child: CustomText(
-                              text: "A . ${data[index]["option_1"] ?? ""}",
-                              text_color: selectedIndexes[index] == 1
-                                  ? Colors.green
-                                  : Colors.black87,
-                              fontSize: 11,
-                              fontWeight: FontWeight.w400,
+                            child: Container(
+                              padding:selectedIndexes[index] == 1? EdgeInsets.only(left: 5,right: 5,top: 2,bottom: 2):EdgeInsets.all(0),
+                              width: double.infinity,
+                              decoration: selectedIndexes[index] == 1?BoxDecoration(
+                                border: Border.all(
+                                  color: Selected_question_color ,
+                                )
+                              ):BoxDecoration(),
+                              child: CustomText(
+                                text: "A . ${data[index]["option_1"] ?? ""}",
+                                text_color: selectedIndexes[index] == 1
+                                    ? Selected_question_color
+                                    : Colors.black87,
+                                fontSize:selectedIndexes[index] == 1?question_textfont_size+1 : question_textfont_size,
+                                fontWeight: FontWeight.w400,
+                              ),
                             )),
                         SizedBox(height: 7),
                         InkWell(
@@ -147,13 +159,22 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
                                     "${widget.randomNumber}");
                               });
                             },
-                            child: CustomText(
-                              text: "B . ${data[index]["option_2"] ?? ""}",
-                              text_color: selectedIndexes[index] == 2
-                                  ? Colors.green
-                                  : Colors.black87,
-                              fontSize: 11,
-                              fontWeight: FontWeight.w400,
+                            child: Container(
+                              padding:selectedIndexes[index] == 2? EdgeInsets.only(left: 5,right: 5,top: 2,bottom: 2):EdgeInsets.all(0),
+                              width: double.infinity,
+                              decoration: selectedIndexes[index] == 2?BoxDecoration(
+                                  border: Border.all(
+                                    color: Selected_question_color  ,
+                                  )
+                              ):BoxDecoration(),
+                              child: CustomText(
+                                text: "B . ${data[index]["option_2"] ?? ""}",
+                                text_color: selectedIndexes[index] == 2
+                                    ? Selected_question_color
+                                    : Colors.black87,
+                                fontSize:selectedIndexes[index] == 2?question_textfont_size+1 : question_textfont_size,
+                                fontWeight: FontWeight.w400,
+                              ),
                             )),
                         SizedBox(height: 7),
                         InkWell(
@@ -169,13 +190,22 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
                                     "${widget.randomNumber}");
                               });
                             },
-                            child: CustomText(
-                              text: "C . ${data[index]["option_3"] ?? ""}",
-                              text_color: selectedIndexes[index] == 3
-                                  ? Colors.green
-                                  : Colors.black87,
-                              fontSize: 11,
-                              fontWeight: FontWeight.w400,
+                            child: Container(
+                              padding:selectedIndexes[index] == 3? EdgeInsets.only(left: 5,right: 5,top: 2,bottom: 2):EdgeInsets.all(0),
+                              width: double.infinity,
+                              decoration: selectedIndexes[index] == 3?BoxDecoration(
+                                  border: Border.all(
+                                    color: Selected_question_color  ,
+                                  )
+                              ):BoxDecoration(),
+                              child: CustomText(
+                                text: "C . ${data[index]["option_3"] ?? ""}",
+                                text_color: selectedIndexes[index] == 3
+                                    ?Selected_question_color
+                                    : Colors.black87,
+                                fontSize:selectedIndexes[index] == 3?question_textfont_size+1 : question_textfont_size,
+                                fontWeight: FontWeight.w400,
+                              ),
                             )),
                         SizedBox(height: 7),
                         InkWell(
@@ -191,13 +221,22 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
                                     "${widget.randomNumber}");
                               });
                             },
-                            child: CustomText(
-                              text: "D . ${data[index]["option_4"] ?? ""}",
-                              text_color: selectedIndexes[index] == 4
-                                  ? Colors.green
-                                  : Colors.black87,
-                              fontSize: 11,
-                              fontWeight: FontWeight.w400,
+                            child: Container(
+                              padding:selectedIndexes[index] == 4? EdgeInsets.only(left: 5,right: 5,top: 2,bottom: 2):EdgeInsets.all(0),
+                              width: double.infinity,
+                              decoration: selectedIndexes[index] == 4?BoxDecoration(
+                                  border: Border.all(
+                                    color: Selected_question_color  ,
+                                  )
+                              ):BoxDecoration(),
+                              child: CustomText(
+                                text: "D . ${data[index]["option_4"] ?? ""}",
+                                text_color: selectedIndexes[index] == 4
+                                    ? Selected_question_color
+                                    : Colors.black87,
+                                fontSize:selectedIndexes[index] == 4?question_textfont_size+1 : question_textfont_size,
+                                fontWeight: FontWeight.w400,
+                              ),
                             )),
                       ],
                     ),
@@ -207,6 +246,7 @@ class _MockTestQuestionScreenState extends State<MockTestQuestionScreen> {
             ),
           ),
         ),
+
         bottomNavigationBar: Card(
           elevation: 9,
           child: CustomButton(

@@ -63,7 +63,6 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: PreferredSize(preferredSize:Size.fromHeight(60), child: CustomAppbar()),
     key: _scaffoldkey,
     body: WillPopScope(
       onWillPop: () => Future(() => false),
@@ -78,7 +77,8 @@ class _BttotomBarScreenState extends State<BttotomBarScreen> {
         topLeft: Radius.circular(11),
         topRight: Radius.circular(11)
       ),
-      gradient: customBackground()
+   //   gradient: customBackground()
+     color: Main_Theme_white
      ),
      child: BottomNavigationBar( 
       backgroundColor:BootomBarColor.withOpacity(0.6),

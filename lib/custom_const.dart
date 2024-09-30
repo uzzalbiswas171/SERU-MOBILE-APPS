@@ -16,6 +16,7 @@ const Seru_Test_logo = "assets/SeruTestLogo/appstore.png";
  String Splash3_text="We believe a huge number of private hire driver's may find difficulties and worry about the new test.";
 
 const BootomBarColor=Color(0xff07DD6A);
+const Selected_question_color=Color(0xff11ac11);
 // const BootomBarColor=Color(0xffee5124);
  const main_text_blac_color=Color(0xff333333);
  const main_text_white_color=Color(0xffffffff);
@@ -47,8 +48,6 @@ LinearGradient customBackground() {
   return LinearGradient(
     colors: [
       Colors.teal, BootomBarColor,],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
   );
 }
 

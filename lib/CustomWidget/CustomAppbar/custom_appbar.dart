@@ -27,7 +27,9 @@ class _CustomAppbarState extends State<CustomAppbar> {
 
       ),
       child: AppBar(
-      //  backgroundColor: Colors.white,
+      //  backgroundColor: Colors.w
+    
+       elevation: 0.0,
         backgroundColor: appbarcollor.withOpacity(0.0),
         leading:Container(
           margin: const EdgeInsets.only(left: 10.0),

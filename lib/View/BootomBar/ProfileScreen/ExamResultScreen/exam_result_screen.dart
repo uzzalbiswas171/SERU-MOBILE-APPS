@@ -77,6 +77,9 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
           return Container(
             height: double.infinity,
             width: double.infinity,
+            decoration: BoxDecoration(
+              gradient: customBackground()
+            ),
             child: Column(
               children: [
                 /// First part-----------------------
@@ -91,11 +94,10 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                   child: Stack(
                     children: [
                       Container(
-                        height: 42,
-                        width: 42,
+                        height: 50,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(7),
-                            // color: Colors.red,
+                             color: Main_Theme_white,
                             border: Border.all(
                                 color: Main_Theme_textColor.withOpacity(0.15),
                                 width: 1.5
@@ -105,155 +107,156 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CustomText(text:"${value.All_MyMARK_RESULT_LIST_GET}"=="[]"?"0": "${value.All_MyMARK_RESULT_LIST_GET.length}", fontSize: 12, fontWeight: FontWeight.w500)
+                            CustomText(text:"Number of total Exam : - ${value.All_MyMARK_RESULT_LIST_GET}"=="[]"?"0": "Number of total Exam : - ${value.All_MyMARK_RESULT_LIST_GET.length}", fontSize: 14, fontWeight: FontWeight.w600)
                           ],
                         ),
                       ),
-                      Positioned(
-                          right: 0,
-                          bottom: 2,
-                          child: AnimatedContainer(
-                            duration: Duration(milliseconds: 300),
-                            height: 32,
-                            width: animatwidth,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(7),
-                                color: Main_Theme_white,
-                                border: Border.all(
-                                    color: Main_Theme_textColor.withOpacity(0.7),
-                                    width: 1
-                                )
-                            ),
-                            padding: EdgeInsets.only(left: 7,right: 7,top: 5,bottom: 5),
-                            child: InkWell(
-                              onTap: () {
-                                setState(() {
-                                  _is_click_date=!_is_click_date;
-                                  if(_is_click_date==true){
-                                    if(w>530){
-                                      animatwidth=530;
-                                    }else{
-                                      animatwidth=w*0.90;
-                                    }
-                                  }else{
-                                    animatwidth=100.0;
-                                  }
-                                });
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  _is_click_date==false?  CustomText(fontSize:  12 , fontWeight: FontWeight.w500, text: "${MonthList[selectedmonth]}" ,
-                                      text_color : Main_Theme_Color) :
-                                  Expanded(
-                                    child: ListView.builder(
-                                      itemCount: MonthList.length,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index) {
-                                        return InkWell(
-                                          onTap: () {
-                                            setState(() {
-                                              selectedmonth=index;
-                                              _is_click_date=!_is_click_date;
-                                              if(_is_click_date==true){
-                                                animatwidth=w*0.95;
-                                              }else{
-                                                animatwidth=130.0;
-                                              }
-                                            },);
-                                          },
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(right: 10.0,left: 5,top: 0),
-                                            child: Text("${MonthList[index]}"),
-                                          ),
-                                        ) ;
-                                      },),
-                                  ),
-                                  Container(
-                                    height: 12,
-                                    width: 1,
-                                    color: Main_Theme_textColor,
-                                    margin: EdgeInsets.only(left: 5,right: 7),
-                                  ),
-                                  Container(
-                                    height: 42,
-                                    width: 50,
-                                    child: DropdownButtonHideUnderline(
-                                      child: DropdownButton2<String>(
-                                        isExpanded: true,
-                                        hint: Text(
-                                          '${DateTime.now().year}',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.bold,
-                                            color: Main_Theme_textColor,
-                                          ),
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                        items: items
-                                            .map((String item) => DropdownMenuItem<String>(
-                                          value: item,
-                                          child: Text(
-                                            item,
-                                            style: const TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,
-                                            ),
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ))
-                                            .toList(),
-                                        value: selectedValue,
-                                        onChanged: (String? value) {
-                                          setState(() {
-                                            selectedValue = value;
-                                          });
-                                        },
-
-                                        iconStyleData: const IconStyleData(
-                                          icon: Icon(
-                                            Icons.arrow_downward,
-                                          ),
-                                          iconSize: 14,
-                                          iconEnabledColor: Main_Theme_textColor,
-                                          iconDisabledColor: Colors.grey,
-                                        ),
-                                        dropdownStyleData: DropdownStyleData(
-                                          scrollPadding: EdgeInsets.all(0.0),
-                                          decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(11),
-                                              border: Border.all(
-                                                  color: Main_Theme_textColor.withOpacity(0.5),
-                                                  width: 1
-                                              )
-                                          ),
-                                          direction: DropdownDirection.textDirection,
-                                          maxHeight: 200,
-                                          width: 65,
-                                          useRootNavigator: true,
-                                          padding: EdgeInsets.only(left: 2,right: 2),
-                                          offset:  Offset( -3, -6),
-                                          scrollbarTheme: ScrollbarThemeData(
-                                            radius:  Radius.circular(11),
-                                            trackBorderColor: MaterialStateProperty.all(Color(0xFF5D5F6E)),
-                                            thickness: MaterialStateProperty.all<double>(6),
-                                            thumbVisibility: MaterialStateProperty.all<bool>(true),
-                                          ),
-                                        ),
-                                        menuItemStyleData: const MenuItemStyleData(
-                                          height: 40,
-                                          padding: EdgeInsets.only(left: 14, right: 14),
-                                        ),
-                                      ),
-                                    ),
-                                  )
-
-
-                                ],
-                              ),
-                            ),
-                          ))
+                      // Positioned(
+                      //     right: 0,
+                      //     bottom: 2,
+                      //     child: AnimatedContainer(
+                      //       duration: Duration(milliseconds: 300),
+                      //       height: 32,
+                      //       width: animatwidth,
+                      //       decoration: BoxDecoration(
+                      //           borderRadius: BorderRadius.circular(7),
+                      //           color: Main_Theme_white,
+                      //           border: Border.all(
+                      //               color: Main_Theme_textColor.withOpacity(0.7),
+                      //               width: 1
+                      //           )
+                      //       ),
+                      //       padding: EdgeInsets.only(left: 7,right: 7,top: 5,bottom: 5),
+                      //       child: InkWell(
+                      //         onTap: () {
+                      //           setState(() {
+                      //             _is_click_date=!_is_click_date;
+                      //             if(_is_click_date==true){
+                      //               if(w>530){
+                      //                 animatwidth=530;
+                      //               }else{
+                      //                 animatwidth=w*0.90;
+                      //               }
+                      //             }else{
+                      //               animatwidth=100.0;
+                      //             }
+                      //           });
+                      //         },
+                      //         child: Row(
+                      //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //           children: [
+                      //             _is_click_date==false?  CustomText(fontSize:  12 , fontWeight: FontWeight.w500, text: "${MonthList[selectedmonth]}" ,
+                      //                 text_color : Main_Theme_Color) :
+                      //             Expanded(
+                      //               child: ListView.builder(
+                      //                 itemCount: MonthList.length,
+                      //                 scrollDirection: Axis.horizontal,
+                      //                 itemBuilder: (context, index) {
+                      //                   return InkWell(
+                      //                     onTap: () {
+                      //                       setState(() {
+                      //                         selectedmonth=index;
+                      //                         _is_click_date=!_is_click_date;
+                      //                         if(_is_click_date==true){
+                      //                           animatwidth=w*0.95;
+                      //                         }else{
+                      //                           animatwidth=130.0;
+                      //                         }
+                      //                       },);
+                      //                     },
+                      //                     child: Padding(
+                      //                       padding: const EdgeInsets.only(right: 10.0,left: 5,top: 0),
+                      //                       child: Text("${MonthList[index]}"),
+                      //                     ),
+                      //                   ) ;
+                      //                 },),
+                      //             ),
+                      //             Container(
+                      //               height: 12,
+                      //               width: 1,
+                      //               color: Main_Theme_textColor,
+                      //               margin: EdgeInsets.only(left: 5,right: 7),
+                      //             ),
+                      //             Container(
+                      //               height: 42,
+                      //               width: 50,
+                      //               child: DropdownButtonHideUnderline(
+                      //                 child: DropdownButton2<String>(
+                      //                   isExpanded: true,
+                      //                   hint: Text(
+                      //                     '${DateTime.now().year}',
+                      //                     style: TextStyle(
+                      //                       fontSize: 12,
+                      //                       fontWeight: FontWeight.bold,
+                      //                       color: Main_Theme_textColor,
+                      //                     ),
+                      //                     overflow: TextOverflow.ellipsis,
+                      //                   ),
+                      //                   items: items
+                      //                       .map((String item) => DropdownMenuItem<String>(
+                      //                     value: item,
+                      //                     child: Text(
+                      //                       item,
+                      //                       style: const TextStyle(
+                      //                         fontSize: 12,
+                      //                         fontWeight: FontWeight.bold,
+                      //                         color: Colors.black,
+                      //                       ),
+                      //                       overflow: TextOverflow.ellipsis,
+                      //                     ),
+                      //                   ))
+                      //                       .toList(),
+                      //                   value: selectedValue,
+                      //                   onChanged: (String? value) {
+                      //                     setState(() {
+                      //                       selectedValue = value;
+                      //                     });
+                      //                   },
+                      //
+                      //                   iconStyleData: const IconStyleData(
+                      //                     icon: Icon(
+                      //                       Icons.arrow_downward,
+                      //                     ),
+                      //                     iconSize: 14,
+                      //                     iconEnabledColor: Main_Theme_textColor,
+                      //                     iconDisabledColor: Colors.grey,
+                      //                   ),
+                      //                   dropdownStyleData: DropdownStyleData(
+                      //                     scrollPadding: EdgeInsets.all(0.0),
+                      //                     decoration: BoxDecoration(
+                      //                         borderRadius: BorderRadius.circular(11),
+                      //                         border: Border.all(
+                      //                             color: Main_Theme_textColor.withOpacity(0.5),
+                      //                             width: 1
+                      //                         )
+                      //                     ),
+                      //                     direction: DropdownDirection.textDirection,
+                      //                     maxHeight: 200,
+                      //                     width: 65,
+                      //                     useRootNavigator: true,
+                      //                     padding: EdgeInsets.only(left: 2,right: 2),
+                      //                     offset:  Offset( -3, -6),
+                      //                     scrollbarTheme: ScrollbarThemeData(
+                      //                       radius:  Radius.circular(11),
+                      //                       trackBorderColor: MaterialStateProperty.all(Color(0xFF5D5F6E)),
+                      //                       thickness: MaterialStateProperty.all<double>(6),
+                      //                       thumbVisibility: MaterialStateProperty.all<bool>(true),
+                      //                     ),
+                      //                   ),
+                      //                   menuItemStyleData: const MenuItemStyleData(
+                      //                     height: 40,
+                      //                     padding: EdgeInsets.only(left: 14, right: 14),
+                      //                   ),
+                      //                 ),
+                      //               ),
+                      //             )
+                      //
+                      //
+                      //           ],
+                      //         ),
+                      //       ),
+                      //     )
+                      // )
                     ],
                   ),
                 ),
@@ -264,6 +267,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                       margin: EdgeInsets.only(left: 10,right: 10,top: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(7) ,
+
                       ),
                       width: double.infinity,
                       child: ListView.builder(
@@ -308,14 +312,14 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                                   margin: EdgeInsets.all(10),
                                   padding: EdgeInsets.all(4),
                                   decoration: BoxDecoration(
-                                    color: appbarcollor.withOpacity(0.08),
+                                    gradient: customBackground(),
                                     borderRadius: BorderRadius.circular(7),
                                   ),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                         //  CustomText(fontSize: 12, fontWeight: FontWeight.w500, text: "${DateFormat.yMMMEd().format(value.All_MyMARK_RESULT_LIST_GET[index]["date"])}",  text_color: appbarcollor),
-                                  CustomText(fontSize: 12, fontWeight: FontWeight.w400, text: "${value.All_MyMARK_RESULT_LIST_GET[index]["is_pass"]}"=="false" ?"Fail" : "Pass", text_color: appbarcollor),
+                                  CustomText(fontSize: 16, fontWeight: FontWeight.w700, text: "${value.All_MyMARK_RESULT_LIST_GET[index]["is_pass"]}"=="false" ?"Fail" : "Pass", text_color:"${value.All_MyMARK_RESULT_LIST_GET[index]["is_pass"]}"=="false" ?Colors.red: Main_Theme_white),
                                     ],
                                   ),
                                 ),
@@ -324,7 +328,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     CustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "${value.All_MyMARK_RESULT_LIST_GET[index]["correct"]}",   text_color: Main_Theme_textColor),
-                                    CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "Total Correct",   text_color: Main_Theme_textColor.withOpacity(0.5)),
+                                    CustomText(fontSize: 12, fontWeight: FontWeight.w600, text: "Total Correct",   text_color: Main_Theme_textColor.withOpacity(0.8)),
                                   ],
                                 ),
                                 Spacer(),
@@ -340,10 +344,11 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                                 Spacer(),
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     CustomText(fontSize: 14, fontWeight: FontWeight.w500, text: "${int.parse("${value.All_MyMARK_RESULT_LIST_GET[index]["answered"]}")-int.parse("${value.All_MyMARK_RESULT_LIST_GET[index]["correct"]}")}",  text_color: Main_Theme_textColor),
-                                    CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "Total Incorrect",  text_color: Main_Theme_textColor.withOpacity(0.5)),
+                                    CustomText(fontSize: 12, fontWeight: FontWeight.w600, text: "Total Incorrect",   text_color: Main_Theme_textColor.withOpacity(0.8)),
+                                    //  CustomText(fontSize: 12, fontWeight: FontWeight.w300, text: "Total Incorrect",  text_color: Main_Theme_textColor.withOpacity(0.5)),
                                   ],
                                 ),
                                 Spacer(),

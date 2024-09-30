@@ -45,6 +45,7 @@ bool  is_cliced=true;
   //  final getAllPackageList=Provider.of<HomeController>(context).getAllPackageList;
 
     return Scaffold(
+       appBar: PreferredSize(preferredSize:Size.fromHeight(60), child: CustomAppbar()),
 backgroundColor: Colors.white,
      body: RefreshIndicator(
        onRefresh: () {
@@ -62,12 +63,14 @@ backgroundColor: Colors.white,
                  child: Stack(
                    children: [
                      Container(
-                       height: h*0.025+47,
+                       height: h*0.025+30,
                        decoration: BoxDecoration(
                        ),
                        child: Column(
                          children: [
-                           Expanded(child: Container(
+                           Expanded(
+                            flex: 2,
+                            child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(11),
@@ -76,7 +79,9 @@ backgroundColor: Colors.white,
                                 gradient: customBackground(),
                               ),
                            )),
-                           Expanded(child: Container(
+                           Expanded(
+                            flex: 1,
+                            child: Container(
                             color: Colors.white,
                            )),
                          ],
