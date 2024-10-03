@@ -58,6 +58,7 @@ dependencies:
   webview_flutter: ^4.4.4
   video_player: ^2.9.1
   device_info_plus: ^10.1.2
+  pay: ^1.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -67,7 +68,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.0
+  #flutter_lints: ^3.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -89,6 +90,7 @@ flutter:
    - assets/Icons/
    - assets/PymentImage/
    - assets/Splash_Screen_banneer/
+   - assets/gpay.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

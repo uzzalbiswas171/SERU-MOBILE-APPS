@@ -63,7 +63,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         width: double.infinity,
                         height:h<700?140: 188,
                          decoration: BoxDecoration(
-                           gradient: customBackground()
+                           gradient: customBackground(),
+                           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(12),bottomRight: Radius.circular(12))
                          ),
                         padding: EdgeInsets.only(left: 15),
                         child: Column(
