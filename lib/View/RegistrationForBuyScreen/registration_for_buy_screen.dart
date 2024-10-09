@@ -37,7 +37,12 @@ class _RegistrationForBuyScreenState extends State<RegistrationForBuyScreen> {
  TextEditingController _zipController = TextEditingController() ;
  TextEditingController _emailController = TextEditingController() ;
  TextEditingController _friendemailController = TextEditingController() ;
-
+   @override
+  void initState() {
+     _countryController.text="London";
+     // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     double h=MediaQuery.of(context).size.height;

@@ -82,7 +82,6 @@ class _IndividualResultScreenState extends State<IndividualResultScreen> {
                       CustomText(text: "C . ${data[index]["option_3"]??""}",fontSize: 13, fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="3"  ? Colors.green: "${data[index]["answer_list"]??""}"=="3" && "${data[index]["answer_selected"]??""}"==3?Colors.green:"${data[index]["answer_selected"]??""}"=="3"?Colors.red: Colors.black,),
                       SizedBox(height: 7,),
                       CustomText(text: "D . ${data[index]["option_4"]??""}",fontSize:13,   fontWeight: FontWeight.w400 , text_color: "${data[index]["answer_list"]??""}"=="4" ? Colors.green: "${data[index]["answer_list"]??""}"=="4" && "${data[index]["answer_selected"]??""}"==4?Colors.green:"${data[index]["answer_selected"]??""}"=="4"?Colors.red: Colors.black,),
-
                     ],
                   ),
                 ),
