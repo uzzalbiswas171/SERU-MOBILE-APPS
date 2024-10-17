@@ -64,8 +64,7 @@ class _RegistrationForBuyScreenState extends State<RegistrationForBuyScreen> {
                   "${DateFormat("yyyy-MM-dd").format(DateTime.now())}"
                 );
               },),
-           
-           
+              
            widget.is_cliced_for_own=="FOR OWN"?Container():  SizedBox(height: 15,),
             widget.is_cliced_for_own=="FOR OWN"?Container():  Container(
                 height: 120,
