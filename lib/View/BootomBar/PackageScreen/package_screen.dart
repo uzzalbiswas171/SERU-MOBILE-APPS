@@ -96,22 +96,22 @@ class _PackageScreenState extends State<PackageScreen> {
                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                            children: [
                                              ElevatedButton( style: ElevatedButton.styleFrom(
-                                                 backgroundColor:is_cliced_for_own=="2"? BootomBarColor :Colors.white
+                                                 backgroundColor:is_cliced_for_own=="FOR GIFT"? BootomBarColor :Colors.white
                                              ),
                                                  onPressed: () {
 
                                                    setState(() {
-                                                     is_cliced_for_own="2";
+                                                     is_cliced_for_own="FOR GIFT";
                                                      is_cliced=true;
                                                    },);
                                                  }, child: CustomText(text: "FOR GIFT", fontSize:h<700?10: 12, fontWeight: FontWeight.w500)),
                                              ElevatedButton(
                                                  style: ElevatedButton.styleFrom(
-                                                     backgroundColor:is_cliced_for_own=="3"? BootomBarColor:Colors.white
+                                                     backgroundColor:is_cliced_for_own=="FOR OWN"? BootomBarColor:Colors.white
                                                  ),
                                                  onPressed: () {
                                                    setState(() {
-                                                     is_cliced_for_own="3";
+                                                     is_cliced_for_own="FOR OWN";
                                                      is_cliced=true;
                                                    },);
                                                  }, child: CustomText(text: "FOR OWN", fontSize:h<700?10: 12, fontWeight: FontWeight.w500)),
