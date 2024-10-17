@@ -21,7 +21,7 @@ class RegistrationForBuyScreen extends StatefulWidget {
   }) : super(key: key);
  String package_id;
   String subscription_structure_id;
-  bool is_cliced_for_own;
+  String is_cliced_for_own;
   @override
   State<RegistrationForBuyScreen> createState() => _RegistrationForBuyScreenState();
 }
@@ -66,8 +66,8 @@ class _RegistrationForBuyScreenState extends State<RegistrationForBuyScreen> {
               },),
            
            
-           widget.is_cliced_for_own==true?Container():  SizedBox(height: 15,),
-            widget.is_cliced_for_own==true?Container():  Container(
+           widget.is_cliced_for_own=="3"?Container():  SizedBox(height: 15,),
+            widget.is_cliced_for_own=="3"?Container():  Container(
                 height: 120,
                 width: double.infinity,
                 margin: EdgeInsets.all(10),
@@ -116,7 +116,7 @@ class _RegistrationForBuyScreenState extends State<RegistrationForBuyScreen> {
                     CustomTExtFromField(controller: _cityController, hintText: "City*", text: "Email", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), suffixIcon: Icon(Icons.person,color: main_text_blac_color.withOpacity(0.6),), obscureText: false,),
           
                     SizedBox(height: 15,),
-                    CustomTExtFromField(controller: _countryController, hintText: "Country*", text: "Email", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), suffixIcon: Icon(Icons.person,color: main_text_blac_color.withOpacity(0.6),), obscureText: false,),
+                    CustomTExtFromFieldforreadonly( readOnly: true,controller: _countryController, hintText: "Country*", text: "Email", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), suffixIcon: Icon(Icons.person,color: main_text_blac_color.withOpacity(0.6),), obscureText: false,),
           
                     SizedBox(height: 15,),
                     CustomTExtFromField( controller: _zipController, hintText: "Zip Postal Code*", text: "Email", fontSize: 15, fontWeight: FontWeight.w500, text_color: main_text_blac_color.withOpacity(0.8), suffixIcon: Icon(Icons.person,color: main_text_blac_color.withOpacity(0.6),), obscureText: false,),

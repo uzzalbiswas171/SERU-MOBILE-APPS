@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       ChangeNotifierProvider<ProfileController>(create: (context) => ProfileController(),),
       ChangeNotifierProvider<LoginController>(create: (context) => LoginController(),),
       ChangeNotifierProvider<RegistrationController>(create: (context) => RegistrationController(),),
-      ChangeNotifierProvider<AnswerSubmitController>(create: (context) => AnswerSubmitController(),),
+      ChangeNotifierProvider<AnswerSubmitController>(create: (context) => AnswerSubmitController(),), 
       ChangeNotifierProvider<BuyPackageController>(create: (context) => BuyPackageController(),),
     ],
     child: MaterialApp(
