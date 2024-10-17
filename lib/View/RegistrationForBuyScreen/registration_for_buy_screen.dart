@@ -75,6 +75,7 @@ class _RegistrationForBuyScreenState extends State<RegistrationForBuyScreen> {
                 decoration: BoxDecoration(
                   borderRadius:BorderRadius.circular(11),
                   color: Colors.indigoAccent.withOpacity(0.2)
+                  
                 ),
                 child: Column(
                   children: [
