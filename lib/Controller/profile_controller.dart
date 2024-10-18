@@ -60,6 +60,15 @@ class ProfileController with ChangeNotifier{
     notifyListeners();
   }
 
+  ///  getAll vdeo class lst  ///
+  dynamic GETVDOECLASSlst;
+  GETVDOECLASSlstProvder(
+      BuildContext context
+      )async{
+    GETVDOECLASSlst= await CustomHttp().GETVDOECLASSlsthttpFuncton(context);
+    notifyListeners();
+  }
+
 
 
 }

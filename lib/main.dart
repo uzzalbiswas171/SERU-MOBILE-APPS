@@ -12,6 +12,7 @@ import 'Controller/loginController.dart';
 import 'Controller/profile_controller.dart';
 import 'Controller/registrationController.dart';
 import 'View/BootomBar/ProfileScreen/ExamResultScreen/IndividualResult/individual_result.dart';
+import 'View/BootomBar/ProfileScreen/VideoClassScreen/video_class_screen.dart';
 import 'View/BootomBar/bootombar.dart';
 import 'View/SplashScreens/main_splash_pageview_screen.dart';
 
@@ -57,7 +58,8 @@ class MyApp extends StatelessWidget {
       ),
 
       /// Main Route --------------------------
-      home:SplashScreen3(),
+   home:SplashScreen3(),
+     // home:VdeoClassLst(),
       //   home:IndividualResultScreen(),
       /// Working route -----------------------
       // home:BttotomBarScreen(index: 0,),

@@ -184,7 +184,6 @@ class CustomHttp{
     }
     return getAllMyMOCID_WISE_QUESTION_LIST_GET;
   }
-
   ///  All_MyMARK_RESULT_LIST_GET list get-------------------------------
   List getAllMy_MARKRESULTList=[];
   get_AllMy_MARK_RESULT_function(BuildContext context )async{
@@ -373,5 +372,24 @@ class CustomHttp{
       print("Pacage buy screen catch error > $e");
     }
   }
+
+
+  /// get all vdeo
+  List GETVDOECLASSlst = [];
+  GETVDOECLASSlsthttpFuncton(BuildContext context )async{
+    String url="${BASEURL}${GETVDOECLASS}";
+    try{
+      Response response=await http.get(Uri.parse(url), headers: headers);
+      final data=jsonDecode(response.body);
+      GETVDOECLASSlst=data;
+
+    }catch(e){
+      print("GET VDOE CLASS lst catch error > $e");
+    }
+    return GETVDOECLASSlst;
+  }
+
+
+
 }
 

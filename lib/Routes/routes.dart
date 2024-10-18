@@ -14,6 +14,7 @@
 
 /// BASEURL
  String BASEURL ="https://www.tflserutest.co.uk/";
+ String VideoBASEURL ="https://www.tflserutest.co.uk";
 
 ///----------------------------------------Auth Part---------------------------------
 /// LOGIN
@@ -60,6 +61,10 @@ String AnswerSubmit ="api/protected/answer";
 
 /// Buy Package Without Voucher
 String BuyPackageWithoutVoucher ="api/protected/buy-package";
+
+
+/// Get all vdeo
+String GETVDOECLASS ="api/videos";
 
 
 
